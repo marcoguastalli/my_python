@@ -1,6 +1,6 @@
 vec = [
-      'uno',
-    'dieci',
-     'cinque'
-    ]
+    'Fists',
+    '2nd',
+    'Tercero'
+]
 print(vec)
