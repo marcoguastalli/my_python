@@ -25,6 +25,7 @@ def process__yes():
         print("Wrong Answer")
     else:
         print("Congrats!")
+    return True
 
 
 if __name__ == "__main__":
