@@ -1,4 +1,9 @@
 from pathlib import Path
+import json
+
+
+def convert_list_to_string(list_of_string):
+    return ''.join(list_of_string)
 
 
 class ReadJson:
@@ -15,7 +20,8 @@ class ReadJson:
             file_content = file.readlines()
             file.close()
 
-            json_as_string = self.read_json(file_content)
+            file_content_as_string = convert_list_to_string(file_content)
+            json_as_string = self.read_json(file_content_as_string)
 
             # print('Content of %s:\n %s' % (file_name, json_as_string))
 
@@ -23,5 +29,7 @@ class ReadJson:
 
     @staticmethod
     def read_json(json_as_string):
-        print(json_as_string)
-        return json_as_string
+        json_object = json.loads(json_as_string)
+        print(json_object)
+        return json_object
+
