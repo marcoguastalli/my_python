@@ -1,10 +1,8 @@
 import json
 from pathlib import Path
+
+import py_utils
 from json_bean import JsonBean
-
-
-def convert_list_to_string(list_of_string):
-    return ''.join(list_of_string)
 
 
 class ReadJson:
@@ -21,23 +19,21 @@ class ReadJson:
             file_content = file.readlines()
             file.close()
 
-            file_content_as_string = convert_list_to_string(file_content)
-            json_as_string = self.read_json(file_content_as_string)
+            file_content_as_string = py_utils.convert_list_to_string(file_content)
 
-            # print('Content of %s:\n %s' % (file_name, json_as_string))
+            json_bean = self.read_json(file_content_as_string)
+            print('Content of %s:\n %s' % (file_name, json_bean))
 
         return files_in_path
 
     @staticmethod
     def read_json(json_as_string):
         json_object = json.loads(json_as_string)
-        jsonBean = JsonBean(json_object['uuid'])
-        jsonBean.add_path(json_object['path'])
-        jsonBean.set_name(json_object['name'])
-        jsonBean.set_mime(json_object['mime'])
-        jsonBean.set_created(json_object['created'])
-        jsonBean.set_modified(json_object['modified'])
-        jsonBean.set_size(json_object['size'])
-        print(jsonBean)
-        return jsonBean
-
+        json_bean = JsonBean(json_object['uuid'])
+        json_bean.add_path(json_object['path'])
+        json_bean.set_name(json_object['name'])
+        json_bean.set_mime(json_object['mime'])
+        json_bean.set_created(json_object['created'])
+        json_bean.set_modified(json_object['modified'])
+        json_bean.set_size(json_object['size'])
+        return json_bean
