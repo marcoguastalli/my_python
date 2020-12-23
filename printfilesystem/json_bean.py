@@ -31,12 +31,14 @@ class JsonBean:
         return self.__path
 
     def __str__(self):
-        # paths_as_string = '"path:"'
+        paths = self.get_paths()
         paths_as_string = '{'
         count = 0
-        for path in self.__path:
+        for path in paths:
             count += 1
             paths_as_string += '"' + count.__str__() + '":"' + path + '"'
+            if count < paths.__len__():
+                paths_as_string += ','
         paths_as_string += '}'
 
         result = '{' \
