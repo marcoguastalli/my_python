@@ -30,7 +30,8 @@ class JsonBean:
     def get_paths(self):
         return self.__path
 
-    def __str__(self):
+    # create a json-string with a counter and the paths of the list
+    def get_paths_json_string(self):
         paths = self.get_paths()
         paths_as_string = '{'
         count = 0
@@ -40,6 +41,10 @@ class JsonBean:
             if count < paths.__len__():
                 paths_as_string += ','
         paths_as_string += '}'
+        return paths_as_string
+
+    def __str__(self):
+        paths_as_string = self.get_paths_json_string()
 
         result = '{' \
                  + '"uuid":"' + self.__uuid + '",' \
