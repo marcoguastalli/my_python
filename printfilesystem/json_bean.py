@@ -18,8 +18,8 @@ class JsonBean:
     def set_mime(self, mime):
         self.__mime = mime
 
-    def set_created(self, mime):
-        self.__mime = mime
+    def set_created(self, created):
+        self.__created = created
 
     def set_modified(self, modified):
         self.__modified = modified
@@ -27,5 +27,24 @@ class JsonBean:
     def set_size(self, size):
         self.__size = size
 
+    def get_paths(self):
+        return self.__path
+
     def __str__(self):
-        return "{name: '" + self.__name + "'}"
+        # paths_as_string = '"path:"'
+        paths_as_string = '{'
+        count = 0
+        for path in self.__path:
+            count += 1
+            paths_as_string += '"' + count.__str__() + '":"' + path + '"'
+        paths_as_string += '}'
+
+        result = '{' \
+                 + '"uuid":"' + self.__uuid + '",' \
+                 + '"paths":' + paths_as_string + ',' \
+                 + '"name":"' + self.__name + '",' \
+                 + '"mime":"' + self.__mime + '",' \
+                 + '"created":"' + self.__created + '",' \
+                 + '"modified":"' + self.__modified + '"' \
+                 + "}"
+        return result
