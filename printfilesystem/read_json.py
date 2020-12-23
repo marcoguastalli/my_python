@@ -1,5 +1,6 @@
-from pathlib import Path
 import json
+from pathlib import Path
+from json_bean import JsonBean
 
 
 def convert_list_to_string(list_of_string):
@@ -30,6 +31,13 @@ class ReadJson:
     @staticmethod
     def read_json(json_as_string):
         json_object = json.loads(json_as_string)
-        print(json_object)
-        return json_object
+        jsonBean = JsonBean(json_object['uuid'])
+        jsonBean.add_path(json_object['path'])
+        jsonBean.set_name(json_object['name'])
+        jsonBean.set_mime(json_object['mime'])
+        jsonBean.set_created(json_object['created'])
+        jsonBean.set_modified(json_object['modified'])
+        jsonBean.set_size(json_object['size'])
+        print(jsonBean)
+        return jsonBean
 
