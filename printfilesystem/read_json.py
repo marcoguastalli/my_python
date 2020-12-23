@@ -13,6 +13,8 @@ class ReadJson:
 
             file = open(file_name, 'r')
             file_content = file.readlines()
-            print(f'Content of %s:\n %s' % (file_name, file_content))
             file.close()
+
+            print('Content of %s:\n %s' % (file_name, file_content))
+
         return files_in_path

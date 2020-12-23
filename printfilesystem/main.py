@@ -1,5 +1,6 @@
 from read_json import ReadJson
 
+
 def main():
     folder_path = "/home/marco27/Documents/json/"
     readJson = ReadJson(folder_path)
