@@ -15,6 +15,13 @@ class ReadJson:
             file_content = file.readlines()
             file.close()
 
-            print('Content of %s:\n %s' % (file_name, file_content))
+            json_as_string = self.read_json(file_content)
+
+            # print('Content of %s:\n %s' % (file_name, json_as_string))
 
         return files_in_path
+
+    @staticmethod
+    def read_json(json_as_string):
+        print(json_as_string)
+        return json_as_string
