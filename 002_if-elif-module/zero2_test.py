@@ -1,6 +1,7 @@
 import unittest
 import zero2
 
+
 class ZeroTwoTest(unittest.TestSuite):
     class ZeroTwoTestNo(unittest.TestCase):
         def test_main(self):

@@ -1,5 +1,5 @@
 import os
-from mimetypes import MimeTypes
+import re
 
 
 def convert_list_to_string(list_of_string):
@@ -26,3 +26,17 @@ def write_strings_to_file(strings, target_path, target_file_name):
     for line in strings:
         file.write(line.__str__() + "\n")
     file.close()
+
+
+def generate_name_id(separator, path, name, size):
+    str_only_chars = re.sub('[^a-zA-Z]+', '*', path + separator + name + str(size))
+    return str_only_chars
+
+
+def generate_namespace(path, name, pattern):
+    path_file_name = path + name
+    g = re.match(pattern, path_file_name)
+    if g.groups().__len__() == 3:
+        return g.group(3)
+    else:
+        return None
