@@ -1,4 +1,5 @@
 import os
+from mimetypes import MimeTypes
 
 
 def convert_list_to_string(list_of_string):

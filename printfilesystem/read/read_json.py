@@ -29,11 +29,11 @@ class ReadJson:
     @staticmethod
     def read_json(json_as_string):
         json_object = json.loads(json_as_string)
-        json_bean = JsonModel(json_object['uuid'])
-        json_bean.add_path(json_object['path'])
-        json_bean.set_name(json_object['name'])
-        json_bean.set_mime(json_object['mime'])
-        json_bean.set_created(json_object['created'])
-        json_bean.set_modified(json_object['modified'])
-        json_bean.set_size(json_object['size'])
-        return json_bean
+        json_model = JsonModel(json_object['uuid'])
+        json_model.set_paths(json_object['paths'])
+        json_model.set_name(json_object['name'])
+        json_model.set_mime(json_object['mime'])
+        json_model.set_created(json_object['created'])
+        json_model.set_modified(json_object['modified'])
+        json_model.set_size(json_object['size'])
+        return json_model
