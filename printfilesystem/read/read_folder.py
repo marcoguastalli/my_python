@@ -1,6 +1,7 @@
 from pathlib import Path
 import printfilesystem.py_utils as py_utils
 
+
 class ReadFolder:
     def __init__(self, source_path, target_path):
         self.source_path = source_path

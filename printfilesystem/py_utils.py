@@ -3,7 +3,7 @@ def convert_list_to_string(list_of_string):
 
 
 def recursive_read_folder(result, source_folder):
-    files_in_folder = source_folder.iterdir()
+    files_in_folder = sorted(source_folder.iterdir())
     for file_in_folder in files_in_folder:
         element = file_in_folder
         if file_in_folder.is_dir():
