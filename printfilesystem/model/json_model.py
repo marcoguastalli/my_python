@@ -1,4 +1,4 @@
-class JsonBean:
+class JsonModel:
 
     def __init__(self, uuid):
         self.__uuid = uuid

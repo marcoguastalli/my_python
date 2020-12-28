@@ -1,8 +1,8 @@
 import json
 from pathlib import Path
 
-import py_utils
-from json_bean import JsonBean
+import printfilesystem.utils.py_utils as py_utils
+from printfilesystem.model.json_model import JsonModel
 
 
 class ReadJson:
@@ -29,7 +29,7 @@ class ReadJson:
     @staticmethod
     def read_json(json_as_string):
         json_object = json.loads(json_as_string)
-        json_bean = JsonBean(json_object['uuid'])
+        json_bean = JsonModel(json_object['uuid'])
         json_bean.add_path(json_object['path'])
         json_bean.set_name(json_object['name'])
         json_bean.set_mime(json_object['mime'])
