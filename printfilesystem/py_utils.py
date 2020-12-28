@@ -1,2 +1,12 @@
 def convert_list_to_string(list_of_string):
     return ''.join(list_of_string)
+
+
+def recursive_read_folder(result, source_folder):
+    files_in_folder = source_folder.iterdir()
+    for file_in_folder in files_in_folder:
+        element = file_in_folder
+        if file_in_folder.is_dir():
+            element = "[" + element.__str__() + "]"
+            recursive_read_folder(result, file_in_folder)
+        result.append(element)
