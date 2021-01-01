@@ -6,7 +6,7 @@ class StoreJson:
         self.json_model = json_model
 
     def store(self):
-        json_as_sting = str(self.json_model)
+        json_as_sting = str(self.json_model).encode("utf-8")
         url = 'http://localhost:8980/marco27-web/v1/pfs/create'
         headers = {'Content-type': 'application/json', 'Accept': '*/*'}
         try:
