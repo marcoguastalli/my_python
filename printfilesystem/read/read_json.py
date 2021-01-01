@@ -9,7 +9,7 @@ class ReadJson:
     def __init__(self, sourcePath):
         self.sourcePath = sourcePath
 
-    def get_json(self):
+    def get_json_model(self):
         result = []
         folder_files = Path(self.sourcePath).rglob('*.json')
         for file_name in folder_files:
@@ -19,8 +19,8 @@ class ReadJson:
 
             file_content_as_string = py_utils.convert_list_to_string(file_content)
 
-            json_as_string = self.read_json(file_content_as_string)
-            result.append(json_as_string)
+            json_model = self.read_json(file_content_as_string)
+            result.append(json_model)
             # print('Content of %s:\n %s' % (file_name, json_as_string))
 
         return result

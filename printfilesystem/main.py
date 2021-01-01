@@ -19,11 +19,11 @@ def main():
     print("Created json in folder '%s'", target_path)
 
     rj = ReadJson(target_path)
-    json_in_folder = rj.get_json()
-    print("The folder with path '%s' contains %s json files" % (target_path, json_in_folder.__len__()))
+    json_model_in_folder = rj.get_json_model()
+    print("The folder with path '%s' contains %s json files" % (target_path, json_model_in_folder.__len__()))
 
-    for json_as_string in json_in_folder:
-        sj = StoreJson(json_as_string)
+    for json_model in json_model_in_folder:
+        sj = StoreJson(json_model)
         stored_json = sj.store()
         print("Stored json '%s'" % stored_json)
     print("Stored json from folder '%s'" % target_path)
