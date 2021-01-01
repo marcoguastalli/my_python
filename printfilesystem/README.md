@@ -2,12 +2,11 @@
 
 ### json example
 {
-  "uuid": "0fb85c17-a238-4736-8abc-f232fe75b30a",
-  "paths": {
-    "1": "/home/marco27/Documents/image.jpg"
-  },
-  "name": "an image jpg",
+  "id": "HomeMarco27DownloadsIMG7561JPGIMG7561JPG1775281",
+  "name": "IMG_7561.JPG",
+  "path": "/home/marco27/Downloads/IMG_7561.JPG",
   "mime": "image/jpeg",
-  "created": "2020-11-12_16:44:03",
-  "modified": "2020-11-12_16:44:03"
+  "created": "2021-01-01 20:18:06.364599",
+  "modified": "2020-12-30 21:03:18",
+  "size": 1775281
 }
