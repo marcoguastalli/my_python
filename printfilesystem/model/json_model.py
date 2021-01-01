@@ -1,19 +1,16 @@
 class JsonModel:
 
-    def __init__(self, uuid):
-        self.__uuid = uuid
-        self.__path = list()
+    def __init__(self, id):
+        self.__id = id
+        self.__path = ''
         self.__name = ''
         self.__mime = ''
         self.__created = ''
         self.__modified = ''
         self.__size = 0
 
-    def add_path(self, path):
-        self.__path.append(path)
-
-    def set_paths(self, paths: list):
-        self.__path = paths
+    def set_path(self, path):
+        self.__path = path
 
     def set_name(self, name):
         self.__name = name
@@ -38,26 +35,11 @@ class JsonModel:
     def get_paths(self):
         return self.__path
 
-    # create a json-string with a counter and the paths of the list
-    def get_paths_json_string(self):
-        paths = self.get_paths()
-        paths_as_string = '['
-        count = 0
-        for path in paths:
-            count += 1
-            paths_as_string += '"' + path + '"'
-            if count < paths.__len__():
-                paths_as_string += ','
-        paths_as_string += ']'
-        return paths_as_string
-
     def __str__(self):
-        paths_as_string = self.get_paths_json_string()
-
         result = '{' \
-                 + '"uuid":"' + self.__uuid + '",' \
-                 + '"paths":' + paths_as_string + ',' \
+                 + '"id":"' + self.__id + '",' \
                  + '"name":"' + self.__name + '",' \
+                 + '"path":"' + self.__path + '",' \
                  + '"mime":"' + self.__mime + '",' \
                  + '"created":"' + self.__created + '",' \
                  + '"modified":"' + self.__modified + '",' \

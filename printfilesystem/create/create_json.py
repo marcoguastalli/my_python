@@ -1,11 +1,10 @@
+import datetime
 import os
-import uuid
 from mimetypes import MimeTypes
 from pathlib import Path
-import datetime
-
 
 from printfilesystem.model.json_model import JsonModel
+from printfilesystem.utils.py_utils import generate_name_id
 
 
 def write_json_to_file(json_path, json_model: JsonModel):
@@ -14,7 +13,7 @@ def write_json_to_file(json_path, json_model: JsonModel):
     pass
 
 
-class CreateJsonFromPath:
+class CreateJson:
     def __init__(self, files_in_path, json_path):
         self.files_in_path = files_in_path
         self.json_path = json_path
@@ -24,10 +23,12 @@ class CreateJsonFromPath:
         for file in self.files_in_path:
             path = Path(file)
             json_file_name = path.name
-            json_model = JsonModel(uuid.uuid4().hex)
+            size = path.stat().st_size
+
+            json_model = JsonModel(generate_name_id(os.sep, path, json_file_name, size))
             json_model.set_name(json_file_name)
-            json_model.add_path(path.absolute().__str__())
-            json_model.set_size(path.stat().st_size)
+            json_model.set_path(path.absolute().__str__())
+            json_model.set_size(size)
 
             created = datetime.datetime.fromtimestamp(path.stat().st_ctime)
             modified = datetime.datetime.fromtimestamp(path.stat().st_mtime)

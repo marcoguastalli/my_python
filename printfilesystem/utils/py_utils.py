@@ -1,5 +1,6 @@
 import os
 import re
+import uuid
 
 
 def convert_list_to_string(strings: list):
@@ -30,8 +31,24 @@ def write_strings_to_file(strings: list, target_path, target_file_name):
     file.close()
 
 
+def create_json_array_string_from_string_list(strings: list):
+    result = '['
+    count = 0
+    for s in strings:
+        count += 1
+        result += '"' + s + '"'
+        if count < strings.__len__():
+            result += ','
+    result += ']'
+    return result
+
+
+def generate_uuid():
+    return uuid.uuid4().hex
+
+
 def generate_name_id(separator, path, name, size):
-    s = re.sub('[^0-9a-zA-Z]+', ' ', path + separator + name + str(size)).strip()
+    s = re.sub('[^0-9a-zA-Z]+', ' ', str(path) + separator + name + str(size)).strip()
     result = ''
     result += s[0].upper()
     for i in range(1, len(s)):
