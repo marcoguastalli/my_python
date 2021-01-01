@@ -6,6 +6,8 @@ from pathlib import Path
 from printfilesystem.model.json_model import JsonModel
 from printfilesystem.utils.py_utils import generate_name_id
 
+date_format = '%Y-%m-%d %H:%M:%S'
+
 
 def write_json_to_file(json_path, json_model: JsonModel):
     file = open(json_path + os.sep + json_model.get_name() + '.json', 'w')
@@ -30,8 +32,8 @@ class CreateJson:
             json_model.set_path(path.absolute().__str__())
             json_model.set_size(size)
 
-            created = datetime.datetime.fromtimestamp(path.stat().st_ctime)
-            modified = datetime.datetime.fromtimestamp(path.stat().st_mtime)
+            created = datetime.datetime.fromtimestamp(path.stat().st_ctime).strftime(date_format)
+            modified = datetime.datetime.fromtimestamp(path.stat().st_mtime).strftime(date_format)
             json_model.set_created(created.__str__())
             json_model.set_modified(modified.__str__())
 
