@@ -3,15 +3,16 @@ from hachoir.metadata.metadata import Metadata
 from hachoir.parser import createParser
 
 
-def extract_metadata_from_video(source_path):
-    result = dict({'path: ': source_path})
+def extract_metadata(path_file_name):
+    result = dict({'file: ': path_file_name})
     try:
-        parser = createParser(source_path)
+        parser = createParser(path_file_name)
         if not parser:
             result['result'] = 'Parses is None'
             return result
         metadata: Metadata = extractMetadata(parser)
         if metadata:
+            result['result'] = 'ok'
             for data in sorted(metadata, key=lambda data: data.priority):
                 if not data.values:
                     continue

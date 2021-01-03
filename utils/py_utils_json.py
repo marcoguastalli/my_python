@@ -1,5 +1,5 @@
 import json
-from printfilesystem.model.json_model import JsonModel
+from utils.model.json_model import JsonModel
 
 
 def read_json(json_as_string):

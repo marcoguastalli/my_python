@@ -3,7 +3,8 @@ import os
 from mimetypes import MimeTypes
 from pathlib import Path
 
-from printfilesystem.model.json_model import JsonModel
+from metadata_hachoir.src.metadata_hachoir import extract_metadata
+from printfilesystem.model.pfs_model import PfsModel
 from utils.py_utils_ids import generate_name_id
 from utils.py_utils_ids import generate_namespace
 from utils.py_utils_string import default_if_empty
@@ -14,9 +15,9 @@ from utils.py_utils_string import substring_before_last
 date_format = '%Y-%m-%d %H:%M:%S'
 
 
-def write_json_to_file(json_path, json_model: JsonModel):
-    file = open(json_path + os.sep + json_model.get_name() + '.json', 'w')
-    file.write(json_model.__str__())
+def write_json_to_file(json_path, model: PfsModel):
+    file = open(json_path + os.sep + model.get_name() + '.json', 'w')
+    file.write(model.__str__())
     pass
 
 
@@ -33,24 +34,40 @@ class CreateJson:
             path_no_file_name = substring_before_last(path.absolute().__str__(), os.sep)
             size = path.stat().st_size
 
-            json_model = JsonModel(generate_name_id(os.sep, path, json_file_name, size))
-            json_model.set_path(path_no_file_name)
-            json_model.set_name(json_file_name)
-            json_model.set_namespace(
-                generate_namespace(json_model.get_path(), json_model.get_name(), "(.*)(anime/)(.*)"))
-            json_model.set_size(size)
+            pfs_model = PfsModel(generate_name_id(os.sep, path, json_file_name, size))
+            pfs_model.set_path(path_no_file_name)
+            pfs_model.set_name(json_file_name)
+            pfs_model.set_namespace(
+                generate_namespace(pfs_model.get_path(), pfs_model.get_name(), "(.*)(anime/)(.*)"))
+            pfs_model.set_size(size)
 
             created = datetime.datetime.fromtimestamp(path.stat().st_ctime).strftime(date_format)
             modified = datetime.datetime.fromtimestamp(path.stat().st_mtime).strftime(date_format)
-            json_model.set_created(created.__str__())
-            json_model.set_modified(modified.__str__())
+            pfs_model.set_created(created.__str__())
+            pfs_model.set_modified(modified.__str__())
 
-            mime__type = mime.guess_type(path)
-            mime_str = mime__type[0]
-            if is_blank(mime__type[0]):
-                extension = substring_after_last(file, '.')
-                mime_str = default_if_empty(extension, '')
-            json_model.set_mime(mime_str)
+            metadata: dict = extract_metadata(file)
+            if metadata.get('result') == 'ok':
+                mime_str = metadata['mime_type'][0]
+                if metadata.__contains__('width'):
+                    pfs_model.set_width(metadata['width'][0])
+                else:
+                    pfs_model.set_width('')
+                if metadata.__contains__('height'):
+                    pfs_model.set_height(metadata['height'][0])
+                else:
+                    pfs_model.set_height('')
+                if metadata.__contains__('duration'):
+                    pfs_model.set_duration(metadata['duration'][0])
+                else:
+                    pfs_model.set_duration('')
+            else:
+                mime__type = mime.guess_type(path)
+                mime_str = mime__type[0]
+                if is_blank(mime__type[0]):
+                    extension = substring_after_last(file, '.')
+                    mime_str = default_if_empty(extension, '')
+            pfs_model.set_mime(mime_str)
 
-            write_json_to_file(self.json_path, json_model)
+            write_json_to_file(self.json_path, pfs_model)
         return None
