@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-import printfilesystem.utils.py_utils as py_utils
+import printfilesystem.utils.py_utils_file as py_utils_file
 
 
 class ReadFolder:
@@ -12,7 +12,7 @@ class ReadFolder:
         source_folder = Path(self.source_path)
         result = []
         # result = ["[" + source_folder.__str__() + "]"]
-        py_utils.recursive_read_folder(result, source_folder)
+        py_utils_file.recursive_read_folder(result, source_folder)
         return result
 
     def read_files_in_folder_using_os(self):

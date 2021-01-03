@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-import printfilesystem.utils.py_utils as py_utils
+import printfilesystem.utils.py_utils_string as py_utils_string
 from printfilesystem.model.json_model import JsonModel
 
 
@@ -17,7 +17,7 @@ class ReadJson:
             file_content = file.readlines()
             file.close()
 
-            file_content_as_string = py_utils.convert_list_to_string(file_content)
+            file_content_as_string = py_utils_string.convert_list_to_string(file_content)
 
             json_model = self.read_json(file_content_as_string)
             result.append(json_model)

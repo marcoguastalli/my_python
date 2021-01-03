@@ -4,7 +4,7 @@ from mimetypes import MimeTypes
 from pathlib import Path
 
 from printfilesystem.model.json_model import JsonModel
-from printfilesystem.utils.py_utils import generate_name_id
+from printfilesystem.utils.py_utils_ids import generate_name_id
 
 date_format = '%Y-%m-%d %H:%M:%S'
 
