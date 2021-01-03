@@ -9,6 +9,7 @@ from utils.py_utils_ids import generate_namespace
 from utils.py_utils_string import default_if_empty
 from utils.py_utils_string import is_blank
 from utils.py_utils_string import substring_after_last
+from utils.py_utils_string import substring_before_last
 
 date_format = '%Y-%m-%d %H:%M:%S'
 
@@ -29,10 +30,11 @@ class CreateJson:
         for file in self.files_in_path:
             path = Path(file)
             json_file_name = path.name
+            path_no_file_name = substring_before_last(path.absolute().__str__(), os.sep)
             size = path.stat().st_size
 
             json_model = JsonModel(generate_name_id(os.sep, path, json_file_name, size))
-            json_model.set_path(path.absolute().__str__())
+            json_model.set_path(path_no_file_name)
             json_model.set_name(json_file_name)
             json_model.set_namespace(
                 generate_namespace(json_model.get_path(), json_model.get_name(), "(.*)(anime/)(.*)"))
