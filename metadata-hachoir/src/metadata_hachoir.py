@@ -19,6 +19,8 @@ def extract_metadata_from_video(source_path):
                 for item in data.values:
                     text.append(item.text)
                 result[data.key] = text
+        else:
+            result['result'] = 'Metadata is None'
         return result
     except Exception as err:
         print("Metadata extraction error: %s" % err)
