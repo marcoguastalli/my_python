@@ -1,6 +1,6 @@
 import uuid
 import re
-
+from py_utils_string import substring_before_last
 
 def generate_uuid():
     return uuid.uuid4().hex
@@ -17,3 +17,12 @@ def generate_name_id(separator, path, name, size):
         elif s[i - 1] != ' ':
             result += s[i]
     return result
+
+
+def generate_namespace(path, file_name, regexp):
+    path_file_name = path + file_name
+    g = re.match(regexp, path_file_name)
+    if g.groups().__len__() == 3:
+        return substring_before_last(g.group(3), file_name)
+    else:
+        return None

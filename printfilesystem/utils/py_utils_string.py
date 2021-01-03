@@ -12,3 +12,7 @@ def create_json_array_string_from_string_list(strings: list):
             result += ','
     result += ']'
     return result
+
+
+def substring_before_last(s: str, separator: str):
+    return s.rsplit(separator, 1)[0]
