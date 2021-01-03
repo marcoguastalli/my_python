@@ -24,6 +24,16 @@ class Test(unittest.TestSuite):
             result = py_utils_string.substring_before_last(s, separator)
             self.assertEqual(expected, result)
 
+        def test_is_empty(self):
+            self.assertTrue(py_utils_string.is_empty(''))
+            self.assertTrue(py_utils_string.is_empty(""))
+            self.assertFalse(py_utils_string.is_empty('s'))
+            self.assertFalse(py_utils_string.is_empty("s"))
+
+        def test_default_if_empty(self):
+            self.assertEqual('s', py_utils_string.default_if_empty('s', 'd'))
+            self.assertEqual('d', py_utils_string.default_if_empty('', 'd'))
+
 
 if __name__ == "__main__":
     unittest.main(Test)

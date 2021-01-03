@@ -16,3 +16,15 @@ def create_json_array_string_from_string_list(strings: list):
 
 def substring_before_last(s: str, separator: str):
     return s.rsplit(separator, 1)[0]
+
+
+def is_empty(s: str):
+    if s == "":
+        return True
+    return False
+
+
+def default_if_empty(s: str, default_s: str):
+    if is_empty(s):
+        return default_s
+    return s
