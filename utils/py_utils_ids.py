@@ -1,7 +1,7 @@
 import re
 import uuid
 
-from printfilesystem.utils.py_utils_string import substring_before_last
+from utils.py_utils_string import substring_before_last
 
 
 def generate_uuid():

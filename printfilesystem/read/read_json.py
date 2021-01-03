@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-import printfilesystem.utils.py_utils_string as py_utils_string
+import utils.py_utils_string as py_utils_string
 from printfilesystem.model.json_model import JsonModel
 
 

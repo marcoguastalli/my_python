@@ -44,3 +44,6 @@ build/
 
 ### Lombok ###
 lombok.config
+
+#python_tests
+_trial_temp

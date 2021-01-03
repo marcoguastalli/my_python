@@ -4,7 +4,7 @@ from printfilesystem.create.create_json import CreateJson
 from printfilesystem.read.read_folder import ReadFolder
 from printfilesystem.read.read_json import ReadJson
 from printfilesystem.store.store__json import StoreJson
-from printfilesystem.utils.py_utils_file import create_folder_if_not_exists
+from utils.py_utils_file import create_folder_if_not_exists
 
 
 def main():
