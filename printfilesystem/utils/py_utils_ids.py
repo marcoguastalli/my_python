@@ -1,6 +1,8 @@
-import uuid
 import re
+import uuid
+
 from py_utils_string import substring_before_last
+
 
 def generate_uuid():
     return uuid.uuid4().hex

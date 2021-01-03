@@ -18,6 +18,10 @@ def substring_before_last(s: str, separator: str):
     return s.rsplit(separator, 1)[0]
 
 
+def substring_after_last(s: str, separator: str):
+    return s.rsplit(separator, 1)[1]
+
+
 def is_empty(s: str):
     if s == "":
         return True

@@ -5,6 +5,9 @@ from pathlib import Path
 
 from printfilesystem.model.json_model import JsonModel
 from printfilesystem.utils.py_utils_ids import generate_name_id
+from printfilesystem.utils.py_utils_string import default_if_empty
+from printfilesystem.utils.py_utils_string import is_empty
+from printfilesystem.utils.py_utils_string import substring_after_last
 
 date_format = '%Y-%m-%d %H:%M:%S'
 
@@ -38,7 +41,10 @@ class CreateJson:
             json_model.set_modified(modified.__str__())
 
             mime__type = mime.guess_type(path)
-            mime_str = mime__type[0]
+            mime_str = str(mime__type[0])
+            if is_empty(mime_str):
+                extension = substring_after_last(file, '.')
+                mime_str = default_if_empty(extension, '')
             json_model.set_mime(mime_str)
 
             write_json_to_file(self.json_path, json_model)

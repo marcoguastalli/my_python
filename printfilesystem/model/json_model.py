@@ -4,6 +4,7 @@ class JsonModel:
         self.__id = id
         self.__path = ''
         self.__name = ''
+        self.__namespace = ''
         self.__mime = ''
         self.__created = ''
         self.__modified = ''
@@ -15,9 +16,10 @@ class JsonModel:
     def set_name(self, name):
         self.__name = name
 
+    def set_namespace(self, namespace):
+        self.__namespace = namespace
+
     def set_mime(self, mime):
-        if mime is None:
-            mime = ''
         self.__mime = mime
 
     def set_created(self, created):
@@ -32,14 +34,12 @@ class JsonModel:
     def get_name(self):
         return self.__name
 
-    def get_paths(self):
-        return self.__path
-
     def __str__(self):
         result = '{' \
                  + '"id":"' + self.__id + '",' \
-                 + '"name":"' + self.__name + '",' \
                  + '"path":"' + self.__path + '",' \
+                 + '"name":"' + self.__name + '",' \
+                 + '"namespace":"' + self.__namespace + '",' \
                  + '"mime":"' + self.__mime + '",' \
                  + '"created":"' + self.__created + '",' \
                  + '"modified":"' + self.__modified + '",' \
