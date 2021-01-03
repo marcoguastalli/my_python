@@ -22,6 +22,14 @@ def substring_after_last(s: str, separator: str):
     return s.rsplit(separator, 1)[1]
 
 
+def is_blank(obj):
+    if obj is None:
+        return True
+    elif is_empty(obj):
+        return True
+    return False
+
+
 def is_empty(s: str):
     if s == "":
         return True

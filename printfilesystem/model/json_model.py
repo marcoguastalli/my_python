@@ -31,6 +31,9 @@ class JsonModel:
     def set_size(self, size):
         self.__size = size
 
+    def get_path(self):
+        return self.__path
+
     def get_name(self):
         return self.__name
 

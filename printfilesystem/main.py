@@ -8,7 +8,7 @@ from printfilesystem.utils.py_utils_file import create_folder_if_not_exists
 
 
 def main():
-    source_path = "/media/marco27/Data/DiscoD"
+    source_path = "/media/marco27/Data/DiscoD/video/anime"
     target_path = "/home/marco27/temp/json"
     create_folder_if_not_exists(target_path)
 
@@ -29,7 +29,7 @@ def main():
 
     for json_model in json_model_in_folder:
         sj = StoreJson(json_model)
-        stored_json = sj.store()
+        stored_json = sj.store('http://localhost:8980/marco27-web/v1/pfs/create')
         # print("Stored json '%s'" % stored_json)
     print("Stored json from folder '%s'" % source_path)
 

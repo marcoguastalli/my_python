@@ -31,6 +31,12 @@ class Test(unittest.TestSuite):
             result = py_utils_string.substring_after_last(s, separator)
             self.assertEqual(expected, result)
 
+        def test_is_blank(self):
+            self.assertTrue(py_utils_string.is_blank(None))
+            self.assertTrue(py_utils_string.is_blank(''))
+            self.assertFalse(py_utils_string.is_blank(True))
+            self.assertFalse(py_utils_string.is_blank(False))
+
         def test_is_empty(self):
             self.assertTrue(py_utils_string.is_empty(''))
             self.assertTrue(py_utils_string.is_empty(""))

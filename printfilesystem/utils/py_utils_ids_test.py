@@ -10,19 +10,19 @@ class Test(unittest.TestSuite):
             self.assertIsNotNone(self, py_utils_ids.generate_uuid())
 
         def test_generate_name_id(self):
-            expected = "MediaMarco27MyBookWd8AnimeAvventuraOnePiece001IniziaLAvventuraMkv123"
             separator = "/"
-            path = "/media/marco27/MyBook/wd8/anime/Avventura/One Piece"
-            name = "001 - Inizia l\\'avventura.mkv"
-            size = 123
-            result = py_utils_ids.generate_name_id(separator, path, name, size)
+            path = "/media/marco27/Data/DiscoD/video/anime/One-Punch Man S1/jap"
+            file_name = "01 - L’uomo più forte.mp4"
+            size = 285299551
+            expected = "MediaMarco27DataDiscoDVideoAnimeOnePunchManS1Jap01LUomoPiForteMp4285299551"
+            result = py_utils_ids.generate_name_id(separator, path, file_name, size)
             self.assertEqual(expected, result)
 
         def test_generate_namespace(self):
-            path = "/media/marco27/MyBook/wd8/anime/Avventura/One Piece"
-            file_name = "001 - Inizia l'avventura.mkv"
+            path = "/media/marco27/Data/DiscoD/video/anime/One-Punch Man S1/jap"
+            file_name = "01 - L’uomo più forte.mp4"
             regexp = "(.*)(anime/)(.*)"
-            expected = "Avventura/One Piece"
+            expected = "One-Punch Man S1/jap"
             result = py_utils_ids.generate_namespace(path, file_name, regexp)
             self.assertEqual(expected, result)
 
