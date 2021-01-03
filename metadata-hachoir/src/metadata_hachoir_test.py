@@ -7,7 +7,7 @@ class Test(unittest.TestSuite):
     class Tests(unittest.TestCase):
 
         def test_extract_metadata_from_video(self):
-            source_path = '/media/marco27/Data/DiscoD/transfer/tg/addicted.mp4'
+            source_path = '/home/marco27/Downloads/IMG_7561.JPG'
             result = metadata_hachoir.extract_metadata_from_video(source_path)
             print("\n")
             print(result)
