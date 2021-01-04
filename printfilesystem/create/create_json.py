@@ -4,7 +4,7 @@ from mimetypes import MimeTypes
 from pathlib import Path
 
 from metadata_hachoir.src.metadata_hachoir import extract_metadata
-from printfilesystem.model.pfs_model import PfsModel
+from printfilesystem.model.pfs_model import PfsFile
 from utils.py_utils_ids import generate_name_id
 from utils.py_utils_ids import generate_namespace
 from utils.py_utils_string import default_if_empty
@@ -15,7 +15,7 @@ from utils.py_utils_string import substring_before_last
 date_format = '%Y-%m-%d %H:%M:%S'
 
 
-def write_json_to_file(json_path, model: PfsModel):
+def write_json_to_file(json_path, model: PfsFile):
     file = open(json_path + os.sep + model.get_name() + '.json', 'w')
     file.write(model.__str__())
     pass
@@ -34,7 +34,7 @@ class CreateJson:
             path_no_file_name = substring_before_last(path.absolute().__str__(), os.sep)
             size = path.stat().st_size
 
-            pfs_model = PfsModel(generate_name_id(os.sep, path, json_file_name, size))
+            pfs_model = PfsFile(generate_name_id(os.sep, path, json_file_name, size))
             pfs_model.set_path(path_no_file_name)
             pfs_model.set_name(json_file_name)
             pfs_model.set_namespace(

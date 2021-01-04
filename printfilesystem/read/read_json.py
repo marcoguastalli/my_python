@@ -4,10 +4,10 @@ import utils.py_utils_string as py_utils_string
 
 
 class ReadJson:
-    def __init__(self, sourcePath):
-        self.sourcePath = sourcePath
+    def __init__(self, source_path):
+        self.sourcePath = source_path
 
-    def get_json_model(self):
+    def create_json_string_list_from_path(self):
         result = []
         folder_files = Path(self.sourcePath).rglob('*.json')
         for file_name in folder_files:
