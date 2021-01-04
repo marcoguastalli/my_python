@@ -8,7 +8,7 @@ from utils.py_utils_file import create_folder_if_not_exists
 
 
 def main():
-    source_path = "/media/marco27/Data/DiscoD/video/anime/toTransfer/Deca-Dence"
+    source_path = "/media/marco27/Data/DiscoD/video/anime/toTransfer"
     target_path = "/home/marco27/temp/json"
     create_folder_if_not_exists(target_path)
 

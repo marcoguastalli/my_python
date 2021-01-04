@@ -43,6 +43,9 @@ class PfsFile:
     def set_size(self, size):
         self.__size = size
 
+    def get_id(self):
+        return self.__id
+
     def get_path(self):
         return self.__path
 

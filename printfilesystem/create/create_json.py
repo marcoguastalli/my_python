@@ -16,7 +16,7 @@ date_format = '%Y-%m-%d %H:%M:%S'
 
 
 def write_json_to_file(json_path, model: PfsFile):
-    file = open(json_path + os.sep + model.get_name() + '.json', 'w')
+    file = open(json_path + os.sep + model.get_id()[0:200] + '.json', 'w')
     file.write(model.__str__())
     pass
 
@@ -29,20 +29,20 @@ class CreateJson:
     def create(self):
         mime = MimeTypes()
         for file in self.files_in_path:
-            path = Path(file)
-            json_file_name = path.name
-            path_no_file_name = substring_before_last(path.absolute().__str__(), os.sep)
-            size = path.stat().st_size
+            posix_path = Path(file)
+            file_name = posix_path.name
+            size = posix_path.stat().st_size
+            psf_id = generate_name_id(os.sep, posix_path, file_name, size)
+            path_no_file_name = substring_before_last(posix_path.absolute().__str__(), os.sep)
 
-            pfs_model = PfsFile(generate_name_id(os.sep, path, json_file_name, size))
+            pfs_model = PfsFile(psf_id)
             pfs_model.set_path(path_no_file_name)
-            pfs_model.set_name(json_file_name)
-            pfs_model.set_namespace(
-                generate_namespace(pfs_model.get_path(), pfs_model.get_name(), "(.*)(anime/)(.*)"))
+            pfs_model.set_name(file_name)
+            pfs_model.set_namespace(generate_namespace(pfs_model.get_path(), pfs_model.get_name(), "(.*)(anime/)(.*)"))
             pfs_model.set_size(size)
 
-            created = datetime.datetime.fromtimestamp(path.stat().st_ctime).strftime(date_format)
-            modified = datetime.datetime.fromtimestamp(path.stat().st_mtime).strftime(date_format)
+            created = datetime.datetime.fromtimestamp(posix_path.stat().st_ctime).strftime(date_format)
+            modified = datetime.datetime.fromtimestamp(posix_path.stat().st_mtime).strftime(date_format)
             pfs_model.set_created(created.__str__())
             pfs_model.set_modified(modified.__str__())
 
@@ -62,7 +62,7 @@ class CreateJson:
                 else:
                     pfs_model.set_duration('')
             else:
-                mime__type = mime.guess_type(path)
+                mime__type = mime.guess_type(posix_path)
                 mime_str = mime__type[0]
                 if is_blank(mime__type[0]):
                     extension = substring_after_last(file, '.')

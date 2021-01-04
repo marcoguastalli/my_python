@@ -26,6 +26,8 @@ def recursive_read_folder(result, source_folder):
 
 
 def write_strings_to_file(strings: list, target_path, target_file_name):
+    if strings.__len__() == 0:
+        return
     file = open(target_path + os.sep + target_file_name, 'w')
     for line in strings:
         file.write(line.__str__() + "\n")

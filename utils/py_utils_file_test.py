@@ -20,6 +20,9 @@ class Test(unittest.TestSuite):
             result = py_utils_file.recursive_read_folder([], source_folder)
             self.assertNotEqual(self, '', result)
 
+        def test_write_strings_to_file(self):
+            self.assertIsNotNone(self, py_utils_file.write_strings_to_file([], '', ''))
+
 
 if __name__ == "__main__":
     unittest.main(Test)
