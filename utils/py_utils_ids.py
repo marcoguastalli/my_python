@@ -24,7 +24,7 @@ def generate_name_id(separator, path, file_name, size):
 def generate_namespace(path, file_name, regexp):
     path_file_name = path + file_name
     g = re.match(regexp, path_file_name)
-    if g.groups().__len__() == 3:
+    if g and g.groups().__len__() == 3:
         return substring_before_last(g.group(3), file_name)
     else:
         return None

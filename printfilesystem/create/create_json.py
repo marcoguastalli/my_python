@@ -38,7 +38,8 @@ class CreateJson:
             pfs_model = PfsFile(psf_id)
             pfs_model.set_path(path_no_file_name)
             pfs_model.set_name(file_name)
-            pfs_model.set_namespace(generate_namespace(pfs_model.get_path(), pfs_model.get_name(), "(.*)(anime/)(.*)"))
+            namespace = generate_namespace(pfs_model.get_path(), pfs_model.get_name(), "(.*)(anime/)(.*)")
+            pfs_model.set_namespace(default_if_empty(namespace, ''))
             pfs_model.set_size(size)
 
             created = datetime.datetime.fromtimestamp(posix_path.stat().st_ctime).strftime(date_format)

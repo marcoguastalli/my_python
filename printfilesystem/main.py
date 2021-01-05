@@ -3,12 +3,13 @@ import shutil
 from printfilesystem.create.create_json import CreateJson
 from printfilesystem.read.read_folder import ReadFolder
 from printfilesystem.read.read_json import ReadJson
-from printfilesystem.store.store__json import StoreJson
+from printfilesystem.store.store_json import StoreJson
+from printfilesystem.store.store_mongo_pfs import StoreMongoPfs
 from utils.py_utils_file import create_folder_if_not_exists
 
 
 def main():
-    source_path = "/media/marco27/Data/DiscoD/video/anime/toTransfer"
+    source_path = "/home/marco27/Downloads"
     target_path = "/home/marco27/temp/json"
     create_folder_if_not_exists(target_path)
 
@@ -30,9 +31,13 @@ def main():
     stored_json_list = []
     for json_sting in json_string_list:
         sj = StoreJson(json_sting)
-        stored_json = sj.store('http://localhost:8980/marco27-web/v1/pfs/create')
+        stored_json = sj.store('http://localhost:8080/marco27-web/v1/pfs/create')
         stored_json_list.append(stored_json)
         # print("Stored json '%s'" % stored_json)
+
+        smpfs = StoreMongoPfs(json_sting)
+        smpfs.store()
+
     print("Stored %s json from folder '%s'" % (stored_json_list.__len__(), source_path))
 
     exit(0)
