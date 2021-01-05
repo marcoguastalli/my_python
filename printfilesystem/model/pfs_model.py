@@ -54,7 +54,7 @@ class PfsFile:
 
     def __str__(self):
         result = '{' \
-                 + '"id":"' + self.__id + '",' \
+                 + '"_id":"' + self.__id + '",' \
                  + '"path":"' + self.__path + '",' \
                  + '"name":"' + self.__name + '",' \
                  + '"namespace":"' + self.__namespace + '",' \
