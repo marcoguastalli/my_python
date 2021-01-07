@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import utils.py_utils_string as py_utils_string
+from utils.py_utils_file import read_file_to_list_of_string
 
 
 class ReadJson:
@@ -11,10 +12,7 @@ class ReadJson:
         result = []
         folder_files = Path(self.sourcePath).rglob('*.json')
         for file_name in folder_files:
-            file = open(file_name, 'r')
-            file_content = file.readlines()
-            file.close()
-
+            file_content = read_file_to_list_of_string(file_name)
             file_content_as_string = py_utils_string.convert_list_to_string(file_content)
             result.append(file_content_as_string)
         return result

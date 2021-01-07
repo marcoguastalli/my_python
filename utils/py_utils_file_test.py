@@ -23,6 +23,9 @@ class Test(unittest.TestSuite):
         def test_write_strings_to_file(self):
             self.assertIsNotNone(self, py_utils_file.write_strings_to_file([], '', ''))
 
+        def test_read_file_to_list_of_string(self):
+            self.assertIsNotNone(self, py_utils_file.read_file_to_list_of_string(Path('py_utils_file.py')))
+
 
 if __name__ == "__main__":
     unittest.main(Test)
