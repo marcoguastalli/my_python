@@ -9,7 +9,7 @@ from utils.py_utils_file import create_folder_if_not_exists
 
 
 def main():
-    source_path = "/media/marco27/BLACK1/B1/anime"
+    source_path = "/media/marco27/temp"
     target_path = "/home/marco27/temp/json"
     create_folder_if_not_exists(target_path)
 
