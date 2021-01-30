@@ -36,7 +36,7 @@ def write_strings_to_file(strings: list, target_path: str, target_file_name: str
 
 
 def read_file_to_list_of_string(file_path: Path):
-    file = open(file_path, 'r')
+    file = open(file_path, 'r', encoding='UTF-8')
     file_content = file.readlines()
     file.close()
     return file_content

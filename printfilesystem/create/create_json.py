@@ -16,9 +16,15 @@ date_format = '%Y-%m-%d %H:%M:%S'
 
 
 def write_json_to_file(json_path, model: PfsFile):
-    file = open(json_path + os.sep + model.get_id()[0:200] + '.json', 'w')
-    file.write(model.__str__())
-    pass
+    try:
+        json_unicode_string = u'' + model.__str__()
+        file = open(json_path + os.sep + model.get_id()[0:200] + '.json', 'w')
+        file.write(json_unicode_string)
+        pass
+    except Exception as e:
+        print("Error write json to file with json_unicode_string: %s" % json_unicode_string)
+        print(e)
+        return None
 
 
 class CreateJson:
@@ -47,28 +53,38 @@ class CreateJson:
             pfs_model.set_created(created.__str__())
             pfs_model.set_modified(modified.__str__())
 
-            metadata: dict = extract_metadata(file)
-            if metadata.get('result') == 'ok':
-                mime_str = metadata['mime_type'][0]
-                if metadata.__contains__('width'):
-                    pfs_model.set_width(metadata['width'][0])
+            if '.' in file:
+                extension = substring_after_last(file, '.')
+                if extension == 'BUP':
+                    pfs_model.set_mime('BUP')
+                elif extension == 'IFO':
+                    pfs_model.set_mime('IFO')
                 else:
-                    pfs_model.set_width('')
-                if metadata.__contains__('height'):
-                    pfs_model.set_height(metadata['height'][0])
-                else:
-                    pfs_model.set_height('')
-                if metadata.__contains__('duration'):
-                    pfs_model.set_duration(metadata['duration'][0])
-                else:
-                    pfs_model.set_duration('')
+                    print("Extract metadata from: %s" % file)
+                    metadata: dict = extract_metadata(file)
+                    if metadata is not None and metadata.get('result') == 'ok':
+                        mime_str = metadata['mime_type'][0]
+                        if metadata.__contains__('width'):
+                            pfs_model.set_width(metadata['width'][0])
+                        else:
+                            pfs_model.set_width('')
+                        if metadata.__contains__('height'):
+                            pfs_model.set_height(metadata['height'][0])
+                        else:
+                            pfs_model.set_height('')
+                        if metadata.__contains__('duration'):
+                            pfs_model.set_duration(metadata['duration'][0])
+                        else:
+                            pfs_model.set_duration('')
+                    else:
+                        mime__type = mime.guess_type(posix_path)
+                        mime_str = mime__type[0]
+                        if is_blank(mime__type[0]):
+                            extension = substring_after_last(file, '.')
+                            mime_str = default_if_empty(extension, '')
+                    pfs_model.set_mime(mime_str)
             else:
-                mime__type = mime.guess_type(posix_path)
-                mime_str = mime__type[0]
-                if is_blank(mime__type[0]):
-                    extension = substring_after_last(file, '.')
-                    mime_str = default_if_empty(extension, '')
-            pfs_model.set_mime(mime_str)
+                pfs_model.set_mime('')
 
             write_json_to_file(self.json_path, pfs_model)
         return None

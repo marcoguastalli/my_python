@@ -24,5 +24,5 @@ def extract_metadata(path_file_name):
             result['result'] = 'Metadata is None'
         return result
     except Exception as err:
-        print("Metadata extraction error: %s" % err)
+        #print("Metadata extraction error: %s" % err)
         return None
