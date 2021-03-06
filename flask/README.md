@@ -1,6 +1,9 @@
 # Flask
 https://flask.palletsprojects.com/en/1.1.x/
 
+### dependencies to install
+Flask
+
 # build
 cd flask/route
 

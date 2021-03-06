@@ -1,8 +1,14 @@
 #my_python
+
+### dependencies to install
+Flask
+pymongo
+requests
+hachoir
+
 ##### mac
 ```sh
-pyt3 --version
-pip3 -v
+python3 --version
 pip3 --version
 exit()
 ```
