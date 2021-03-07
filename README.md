@@ -1,6 +1,7 @@
 #my_python
 
 ### dependencies to install
+BeautifulSoup
 Flask
 pymongo
 requests
