@@ -1,3 +1,6 @@
+##v1
+Run a container with tiangolo/meinheld-gunicorn:python3.8 and Flask
+
 ### build
 cd app_bookmarks/src/v1
 docker build -t app_bookmarks:v1 .

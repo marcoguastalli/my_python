@@ -1,0 +1,18 @@
+/bin/sh -c bash /install-nginx-debian.sh
+/bin/sh -c pip install uwsgi
+/bin/sh -c rm /etc/nginx/conf.d/default.conf
+COPY file:aa735ddb348a61126ffcb6b15de6f2e471b542bb82c5fecbc97b2bf92df0ee79 in /etc/uwsgi/ 
+/bin/sh -c apt-get update && apt-get install -y supervisor && rm -rf /var/lib/apt/lists/*
+COPY file:a45d5f9c5455d18968e543bfea7cd5d348b895560be4f0e7c72b4c658263fe68 in /etc/supervisor/conf.d/supervisord.conf 
+ENV UWSGI_INI=/app/uwsgi.ini
+ENV UWSGI_CHEAPER=2
+ ENV UWSGI_PROCESSES=16
+ ENV NGINX_MAX_UPLOAD=0
+ ENV NGINX_WORKER_PROCESSES=1
+ ENV LISTEN_PORT=80
+COPY file:840534dabbfe7e96405c0df8f04a617c3d0787b2062b5ab87331f0e076a4646f in /start.sh 
+/bin/sh -c chmod +x /start.sh
+
+
+
+/bin/sh -c mv /entrypoint.sh /uwsgi-nginx-entrypoint.sh
