@@ -2,10 +2,11 @@ import unittest
 
 import html_parser
 
+
 class Test(unittest.TestSuite):
     class Tests(unittest.TestCase):
 
-        def test_extract_metadata_from_video(self):
+        def test(self):
             html = "<html><head></head><body><div class='wrapper'>WRAPPER</div></body></html>"
             result = html_parser.parse_html(html)
             print("\n")
