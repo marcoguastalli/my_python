@@ -6,7 +6,9 @@ def main():
     print("Parsing bookmarks file '%s'" % bookmarks_html_file)
 
     parser = ParseBookmarksHtmlFile(bookmarks_html_file)
-    print("TODO" + parser.__str__())
+    bookmarks_list = parser.parse_bookmarks_html_file()
+    for bookmarks in bookmarks_list:
+        print(bookmarks.__str__())
     exit(0)
 
 
