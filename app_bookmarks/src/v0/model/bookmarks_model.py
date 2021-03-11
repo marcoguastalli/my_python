@@ -32,6 +32,6 @@ class Bookmarks:
                  + '"icon":"' + self.__icon + '",' \
                  + '"status":' + self.__status.__str__() + ',' \
                  + '"created":"' + self.__created + '",' \
-                 + '"modified":"' + self.__modified + '",' \
+                 + '"modified":"' + self.__modified + '"' \
                  + "}"
         return result

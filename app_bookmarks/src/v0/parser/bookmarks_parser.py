@@ -8,11 +8,9 @@ class ParseBookmarksHtmlFile:
         self.bookmarks_html_file = bookmarks_html_file
 
     def parse_bookmarks_html_file(self):
-        result = []
-        posix_path = Path(self.bookmarks_html_file)
-        file_name = posix_path.name
-
-        parsed_html = BeautifulSoup("TODO", "html.parser")
+        with open(self.bookmarks_html_file) as file_to_parse:
+            soup = BeautifulSoup(file_to_parse, 'html.parser')
+            result = soup.find_all('a')
 
         bookmarks = Bookmarks("DuckDuck", "http:", "dir")
         result.append(bookmarks)
