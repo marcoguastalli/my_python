@@ -8,13 +8,15 @@ class ParseBookmarksHtmlFile:
         self.bookmarks_html_file = bookmarks_html_file
 
     def parse_bookmarks_html_file(self):
+        result = []
         tags = self.get_a()
         for a in tags:
-            print(a['href'])
-
-        result = []
-        bookmarks = Bookmarks("DuckDuck", "http:", "dir")
-        result.append(bookmarks)
+            href = a['href']
+            add_date = a['add_date']
+            title = a.contents[0]
+            bookmarks = Bookmarks(title, href, "TODO")
+            bookmarks.set_created(add_date)
+            result.append(bookmarks)
         return result
 
     def get_a(self):
