@@ -11,7 +11,7 @@ def main():
 
     stored_json_list = []
     for bookmarks in bookmarks_list:
-        sj = StoreJson('http://localhost:8080/marco27-web/bookmarks/bookmarks/create', bookmarks.__str__())
+        sj = StoreJson('http://localhost:8080/marco27-web/v1/bookmarks/create', bookmarks.__str__())
         stored_json = sj.store()
         stored_json_list.append(stored_json)
 
