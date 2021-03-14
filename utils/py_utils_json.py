@@ -3,8 +3,8 @@ import json
 from utils.model.json_model import JsonModel
 
 
-def read_json(json_as_string):
-    json_object = json.loads(json_as_string)
+def read_json(json_string):
+    json_object = json.loads(json_string)
     json_model = JsonModel(json_object['id'])
     json_model.set_path(json_object['path'])
     json_model.set_name(json_object['name'])
