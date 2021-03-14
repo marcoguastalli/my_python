@@ -2,7 +2,7 @@ from app_bookmarks.src.v0.parser.bookmarks_parser import ParseBookmarksHtmlFile
 
 
 def main():
-    bookmarks_html_file = "/Users/marcoguastalli/temp/bookmarks-work-chrome.html"
+    bookmarks_html_file = "/Users/marcoguastalli/temp/bookmarks.html"
     print("Parsing bookmarks file '%s'" % bookmarks_html_file)
 
     parser = ParseBookmarksHtmlFile(bookmarks_html_file)
