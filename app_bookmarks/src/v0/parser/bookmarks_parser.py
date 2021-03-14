@@ -42,4 +42,6 @@ class ParseBookmarksHtmlFile:
         bookmarks = Bookmarks(title, href, folder)
         bookmarks.set_created(created_modified_date)
         bookmarks.set_modified(created_modified_date)
+        if a_tag.get('icon') is not None:
+            bookmarks.set_icon(a_tag['icon'])
         return bookmarks
