@@ -10,13 +10,10 @@ def main():
 
     channel.queue_declare(queue='python.rabbitmq.queue')
 
-    def callback(ch, method, properties, body):
-        print("Message Received: '%r'" % body)
-
-    channel.basic_consume(queue='python.rabbitmq.queue', on_message_callback=callback, auto_ack=True)
-
-    print('Waiting for messages. Interrupt to exit.')
-    channel.start_consuming()
+    message = b'I am a message for the queue'
+    channel.basic_publish(exchange='', routing_key='python.rabbitmq.queue', body=message)
+    print("Message Sent: '%s'" % message)
+    connection.close()
 
 
 if __name__ == '__main__':

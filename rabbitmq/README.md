@@ -12,6 +12,7 @@ pika
 
 # run
 consumer.py
+publisher.py
 
 # play
 http://localhost:15672/
