@@ -1,6 +1,6 @@
 # metadata hachoir
-here some links inspired me to write the src code
 
+### inspiring links
 https://github.com/vstinner/hachoir
 https://hachoir.readthedocs.io/en/latest/install.html
 https://hachoir.readthedocs.io/en/latest/developer.html
