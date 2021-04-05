@@ -1,5 +1,5 @@
-#app_bookmarks
-APP BOOKMARKS
+# app bookmarks
+A python bookmarks app running on Docker
 
 ### inspiring links
 https://medium.com/@nachoad/que-es-wsgi-be7359c6e001

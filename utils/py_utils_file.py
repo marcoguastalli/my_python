@@ -29,14 +29,14 @@ def recursive_read_folder(result, source_folder):
 def write_strings_to_file(strings: list, target_path: str, target_file_name: str):
     if strings.__len__() == 0:
         return
-    file = open(target_path + os.sep + target_file_name, 'w')
-    for line in strings:
-        file.write(line.__str__() + "\n")
-    file.close()
+    with open(target_path + os.sep + target_file_name, 'w') as file:
+        for line in strings:
+            file.write(line.__str__() + "\n")
+    pass
 
 
 def read_file_to_list_of_string(file_path: Path):
-    file = open(file_path, 'r', encoding='UTF-8')
-    file_content = file.readlines()
-    file.close()
-    return file_content
+    with open(file_path, 'r', encoding='UTF-8') as file:
+        file_content = file.readlines()
+        return file_content
+    pass

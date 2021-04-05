@@ -18,8 +18,8 @@ date_format = '%Y-%m-%d %H:%M:%S'
 def write_json_to_file(json_path, model: PfsFile):
     try:
         json_unicode_string = u'' + model.__str__()
-        file = open(json_path + os.sep + model.get_id()[0:200] + '.json', 'w')
-        file.write(json_unicode_string)
+        with open(json_path + os.sep + model.get_id()[0:200] + '.json', 'w') as file:
+            file.write(json_unicode_string)
         pass
     except Exception as e:
         print("Error write json to file with json_unicode_string: %s" % json_unicode_string)
