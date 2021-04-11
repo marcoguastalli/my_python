@@ -1,6 +1,6 @@
 import bs4
 
-from app_bookmarks.src.v0.model.bookmarks_model import Bookmarks
+from app_bookmarks.model.bookmarks_model import Bookmarks
 from html_parser.html_parser import get_soup_from_html
 from html_parser.html_parser import get_tags_from_soup
 from utils.py_utils_date import convert_timestamp_to_str_with_format
