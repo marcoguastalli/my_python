@@ -5,9 +5,10 @@ https://flask.palletsprojects.com/en/1.1.x/
 Flask
 
 # build
-cd flask/route
+cd ~/dev/repository/git/my_python/flask/route
 
 # run
+python3
 FLASK_APP=routes.py flask run
 FLASK_APP=routes.py flask run -p 5000
 
