@@ -19,6 +19,14 @@ http://localhost:5000/
 ctrl+c
 deactivate
 
+### run wsgi
+cd ~/dev/repository/git/my_python/flask_wsgi/app
+source ~/dev/repository/git/my_python/flask_wsgi/env/bin/activate
+uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi:app
+http://localhost:5000/
+ctrl+c
+deactivate
+
 # play
 http://localhost:5000/
 http://localhost:5000/home
