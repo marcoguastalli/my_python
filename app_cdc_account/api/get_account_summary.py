@@ -43,10 +43,9 @@ class GetAccountSummary:
             ).hexdigest()
 
             response = requests.post(self.url, data=req)
-            print(response.status_code, response.reason)
 
         except Exception as e:
             print("Error GetAccountSummary:\n %s" % req)
             print(e)
 
-        return req.__str__()
+        return response

@@ -4,7 +4,6 @@ Read account information from CDC
 ### dependencies to install ###
 datetime
 requests
-dotenv
 
 ## inspiring links ##
 https://github.com/IgorJakovljevic/crypto-com-api
