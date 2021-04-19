@@ -1,29 +1,29 @@
+# https://api.crypto.com/v2/private/get-account-summary
+
 import hashlib
 import hmac
 import time
 
-API_KEY = "API_KEY"
-SECRET_KEY = "SECRET_KEY"
+import requests
 
 
 class GetAccountSummary:
-    def __init__(self, url):
+    def __init__(self, url, api_key, secret_key):
         self.url = url
+        self.api_key = api_key
+        self.secret_key = secret_key
 
-    @staticmethod
-    def do_post():
+    def do_post(self, request_id, currency):
 
         req = {
-            "id": 27,
+            "id": request_id,
             "method": "private/get-account-summary",
-            "api_key": API_KEY,
+            "api_key":  self.api_key,
             "params": {
-                "currency": "CRO",
+                "currency": currency,
             },
             "nonce": int(time.time() * 1000)
-        };
-
-        json_string_utf8 = req
+        }
 
         try:
             # First ensure the params are alphabetically sorted by key
@@ -37,13 +37,16 @@ class GetAccountSummary:
             sig_pay_load = req['method'] + str(req['id']) + req['api_key'] + param__string + str(req['nonce'])
 
             req['sig'] = hmac.new(
-                bytes(str(SECRET_KEY), 'utf-8'),
+                bytes(str(self.secret_key), 'utf-8'),
                 msg=bytes(sig_pay_load, 'utf-8'),
                 digestmod=hashlib.sha256
             ).hexdigest()
 
+            response = requests.post(self.url, data=req)
+            print(response.status_code, response.reason)
+
         except Exception as e:
-            print("Error GetAccountSummary:\n %s" % json_string_utf8)
+            print("Error GetAccountSummary:\n %s" % req)
             print(e)
 
-        return json_string_utf8
+        return req.__str__()

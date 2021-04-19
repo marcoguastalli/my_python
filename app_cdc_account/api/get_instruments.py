@@ -1,0 +1,1 @@
+# https://api.crypto.com/v2/public/get-instruments
