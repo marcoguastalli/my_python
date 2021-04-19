@@ -1,4 +1,4 @@
-# https://api.crypto.com/v2/private/get-account-summary
+# url = https://api.crypto.com/v2/private/get-account-summary
 
 import hashlib
 import hmac
