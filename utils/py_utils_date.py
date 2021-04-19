@@ -3,6 +3,10 @@ from datetime import datetime
 DEFAULT_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 
+def get_current_datetime_as_int():
+    return int(datetime.utcnow().timestamp())
+
+
 def get_current_datetime_with_format_as_string(date_format: str):
     return datetime.now().strftime(date_format)
 

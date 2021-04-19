@@ -7,6 +7,13 @@ import py_utils_date
 class Test(unittest.TestSuite):
     class Tests(unittest.TestCase):
 
+        def test_get_current_datetime_as_int(self):
+            actual = py_utils_date.get_current_datetime_as_int()
+            print(actual)
+            print(datetime.fromtimestamp(actual))
+            self.assertTrue(type(actual) == int)
+            self.assertIsNotNone(actual)
+
         def test_get_current_datetime_with_format_as_string(self):
             date_format = "%Y-%m-%d %H:%M:%S"
             actual = py_utils_date.get_current_datetime_with_format_as_string(date_format)
