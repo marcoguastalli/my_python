@@ -47,6 +47,8 @@ def main():
                     print("No ticker found for pair: '%s" % pair)
                     pass
                 accounts_dictionary[currency] = account
+            elif currency == 'USDT':
+                total_balance += balance
         print("API accounts total balance is %s USDT" % total_balance)
 
 
