@@ -16,6 +16,12 @@ def main():
     print(my_dictionary)
     print(len(my_dictionary))
 
+    try:
+        print(my_dictionary['a_key'])
+    except KeyError:
+        print("a_key doesn't exist")
+        pass
+
 
 if __name__ == "__main__":
     main()
