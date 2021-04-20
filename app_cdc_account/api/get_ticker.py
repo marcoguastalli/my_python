@@ -28,3 +28,15 @@ class GetTicker(ApiRequest):
             print(e)
 
         return response
+
+    @staticmethod
+    def parse_response(api_response: requests.models.Response):
+        result: dict = {}
+
+        json_response = api_response.json()
+        json_response_result = json_response['result']
+        data = json_response_result['data']
+        for ticker in data:
+            pair = ticker['i']
+            result[pair] = ticker
+        return result
