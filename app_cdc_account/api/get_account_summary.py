@@ -1,18 +1,18 @@
 # url = https://api.crypto.com/v2/private/get-account-summary
+# https://exchange-docs.crypto.com/spot/index.html#private-get-account-summary
 
 import json
 import time
 
 import requests
+from api.api_request import ApiRequest
 
 from .utils.sign_request import sign_request
 
 
-class GetAccountSummary:
+class GetAccountSummary(ApiRequest):
     def __init__(self, url, api_key, secret_key):
-        self.url = url
-        self.api_key = api_key
-        self.secret_key = secret_key
+        super().__init__(url, api_key, secret_key)
 
     def do_post(self):
         response = None
