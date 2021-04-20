@@ -18,7 +18,7 @@ https://exchange-docs.crypto.com/spot/index.html#private-get-account-summary
 ## play ##
 cd ~/dev/repository/git/my_python/app_cdc_account
 python3 app_cdc_account.py
-python3 app_cdc_instruments.py
+python3 app_cdc_public.py
 
 ##### SQL #####
 SELECT "currency",
