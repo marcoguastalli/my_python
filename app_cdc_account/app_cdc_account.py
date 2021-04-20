@@ -14,8 +14,9 @@ def main():
     print("Reading account from API url '%s' at '%s'" % (url, datetime.utcnow()))
 
     account_summary = GetAccountSummary(url, REST_API_KEY, REST_API_SECRET)
-    response = account_summary.do_post("1", "CRO")
+    response = account_summary.do_post()
     print(response.status_code, response.reason)
+    print(response.content)
 
 
 if __name__ == "__main__":
