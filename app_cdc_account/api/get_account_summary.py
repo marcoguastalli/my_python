@@ -1,11 +1,11 @@
 # url = https://api.crypto.com/v2/private/get-account-summary
 
-import hashlib
-import hmac
 import json
 import time
 
 import requests
+
+from .utils.sign_request import sign_request
 
 
 class GetAccountSummary:
@@ -23,22 +23,7 @@ class GetAccountSummary:
                 "params": {},
                 "nonce": int(time.time() * 1000)
             }
-
-            # First ensure the params are alphabetically sorted by key
-            param_string = ""
-
-            if "params" in req:
-                for key in sorted(req['params']):
-                    param_string += key
-                    param_string += str(req['params'][key])
-
-            sig_pay_load = req['method'] + str(req['id']) + req['api_key'] + param_string + str(req['nonce'])
-
-            req['sig'] = hmac.new(
-                bytes(str(self.secret_key), 'utf-8'),
-                msg=bytes(sig_pay_load, 'utf-8'),
-                digestmod=hashlib.sha256
-            ).hexdigest()
+            req = sign_request(req, self.api_key, self.secret_key)
 
             headers = {'Content-type': 'application/json'}
             response = requests.post(self.url, headers=headers, data=json.dumps(req))
