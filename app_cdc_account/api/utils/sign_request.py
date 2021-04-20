@@ -5,7 +5,7 @@ import hmac
 
 def sign_request(req, api_key, secret_key):
     if req is None or api_key is None or secret_key is None:
-        return "Invalid input"
+        return None
     # First ensure the params are alphabetically sorted by key
     param_string = ''
     if 'params' in req:

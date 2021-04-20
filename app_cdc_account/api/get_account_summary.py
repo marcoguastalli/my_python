@@ -15,6 +15,7 @@ class GetAccountSummary:
         self.secret_key = secret_key
 
     def do_post(self):
+        response = None
         try:
             req = {
                 "id": 1,
@@ -24,9 +25,11 @@ class GetAccountSummary:
                 "nonce": int(time.time() * 1000)
             }
             req = sign_request(req, self.api_key, self.secret_key)
-
-            headers = {'Content-type': 'application/json'}
-            response = requests.post(self.url, headers=headers, data=json.dumps(req))
+            if req is not None:
+                headers = {'Content-type': 'application/json'}
+                response = requests.post(self.url, headers=headers, data=json.dumps(req))
+            else:
+                return "Invalid req"
 
         except Exception as e:
             print("Error GetAccountSummary:\n %s" % req)
