@@ -36,16 +36,17 @@ def main():
         for account in accounts:
             balance = account.get_balance()
             currency = account.get_currency()
-            pair = currency + "_USDT"
-            try:
-                ticker = tickers_dictionary[pair]
-                latest_trade_price = ticker['a']
-                pair_balance = latest_trade_price * balance
-                total_balance += pair_balance
-            except KeyError:
-                print("No ticker found for pair: '%s" % pair)
-                pass
-            accounts_dictionary[currency] = account
+            if balance > 0 and currency != 'USDT':
+                pair = currency + "_USDT"
+                try:
+                    ticker = tickers_dictionary[pair]
+                    latest_trade_price = ticker['a']
+                    pair_balance = latest_trade_price * balance
+                    total_balance += pair_balance
+                except KeyError:
+                    print("No ticker found for pair: '%s" % pair)
+                    pass
+                accounts_dictionary[currency] = account
         print("API accounts total balance is %s USDT" % total_balance)
 
 
