@@ -12,13 +12,13 @@ https://github.com/IgorJakovljevic/crypto-com-api
 ### API ###
 https://exchange-docs.crypto.com/spot/index.html#introduction
 https://exchange-docs.crypto.com/spot/index.html?python#digital-signature
-
-##### private-get-account-summary #####
+https://exchange-docs.crypto.com/spot/index.html#public-get-instruments
 https://exchange-docs.crypto.com/spot/index.html#private-get-account-summary
 
 ## play ##
 cd ~/dev/repository/git/my_python/app_cdc_account
 python3 app_cdc_account.py
+python3 app_cdc_instruments.py
 
 ##### SQL #####
 SELECT "currency",
