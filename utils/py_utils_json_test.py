@@ -12,6 +12,10 @@ class Test(unittest.TestSuite):
             result = py_utils_json.read_json(json_string)
             self.assertEqual(expected, result.__str__())
 
+        def test_write_json_to_file(self):
+            json_string = '{"size":284962284}'
+            self.assertIsNotNone(self, py_utils_json.write_json_to_file('/Users/marcoguastalli/temp', 'unittest.py.json', json_string))
+
 
 if __name__ == "__main__":
     unittest.main(Test)
