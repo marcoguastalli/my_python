@@ -5,6 +5,7 @@ from pathlib import Path
 
 from metadata_hachoir.src.metadata_hachoir import extract_metadata
 from printfilesystem.model.pfs_model import PfsFile
+from rabbitmq.publish_message import publish_message
 from utils.py_utils_ids import generate_name_id
 from utils.py_utils_ids import generate_namespace
 from utils.py_utils_string import default_if_empty
@@ -15,24 +16,15 @@ from utils.py_utils_string import substring_before_last
 date_format = '%Y-%m-%d %H:%M:%S'
 
 
-def write_json_to_file(json_path, model: PfsFile):
-    try:
-        json_unicode_string = u'' + model.__str__()
-        with open(json_path + os.sep + model.get_id()[0:200] + '.json', 'w') as file:
-            file.write(json_unicode_string)
-        pass
-    except Exception as e:
-        print("Error write json to file with json_unicode_string: %s" % json_unicode_string)
-        print(e)
-        return None
-
-
 class CreateJson:
-    def __init__(self, files_in_path, json_path):
+    def __init__(self, rabbitmq_host, rabbitmq_login, rabbitmq_secret, rabbitmq_queue, files_in_path):
+        self.rabbitmq_host = rabbitmq_host
+        self.rabbitmq_login = rabbitmq_login
+        self.rabbitmq_secret = rabbitmq_secret
+        self.rabbitmq_queue = rabbitmq_queue
         self.files_in_path = files_in_path
-        self.json_path = json_path
 
-    def create(self):
+    def create_and_publish(self):
         mime = MimeTypes()
         for file in self.files_in_path:
             posix_path = Path(file)
@@ -77,7 +69,7 @@ class CreateJson:
                         else:
                             pfs_model.set_duration('')
                     else:
-                        mime__type = mime.guess_type(posix_path)
+                        mime__type = mime.guess_type(posix_path.__str__())
                         mime_str = mime__type[0]
                         if is_blank(mime__type[0]):
                             extension = substring_after_last(file, '.')
@@ -86,5 +78,10 @@ class CreateJson:
             else:
                 pfs_model.set_mime('')
 
-            write_json_to_file(self.json_path, pfs_model)
-        return None
+            json_unicode_string = u'' + pfs_model.__str__()
+            self.publish_string_to_rabbit_queue(json_unicode_string)
+        pass
+
+    def publish_string_to_rabbit_queue(self, json_unicode_string: str):
+        publish_message(self.rabbitmq_host, self.rabbitmq_login, self.rabbitmq_secret, self.rabbitmq_queue, json_unicode_string)
+        pass

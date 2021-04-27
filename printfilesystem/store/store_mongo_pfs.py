@@ -1,15 +1,17 @@
 from urllib.parse import quote_plus
 
+from dotenv import dotenv_values
 from pymongo import MongoClient
 
 
 class StoreMongoPfs:
     def __init__(self, json_string):
+        dot_env = dotenv_values(".env")
         self.json_string = json_string
-        uri = "mongodb://%s:%s@%s" % (quote_plus('local'), quote_plus('qwerty'), 'localhost')
-        self.mongo_client = MongoClient(uri, port=27017)
-        self.mongo_database = self.mongo_client["local"]
-        self.collection = self.mongo_database["printfilesystem"]
+        uri = "mongodb://%s:%s@%s" % (quote_plus(dot_env['MONGODB_LOGIN']), quote_plus(dot_env['MONGODB_SECRET']), dot_env['MONGODB_HOST'])
+        self.mongo_client = MongoClient(uri, port=int(dot_env['MONGODB_PORT']))
+        self.mongo_database = self.mongo_client[dot_env['MONGODB_DATABASE']]
+        self.collection = self.mongo_database[dot_env['MONGODB_COLLECTION']]
 
     def store(self):
         try:
