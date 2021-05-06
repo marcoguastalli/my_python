@@ -2,6 +2,7 @@ import os
 import sys
 
 from create_connection import create_connection
+from create_sql_price import create_sql_price
 from execute_query import execute_query
 
 
@@ -28,6 +29,8 @@ def main():
             query_insert = "INSERT INTO prices VALUES (1, 'BIN', 'BTC_USDC', 55880.38, CURRENT_TIMESTAMP)"
             execute_query(conn, query_insert)
             query_insert = "INSERT INTO prices (source, symbol, amount) VALUES ('CDC', 'BTC_USDC', 55999.99)"
+            execute_query(conn, query_insert)
+            query_insert = create_sql_price('CMC', 'BTC_USDC', 60000.000000006)
             execute_query(conn, query_insert)
             conn.commit()
             # select
