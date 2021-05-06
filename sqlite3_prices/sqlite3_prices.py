@@ -17,7 +17,7 @@ def main():
             # conn.commit()
             # create table
             sql_create_table = '''CREATE TABLE IF NOT EXISTS prices
-                                         (id integer PRIMARY KEY,
+                                         (id integer PRIMARY KEY AUTOINCREMENT,
                                          source text NOT NULL,
                                          symbol text NOT NULL,
                                          amount REAL NOT NULL DEFAULT 0,
@@ -25,7 +25,9 @@ def main():
             execute_query(conn, sql_create_table)
             conn.commit()
             # first insert
-            query_insert = "INSERT INTO prices VALUES (2, 'BIN', 'BTC_USDC', 55880.38, CURRENT_TIMESTAMP)"
+            query_insert = "INSERT INTO prices VALUES (1, 'BIN', 'BTC_USDC', 55880.38, CURRENT_TIMESTAMP)"
+            execute_query(conn, query_insert)
+            query_insert = "INSERT INTO prices (source, symbol, amount) VALUES ('CDC', 'BTC_USDC', 55999.99)"
             execute_query(conn, query_insert)
             conn.commit()
             # select
