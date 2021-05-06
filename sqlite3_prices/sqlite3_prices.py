@@ -20,8 +20,8 @@ def main():
                                          (id integer PRIMARY KEY,
                                          source text NOT NULL,
                                          symbol text NOT NULL,
-                                         amount real NOT NULL,
-                                         created text NOT NULL)'''
+                                         amount REAL NOT NULL DEFAULT 0,
+                                         created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)'''
             execute_query(conn, sql_create_table)
             conn.commit()
             # first insert
