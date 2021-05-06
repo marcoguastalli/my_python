@@ -16,14 +16,14 @@ def main():
             # execute_query(conn, sql_drop_table)
             # conn.commit()
             # create table
-            # sql_create_table = '''CREATE TABLE IF NOT EXISTS prices
-            #                             (id integer PRIMARY KEY,
-            #                             source text NOT NULL,
-            #                             symbol text NOT NULL,
-            #                             amount real NOT NULL,
-            #                             created text NOT NULL)'''
-            # execute_query(conn, sql_create_table)
-            # conn.commit()
+            sql_create_table = '''CREATE TABLE IF NOT EXISTS prices
+                                         (id integer PRIMARY KEY,
+                                         source text NOT NULL,
+                                         symbol text NOT NULL,
+                                         amount real NOT NULL,
+                                         created text NOT NULL)'''
+            execute_query(conn, sql_create_table)
+            conn.commit()
             # first insert
             query_insert = "INSERT INTO prices VALUES (2, 'BIN', 'BTC_USDC', 55880.38, CURRENT_TIMESTAMP)"
             execute_query(conn, query_insert)
