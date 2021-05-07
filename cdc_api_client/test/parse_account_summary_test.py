@@ -1,6 +1,6 @@
 import unittest
 
-from app_cdc_account.api.model.account import Account
+from cdc_api_client.api.model.account import Account
 
 
 class Test(unittest.TestSuite):
@@ -30,8 +30,7 @@ class Test(unittest.TestSuite):
             self.assertTrue(type(accounts) == list)
 
             for account in accounts:
-                account = Account(account['currency'], account['balance'], account['available'], account['order'],
-                                  account['stake'])
+                account = Account(account['currency'], account['balance'], account['available'], account['order'], account['stake'])
                 print(account)
 
 
