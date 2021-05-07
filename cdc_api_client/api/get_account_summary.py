@@ -1,6 +1,3 @@
-# url = https://api.crypto.com/v2/private/get-account-summary
-# https://exchange-docs.crypto.com/spot/index.html#private-get-account-summary
-
 import json
 import time
 
@@ -10,6 +7,14 @@ from api.api_request import ApiRequest
 from .utils.sign_request import sign_request
 
 
+# Returns the account balance of a user for a particular token
+# https://exchange-docs.crypto.com/spot/index.html#private-get-account-summary
+#
+# POST req-json to url = https://api.crypto.com/v2/private/get-account-summary
+# adding the json-headers
+#
+# The response is a list of accounts
+# The response is parsed using the class ParseAccountSummary
 class GetAccountSummary(ApiRequest):
     def __init__(self, url, api_key, secret_key):
         super().__init__(url, api_key, secret_key)

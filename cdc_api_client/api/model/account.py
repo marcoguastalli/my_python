@@ -1,33 +1,33 @@
 class Account:
 
     def __init__(self, currency, balance, available, order, stake):
-        self.__currency = currency
-        self.__balance = balance
-        self.__available = available
-        self.__order = order
-        self.__stake = stake
+        self.currency = currency
+        self.balance = balance
+        self.available = available
+        self.order = order
+        self.stake = stake
 
     def get_currency(self):
-        return self.__currency
+        return self.currency
 
     def get_balance(self):
-        return self.__balance
+        return self.balance
 
     def get_available(self):
-        return self.__available
+        return self.available
 
     def get_order(self):
-        return self.__order
+        return self.order
 
     def get_stake(self):
-        return self.__stake
+        return self.stake
 
     def __str__(self):
         result = '{' \
-                 + '"currency":"' + self.__currency + '",' \
-                 + '"balance" :' + str(self.__balance) + ',' \
-                 + '"available": ' + str(self.__available) + ',' \
-                 + '"order": ' + str(self.__order) + ',' \
-                 + '"stake": ' + str(self.__stake) \
+                 + '"currency":"' + self.currency + '",' \
+                 + '"balance" :' + str(self.balance) + ',' \
+                 + '"available": ' + str(self.available) + ',' \
+                 + '"order": ' + str(self.order) + ',' \
+                 + '"stake": ' + str(self.stake) \
                  + "}"
         return result

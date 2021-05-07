@@ -1,13 +1,14 @@
-# url = https://api.crypto.com/v2/public/get-ticker
-#       https://api.crypto.com/v2/public/get-ticker?instrument_name=XRP_USDT
-# https://exchange-docs.crypto.com/spot/index.html#public-get-ticker
-
 import json
 
 import requests
 from api.api_request import ApiRequest
 
 
+# Fetches the public tickers for an instrument (e.g. BTC_USDT).
+# instrument_name can be omitted to show tickers for all instruments
+# https://exchange-docs.crypto.com/spot/index.html#public-get-ticker
+#
+# url = https://api.crypto.com/v2/public/get-ticker?instrument_name=BTC_USDT
 class GetTicker(ApiRequest):
     def __init__(self, url):
         super().__init__(url, None, None)
@@ -15,11 +16,7 @@ class GetTicker(ApiRequest):
     def do_get(self):
         response = None
         try:
-            req = {
-                "id": 1,
-                "method": "public/get-ticker",
-                "nonce": super().get_nonce()
-            }
+            req = {"id": 1, "method": "public/get-ticker", "nonce": super().get_nonce()}
             headers = {'Content-type': 'application/json'}
             response = requests.get(self.url, headers=headers, data=json.dumps(req))
 

@@ -3,6 +3,7 @@ import time
 from api.utils.sign_request import sign_request
 
 
+# Super class for API Requests, wrapping url and credentials
 class ApiRequest:
     def __init__(self, url, api_key, secret_key):
         self.url = url
