@@ -16,15 +16,7 @@ https://exchange-docs.crypto.com/spot/index.html#public-get-instruments
 https://exchange-docs.crypto.com/spot/index.html#private-get-account-summary
 
 ## play ##
-cd ~/dev/repository/git/my_python/app_cdc_account
-python3 app_cdc_account.py
-python3 app_cdc_public.py
-
-##### SQL #####
-SELECT "currency",
-       "balance",
-       "available",
-       "order",
-       "stake"
-  FROM "Account"
- WHERE "currency" = 'USDT';
+cd ~/dev/repository/git/my_python/cdc_api_client
+python3 get_account_summary.py
+python3 get_instruments.py
+python3 get_ticker.py
