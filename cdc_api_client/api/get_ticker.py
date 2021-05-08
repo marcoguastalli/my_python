@@ -8,7 +8,8 @@ from api.api_request import ApiRequest
 # instrument_name can be omitted to show tickers for all instruments
 # https://exchange-docs.crypto.com/spot/index.html#public-get-ticker
 #
-# url = https://api.crypto.com/v2/public/get-ticker?instrument_name=BTC_USDT
+# url = https://api.crypto.com/v2/public/get-ticker
+#     = https://api.crypto.com/v2/public/get-ticker?instrument_name=BTC_USDT
 class GetTicker(ApiRequest):
     def __init__(self, url):
         super().__init__(url, None, None)
