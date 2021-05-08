@@ -11,3 +11,7 @@ cd ~/dev/repository/git/my_python/sqlite3_prices
 
 # run
 python3 sqlite3_prices.py
+
+# SQL
+select * from prices order by instrument, created DESC
+delete from prices

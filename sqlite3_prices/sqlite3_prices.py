@@ -2,7 +2,6 @@ import os
 import sys
 
 from create_connection import create_connection
-from create_sql_price import create_sql_price
 from execute_query import execute_query
 
 
@@ -20,7 +19,7 @@ def main():
             sql_create_table = '''CREATE TABLE IF NOT EXISTS prices
                                          (id integer PRIMARY KEY AUTOINCREMENT,
                                          source text NOT NULL,
-                                         symbol text NOT NULL,
+                                         instrument text NOT NULL,
                                          amount REAL NOT NULL DEFAULT 0,
                                          created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)'''
             execute_query(conn, sql_create_table)
@@ -28,9 +27,7 @@ def main():
             # first insert
             query_insert = "INSERT INTO prices VALUES (1, 'BIN', 'BTC_USDC', 55880.38, CURRENT_TIMESTAMP)"
             execute_query(conn, query_insert)
-            query_insert = "INSERT INTO prices (source, symbol, amount) VALUES ('CDC', 'BTC_USDC', 55999.99)"
-            execute_query(conn, query_insert)
-            query_insert = create_sql_price('CMC', 'BTC_USDC', 60000.000000006)
+            query_insert = "INSERT INTO prices (source, instrument, amount) VALUES ('CDC', 'BTC_USDC', 55999.99)"
             execute_query(conn, query_insert)
             conn.commit()
             # select
