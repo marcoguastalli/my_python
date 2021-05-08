@@ -11,6 +11,3 @@ cd ~/dev/repository/git/my_python/sqlite3_prices
 
 # run
 python3 sqlite3_prices.py
-
-
-# play
