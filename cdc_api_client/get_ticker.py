@@ -15,6 +15,11 @@ def main():
     response_json_result = response.json()['result']
     print(response_json_result)
 
+    print("\nAPI Response Tickers List:")
+    data = response.json()['result']['data']
+    for ticker in data:
+        print(ticker)
+
     print("\nAPI Response dictionary:")
     print(tickers_dictionary)
 

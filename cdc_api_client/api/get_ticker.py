@@ -1,5 +1,3 @@
-import json
-
 import requests
 from api.api_request import ApiRequest
 
@@ -17,9 +15,8 @@ class GetTicker(ApiRequest):
     def do_get(self):
         response = None
         try:
-            req = {"id": 1, "method": "public/get-ticker", "nonce": super().get_nonce()}
             headers = {'Content-type': 'application/json'}
-            response = requests.get(self.url, headers=headers, data=json.dumps(req))
+            response = requests.get(self.url, headers=headers)
 
         except Exception as e:
             print("Error GetTicker:\n %s" % req)
