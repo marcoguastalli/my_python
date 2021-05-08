@@ -25,7 +25,7 @@ def main():
         print("API Error: %s" % response)
     else:
         # response should be type 'requests.models.Response'
-        print("API Response '%s' - '%s'" % (response.status_code, response.reason))
+        print(f"API Response '{response.status_code}' - '{response.reason}'\n")
         # parse response
         accounts = account_summary.parse_response(response)
 

@@ -9,7 +9,7 @@ def main():
     candlestick = GetCandleStick(url)
     response = candlestick.do_get()
     # response should be type 'requests.models.Response'
-    print("API Response '%s' - '%s'" % (response.status_code, response.reason))
+    print(f"API Response '{response.status_code}' - '{response.reason}'\n")
     response_json_result = response.json()['result']
     print(response_json_result)
 

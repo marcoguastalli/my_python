@@ -2,10 +2,12 @@ from api.get_ticker import GetTicker
 
 
 def main():
-    ticker = GetTicker('https://api.crypto.com/v2/public/get-ticker')
+    url = "https://api.crypto.com/v2/public/get-ticker"
+    ticker = GetTicker(url)
     response = ticker.do_get()
     tickers_dictionary = ticker.parse_response(response)
 
+    print(f"API url '{url}'")
     print(f"API Response '{response.status_code}' - '{response.reason}'\n")
     print("API Response json:")
     print(response.json())
