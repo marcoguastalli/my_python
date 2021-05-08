@@ -5,7 +5,7 @@ depth = 1
 
 
 def main():
-    url = f"https://api.crypto.com/v2/public/get-book?instrument_name={instrument_name}&depth={depth}"
+    url = f'https://api.crypto.com/v2/public/get-book?instrument_name={instrument_name}&depth={depth}'
     book = GetBook(url)
     response = book.do_get()
     # response should be type 'requests.models.Response'
