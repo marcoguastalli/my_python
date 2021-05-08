@@ -4,7 +4,6 @@ from dotenv import dotenv_values
 
 from api.get_account_summary import GetAccountSummary
 from api.get_ticker import GetTicker
-from api.parse_account_summary import ParseAccountSummary
 
 REST_API_ENDPOINT_SANDBOX = "https://uat-api.3ona.co/v2/"
 REST_API_ENDPOINT_PRODUCTION = "https://api.crypto.com/v2/"
@@ -27,9 +26,8 @@ def main():
     else:
         # response should be type 'requests.models.Response'
         print("API Response '%s' - '%s'" % (response.status_code, response.reason))
-
-        parser = ParseAccountSummary(response)
-        accounts = parser.get_account_list()
+        # parse response
+        accounts = account_summary.parse_response(response)
 
         accounts_dictionary = {}
         total_balance = 0
