@@ -22,6 +22,7 @@ def main():
     ticker = tickers_dictionary['BTC_USDT']
     print(ticker)
     print("")
+    pair = ticker['i']
     current_best_bid_price = ticker['b']
     current_best_ask_price = ticker['k']
     latest_trade_price = ticker['a']
@@ -31,6 +32,7 @@ def main():
     price_of_the_24h_lowest_trade = ticker['l']
     price_change_24h = ticker['c']
 
+    print(f"pair:                           {pair}")
     print(f"current_best_bid_price:         {current_best_bid_price}")
     print(f"current_best_ask_price:         {current_best_ask_price}")
     print(f"latest_trade_price:             {latest_trade_price}")
