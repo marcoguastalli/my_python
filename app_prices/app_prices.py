@@ -7,7 +7,7 @@ import aioschedule as schedule
 
 from api_client.get_ticker import GetTicker
 from db_client.create_connection import create_connection
-from db_client.create_sql_price import create_sql_price
+from db_client.create_sql_insert_price import create_sql_insert_price
 from db_client.execute_query import execute_query
 
 
@@ -24,7 +24,7 @@ async def main():
             tickers_list = response.json()['result']['data']
             # insert the instrument-name and the price of the latest trade
             for ticker in tickers_list:
-                query_insert = create_sql_price('CDC', ticker['i'], ticker['a'])
+                query_insert = create_sql_insert_price('CDC', ticker['i'], ticker['a'])
                 execute_query(conn, query_insert)
 
             # commit
