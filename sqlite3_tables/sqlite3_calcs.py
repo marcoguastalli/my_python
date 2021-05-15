@@ -1,9 +1,10 @@
 import os
 import sys
+from datetime import datetime
 
 from create_connection import create_connection
 from execute_query import execute_query
-from datetime import datetime
+
 
 def main():
     database = "/Users/marcoguastalli/opt/sqlite/calcs.sqlite"
