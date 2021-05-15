@@ -23,7 +23,7 @@ python3 app_prices.py
     from prices 
    where source='CDC'
      and instrument = '1INCH_USDT'
-   order created ASC
+   order by created ASC
 -- return the number of records group by source, instrument
   select source,
          instrument,
