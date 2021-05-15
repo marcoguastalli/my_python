@@ -13,7 +13,7 @@ def main():
     try:
         if conn is not None:
             # drop table
-            sql_drop_table = "DROP TABLE variation"
+            sql_drop_table = "DROP TABLE IF EXISTS variation"
             execute_query(conn, sql_drop_table)
             conn.commit()
             # create table
@@ -27,7 +27,7 @@ def main():
             conn.commit()
             # data insert
             created = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
-            query_insert = f"INSERT INTO variation (source, instrument, amount, created) VALUES ('TEST', 'BTC_USDC', -27, '{created}')"
+            query_insert = f"INSERT INTO variation (source, instrument, variation, created) VALUES ('TEST', 'BTC_USDC', -27, '{created}')"
             execute_query(conn, query_insert)
             conn.commit()
             # select

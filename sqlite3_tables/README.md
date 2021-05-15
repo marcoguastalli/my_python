@@ -41,4 +41,4 @@ python3 sqlite3_prices.py
                            amount REAL NOT NULL DEFAULT 0,
                            created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-  
+* delete from variation
