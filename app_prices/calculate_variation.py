@@ -44,6 +44,8 @@ def calculate_variation():
                                 sql_insert_variation = create_sql_insert_variation(source, instrument, variation)
                                 execute_query(conn, sql_insert_variation)
                                 print(f"the variation of price for {instrument} is {variation}")
+                                if variation >= 1 or variation <= -1:
+                                    print(f"WARN! the variation of price for {instrument} is more than {variation}%!")
                                 # set flow-control-variables with current tuple value
                                 amount_from = amount_to
                         else:
