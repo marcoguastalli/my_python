@@ -15,14 +15,16 @@ def calculate_variation():
     conn = create_connection(database)
     try:
         if conn is not None:
+            # init
+            drop_variation_table(conn)
+            create_variation_table(conn)
             # init flow-control-variables
             source_from = -1
             instrument_from = -1
             amount_from = -1
-            id_to_delete = []
 
             # read prices
-            query_select = "SELECT amount, source, instrument, id from prices order by source, instrument, created ASC"
+            query_select = "SELECT amount, source, instrument, created from prices order by source, instrument, created ASC"
             rows = select_query(conn, query_select)
             if rows is not None:
                 for row in rows:
@@ -35,7 +37,7 @@ def calculate_variation():
                     amount_to = row[0]
                     source = row[1]
                     instrument = row[2]
-                    id_to_delete.append(row[3])
+                    created = row[3]
                     # variation is calculated only when source and instrument coincidono
                     if source_from == source:
                         if instrument_from == instrument:
@@ -43,9 +45,9 @@ def calculate_variation():
                             if variation is not None:
                                 sql_insert_variation = create_sql_insert_variation(source, instrument, variation)
                                 execute_query(conn, sql_insert_variation)
-                                print(f"the variation of price for {instrument} is {variation}")
+                                # print(f"the variation of price for {instrument} is {variation}")
                                 if variation >= 1 or variation <= -1:
-                                    print(f"WARN! the variation of price for {instrument} is more than {variation}%!")
+                                    print(f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
                                 # set flow-control-variables with current tuple value
                                 amount_from = amount_to
                         else:
@@ -61,8 +63,6 @@ def calculate_variation():
                     # set flow-control-variables with current tuple value
                     source_from = source
                     instrument_from = instrument
-            # the following ids should be deleted
-            print(f"DELETE FROM prices WHERE id IN({id_to_delete}")
             # commit
             conn.commit()
             print('calculate execution time: ', time.time() - start, 'seconds')
@@ -79,6 +79,22 @@ def calculate_variation_amount(amount_from, amount_to):
     except ZeroDivisionError:
         return None
     return variation
+
+
+def drop_variation_table(conn):
+    execute_query(conn, "DROP TABLE IF EXISTS variation")
+    conn.commit()
+
+
+def create_variation_table(conn):
+    sql_create_table = '''CREATE TABLE IF NOT EXISTS variation
+                                         (id integer PRIMARY KEY AUTOINCREMENT,
+                                         source text NOT NULL,
+                                         instrument text NOT NULL,
+                                         variation REAL NOT NULL DEFAULT 0,
+                                         created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)'''
+    execute_query(conn, sql_create_table)
+    conn.commit()
 
 
 if __name__ == '__main__':
