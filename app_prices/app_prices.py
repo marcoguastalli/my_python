@@ -39,7 +39,8 @@ async def main():
 
 if __name__ == '__main__':
     try:
-        schedule.every().minute.do(main)
+        # schedule.every().minute.do(main)
+        schedule.every(1).seconds.do(main)
         loop = asyncio.get_event_loop()
         while True:
             loop.run_until_complete(schedule.run_pending())
