@@ -8,7 +8,7 @@ from db_client.execute_query import execute_query
 from db_client.select_query import select_query
 
 
-def main():
+def calculate_variation():
     start = time.time()
     database = "/Users/marcoguastalli/opt/sqlite/prices.sqlite"
 
@@ -16,9 +16,9 @@ def main():
     try:
         if conn is not None:
             # read prices
-            source = 'TEST'
-            instrument = 'BTC_USDC'
-            query_select = f"SELECT amount from prices where source = '{source}' and instrument = '{instrument}' order by created"
+            source = 'CDC'
+            instrument = '1INCH_USDT'
+            query_select = f"SELECT amount from prices where source = '{source}' and instrument = '{instrument}' order by created ASC"
             rows = select_query(conn, query_select)
             amount_from = -1
             if rows is not None:
@@ -26,10 +26,11 @@ def main():
                     if amount_from == -1:
                         amount_from = row[0]
                     amount_to = row[0]
-                    variation = calculate_variation(amount_from, amount_to)
+                    variation = calculate_variation_amount(amount_from, amount_to)
                     if variation is not None:
                         sql_insert_variation = create_sql_insert_variation(source, instrument, variation)
                         execute_query(conn, sql_insert_variation)
+                    amount_from = amount_to
 
             # commit
             conn.commit()
@@ -41,7 +42,7 @@ def main():
             conn.close()
 
 
-def calculate_variation(amount_from, amount_to):
+def calculate_variation_amount(amount_from, amount_to):
     print(f"amount from: {amount_from}")
     print(f"amount   to: {amount_to}")
     try:
@@ -55,7 +56,7 @@ def calculate_variation(amount_from, amount_to):
 
 if __name__ == '__main__':
     try:
-        main()
+        calculate_variation()
     except KeyboardInterrupt:
         print('Process Interrupted!')
         try:

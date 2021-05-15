@@ -18,7 +18,6 @@ cd ~/dev/repository/git/my_python/sqlite3_tables
 python3 sqlite3_prices.py
 
 # SQL
-### prices.sqlite
 * CREATE TABLE IF NOT EXISTS prices (
                            id INTEGER PRIMARY KEY,
                            source TEXT NOT NULL,
@@ -27,31 +26,6 @@ python3 sqlite3_prices.py
                            created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 * delete from prices
--- return all the records
-select * from prices
--- return all the records ordered
- select id,
-        source,
-        instrument,
-        amount,
-        created
-    from prices 
-  order by source, instrument, created ASC
--- return all the records for a specific source and instrument
- select id,
-        source,
-        instrument,
-        amount,
-        created
-    from prices 
-   where source='CDC'
-     and instrument = '1INCH_USDT'
-   order by source, instrument, created ASC
--- return the number of records group by source, instrument
-  select source,
-         instrument,
-         count(*)
-    from prices 
-   group by source, instrument
-   order by instrument, created DESC
---
+* delete from variation
+* select * from prices
+* select * from variation
