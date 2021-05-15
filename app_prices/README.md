@@ -31,5 +31,7 @@ python3 app_prices.py
     from prices 
    group by source, instrument
    order by instrument, created DESC
+-- return records for variation calculation
+SELECT amount, source, instrument, created from prices order by source, instrument, created ASC
 -- select all variation
 select * from variation order by created asc

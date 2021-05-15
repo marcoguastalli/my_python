@@ -15,23 +15,43 @@ def calculate_variation():
     conn = create_connection(database)
     try:
         if conn is not None:
-            # read prices
-            source = 'CDC'
-            instrument = '1INCH_USDT'
-            query_select = f"SELECT amount from prices where source = '{source}' and instrument = '{instrument}' order by created ASC"
-            rows = select_query(conn, query_select)
+            # init flow-control-variables
+            source_from = -1
+            instrument_from = -1
             amount_from = -1
+
+            # read prices
+            query_select = "SELECT amount, source, instrument from prices order by source, instrument, created ASC"
+            rows = select_query(conn, query_select)
             if rows is not None:
                 for row in rows:
                     if amount_from == -1:
+                        # first tuple
                         amount_from = row[0]
+                        source_from = row[1]
+                        instrument_from = row[2]
                     amount_to = row[0]
-                    variation = calculate_variation_amount(amount_from, amount_to)
-                    if variation is not None:
-                        sql_insert_variation = create_sql_insert_variation(source, instrument, variation)
+                    source = row[1]
+                    instrument = row[2]
+                    if source_from == source:
+                        if instrument_from == instrument:
+                            variation = calculate_variation_amount(amount_from, amount_to)
+                            if variation is not None:
+                                sql_insert_variation = create_sql_insert_variation(source, instrument, variation)
+                                execute_query(conn, sql_insert_variation)
+                                # set flow-control-variables with current tuple value
+                                amount_from = amount_to
+                        else:
+                            sql_insert_variation = create_sql_insert_variation(source, instrument, 0)
+                            execute_query(conn, sql_insert_variation)
+                            amount_from = row[0]
+                    else:
+                        sql_insert_variation = create_sql_insert_variation(source, instrument, 0)
                         execute_query(conn, sql_insert_variation)
-                    amount_from = amount_to
-
+                        amount_from = row[0]
+                    # set flow-control-variables with current tuple value
+                    source_from = source
+                    instrument_from = instrument
             # commit
             conn.commit()
             print('calculate execution time: ', time.time() - start, 'seconds')
@@ -43,14 +63,10 @@ def calculate_variation():
 
 
 def calculate_variation_amount(amount_from, amount_to):
-    print(f"amount from: {amount_from}")
-    print(f"amount   to: {amount_to}")
     try:
         variation = ((amount_to - amount_from) / amount_from) * 100
     except ZeroDivisionError:
         return None
-    print(f"variation  : {variation}")
-    print("")
     return variation
 
 
