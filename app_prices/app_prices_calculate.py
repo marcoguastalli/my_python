@@ -47,7 +47,7 @@ def main():
 def calculate_variation(amount_from, amount_to):
     print(f"amount from: {amount_from}")
     print(f"amount   to: {amount_to}")
-    variation = ((amount_to * amount_from) / amount_from) * 100
+    variation = ((amount_to - amount_from) / amount_from) * 100
     print(f"variation  : {variation}")
     print("")
     return variation
