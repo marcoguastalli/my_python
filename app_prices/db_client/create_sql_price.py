@@ -1,2 +1,6 @@
+from datetime import datetime
+
+
 def create_sql_price(source: str, instrument: str, amount):
-    return f"INSERT INTO prices (source, instrument, amount) VALUES ('{source}', '{instrument}', {amount})"
+    created = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
+    return f"INSERT INTO prices (source, instrument, amount, created) VALUES ('{source}', '{instrument}', {amount}, '{created}')"
