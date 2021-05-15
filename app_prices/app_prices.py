@@ -29,7 +29,7 @@ async def main():
 
             # commit
             conn.commit()
-            print('prices inserted in ', time.time() - start, 'seconds.')
+            print('prices inserted in ', time.time() - start, 'seconds')
         else:
             print("Error Connection to DDBB:" + database)
     finally:
