@@ -27,18 +27,31 @@ python3 sqlite3_prices.py
                            created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 * delete from prices
-* select * from prices order by instrument, created DESC
-* select * from prices 
-   where source='CDC' 
-    and instrument = 'CRO_USDT'
-  order by instrument, created DESC
-
-### variation.sqlite
-* CREATE TABLE IF NOT EXISTS variation (
-                           id INTEGER PRIMARY KEY,
-                           source TEXT NOT NULL,
-                           variation TEXT NOT NULL,
-                           amount REAL NOT NULL DEFAULT 0,
-                           created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-* delete from variation
+-- return all the records
+select * from prices
+-- return all the records ordered
+ select id,
+        source,
+        instrument,
+        amount,
+        created
+    from prices 
+  order by source, instrument, created ASC
+-- return all the records for a specific source and instrument
+ select id,
+        source,
+        instrument,
+        amount,
+        created
+    from prices 
+   where source='CDC'
+     and instrument = '1INCH_USDT'
+   order by source, instrument, created ASC
+-- return the number of records group by source, instrument
+  select source,
+         instrument,
+         count(*)
+    from prices 
+   group by source, instrument
+   order by instrument, created DESC
+--
