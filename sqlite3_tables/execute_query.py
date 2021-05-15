@@ -2,10 +2,10 @@ from sqlite3 import Error
 
 
 def execute_query(connection, query):
-    """ create a table from the create_table_sql statement
+    """ Execute the input query
     :param connection: Connection object
-    :param query: a CREATE TABLE statement
-    :return:
+    :param query: a SQL statement
+    :return the result:
     """
     try:
         cursor = connection.cursor()

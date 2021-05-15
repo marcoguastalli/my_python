@@ -32,3 +32,13 @@ python3 sqlite3_prices.py
    where source='CDC' 
     and instrument = 'CRO_USDT'
   order by instrument, created DESC
+
+### variation.sqlite
+* CREATE TABLE IF NOT EXISTS variation (
+                           id INTEGER PRIMARY KEY,
+                           source TEXT NOT NULL,
+                           variation TEXT NOT NULL,
+                           amount REAL NOT NULL DEFAULT 0,
+                           created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+  
