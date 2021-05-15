@@ -48,14 +48,7 @@ def calculate_variation():
                                 sql_insert_variation = create_sql_insert_variation(source, instrument, variation)
                                 execute_query(conn, sql_insert_variation)
                                 # print(f"the variation of price for {instrument} is {variation}")
-                                if variation >= 1.5:
-                                    print(Fore.GREEN + f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
-                                elif variation >= 1:
-                                    print(Style.RESET_ALL + f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
-                                elif variation <= -1:
-                                    print(Style.RESET_ALL + f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
-                                elif variation <= -2:
-                                    print(Fore.RED + f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
+                                print_variation_with_colorama(created, instrument, variation)
                                 # set flow-control-variables with current tuple value
                                 amount_from = amount_to
                         else:
@@ -79,6 +72,19 @@ def calculate_variation():
     finally:
         if conn is not None:
             conn.close()
+
+
+def print_variation_with_colorama(created, instrument, variation):
+    if variation >= 2:
+        print(Fore.LIGHTGREEN_EX + f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
+    elif variation >= 1.5:
+        print(Fore.GREEN + f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
+    elif variation >= 1:
+        print(Style.RESET_ALL + f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
+    elif variation <= -1:
+        print(Style.RESET_ALL + f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
+    elif variation <= -2:
+        print(Fore.LIGHTRED_EX + f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
 
 
 def calculate_variation_amount(amount_from, amount_to):
