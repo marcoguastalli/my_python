@@ -1,7 +1,6 @@
 # Prices App
-* use cdc_api_client
-* use sqlite3_prices
+Connect to API and insert into 'prices.sqlite'
 
 ### play
 cd ~/dev/repository/git/my_python/app_prices
-app_prices.py
+python3 app_prices.py
