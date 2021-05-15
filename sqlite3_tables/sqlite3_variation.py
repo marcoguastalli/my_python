@@ -7,7 +7,7 @@ from execute_query import execute_query
 
 
 def main():
-    database = "/Users/marcoguastalli/opt/sqlite/variation.sqlite"
+    database = "/Users/marcoguastalli/opt/sqlite/prices.sqlite"
 
     conn = create_connection(database)
     try:

@@ -12,9 +12,9 @@ def main():
     try:
         if conn is not None:
             # drop table
-            # sql_drop_table = "DROP TABLE prices"
-            # execute_query(conn, sql_drop_table)
-            # conn.commit()
+            sql_drop_table = "DROP TABLE IF EXISTS prices"
+            execute_query(conn, sql_drop_table)
+            conn.commit()
             # create table
             sql_create_table = '''CREATE TABLE IF NOT EXISTS prices
                                          (id integer PRIMARY KEY AUTOINCREMENT,
