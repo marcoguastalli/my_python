@@ -11,7 +11,7 @@ from db_client.select_query import select_query
 def main():
     start = time.time()
     database_read = "/Users/marcoguastalli/opt/sqlite/prices.sqlite"
-    database_write = "/Users/marcoguastalli/opt/sqlite/calcs.sqlite"
+    database_write = "/Users/marcoguastalli/opt/sqlite/variation.sqlite"
 
     conn_read = create_connection(database_read)
     conn_write = create_connection(database_write)
