@@ -24,10 +24,10 @@ def main():
                                          created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)'''
             execute_query(conn, sql_create_table)
             conn.commit()
-            # first insert
-            query_insert = "INSERT INTO prices VALUES (1, 'BIN', 'BTC_USDC', 55880.38, CURRENT_TIMESTAMP)"
+            # data insert
+            query_insert = "INSERT INTO prices VALUES (0, 'TEST', 'BTC_USDC', 0, CURRENT_TIMESTAMP)"
             execute_query(conn, query_insert)
-            query_insert = "INSERT INTO prices (source, instrument, amount) VALUES ('CDC', 'BTC_USDC', 55999.99)"
+            query_insert = "INSERT INTO prices (source, instrument, amount) VALUES ('TEST', 'BTC_USDC', 0)"
             execute_query(conn, query_insert)
             conn.commit()
             # select
