@@ -1,5 +1,9 @@
+import asyncio
 import os
 import sys
+import time
+
+import aioschedule as schedule
 
 from api_client.get_ticker import GetTicker
 from db_client.create_connection import create_connection
@@ -7,7 +11,8 @@ from db_client.create_sql_price import create_sql_price
 from db_client.execute_query import execute_query
 
 
-def main():
+async def main():
+    start = time.time()
     database = "/Users/marcoguastalli/opt/sqlite/prices.sqlite"
 
     conn = create_connection(database)
@@ -24,7 +29,7 @@ def main():
 
             # commit
             conn.commit()
-
+            print('prices inserted in ', time.time() - start, 'seconds.')
         else:
             print("Error Connection to DDBB:" + database)
     finally:
@@ -34,9 +39,13 @@ def main():
 
 if __name__ == '__main__':
     try:
-        main()
+        schedule.every().minute.do(main)
+        loop = asyncio.get_event_loop()
+        while True:
+            loop.run_until_complete(schedule.run_pending())
+            time.sleep(1)
     except KeyboardInterrupt:
-        print('Interrupted')
+        print('Process Interrupted!')
         try:
             sys.exit(0)
         except SystemExit:
