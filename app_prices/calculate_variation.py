@@ -2,6 +2,8 @@ import os
 import sys
 import time
 
+from colorama import Fore, Style
+
 from db_client.create_connection import create_connection
 from db_client.create_sql_insert_variation import create_sql_insert_variation
 from db_client.execute_query import execute_query
@@ -46,8 +48,14 @@ def calculate_variation():
                                 sql_insert_variation = create_sql_insert_variation(source, instrument, variation)
                                 execute_query(conn, sql_insert_variation)
                                 # print(f"the variation of price for {instrument} is {variation}")
-                                if variation >= 1 or variation <= -1:
-                                    print(f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
+                                if variation >= 1.5:
+                                    print(Fore.GREEN + f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
+                                elif variation >= 1:
+                                    print(Style.RESET_ALL + f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
+                                elif variation <= -1:
+                                    print(Style.RESET_ALL + f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
+                                elif variation <= -2:
+                                    print(Fore.RED + f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
                                 # set flow-control-variables with current tuple value
                                 amount_from = amount_to
                         else:
