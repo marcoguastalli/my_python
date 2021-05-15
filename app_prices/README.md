@@ -35,3 +35,9 @@ python3 app_prices.py
 SELECT amount, source, instrument, created from prices order by source, instrument, created ASC
 -- select all variation
 select * from variation order by created asc
+-- select WARN variation
+select * 
+  from variation 
+ where variation >= 1
+    or variation <= -1
+ order by created asc
