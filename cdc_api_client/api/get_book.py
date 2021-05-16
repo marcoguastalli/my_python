@@ -17,7 +17,7 @@ class GetBook(ApiRequest):
             response = requests.get(self.url, headers=headers)
 
         except Exception as e:
-            print("Error GetBook:\n %s" % req)
+            print("Error get-book")
             print(e)
 
         return response
