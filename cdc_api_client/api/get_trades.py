@@ -21,7 +21,7 @@ class GetTrades(ApiRequest):
             response = requests.get(self.url, headers=headers)
 
         except Exception as e:
-            print("Error GetTrades:\n %s" % req)
+            print("Error get-trades")
             print(e)
 
         return response

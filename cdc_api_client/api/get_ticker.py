@@ -19,7 +19,7 @@ class GetTicker(ApiRequest):
             response = requests.get(self.url, headers=headers)
 
         except Exception as e:
-            print("Error GetTicker:\n %s" % req)
+            print("Error get-ticker")
             print(e)
 
         return response

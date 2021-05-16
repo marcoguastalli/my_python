@@ -17,7 +17,7 @@ class GetCandleStick(ApiRequest):
             response = requests.get(self.url, headers=headers)
 
         except Exception as e:
-            print("Error GetCandleStick:\n %s" % req)
+            print("Error get-candlestick")
             print(e)
 
         return response

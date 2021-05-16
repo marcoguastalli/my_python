@@ -20,7 +20,7 @@ class GetInstruments(ApiRequest):
             response = requests.get(self.url, headers=headers, data=json.dumps(req))
 
         except Exception as e:
-            print("Error GetInstruments:\n %s" % req)
+            print("Error get-instruments")
             print(e)
 
         return response

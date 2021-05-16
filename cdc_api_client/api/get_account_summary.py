@@ -38,7 +38,7 @@ class GetAccountSummary(ApiRequest):
                 return "Invalid req"
 
         except Exception as e:
-            print("Error GetAccountSummary:\n %s" % req)
+            print("Error get-account-summary")
             print(e)
 
         return response
