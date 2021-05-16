@@ -11,9 +11,9 @@ def main():
     conn = create_connection(database)
     try:
         if conn is not None:
-            # drop table
-            sql_drop_table = "DROP TABLE IF EXISTS prices"
-            execute_query(conn, sql_drop_table)
+            # drop tables
+            execute_query(conn, "DROP TABLE IF EXISTS prices")
+            execute_query(conn, "DROP TABLE IF EXISTS variation")
             conn.commit()
             # create table
             sql_create_table = '''CREATE TABLE IF NOT EXISTS prices
@@ -22,6 +22,13 @@ def main():
                                          instrument text NOT NULL,
                                          amount REAL NOT NULL DEFAULT 0,
                                          created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)'''
+            execute_query(conn, sql_create_table)
+            sql_create_table = '''CREATE TABLE IF NOT EXISTS variation
+                                                 (id integer PRIMARY KEY AUTOINCREMENT,
+                                                 source text NOT NULL,
+                                                 instrument text NOT NULL,
+                                                 variation REAL NOT NULL DEFAULT 0,
+                                                 created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)'''
             execute_query(conn, sql_create_table)
             conn.commit()
         else:

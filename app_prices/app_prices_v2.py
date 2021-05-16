@@ -14,10 +14,14 @@ from db_client.execute_query import execute_query
 async def main():
     start = time.time()
     database = "/Users/marcoguastalli/opt/sqlite/prices.sqlite"
+
     conn = create_connection(database)
     try:
         if conn is not None:
+            # call CDC API
             await create_prices_from_api(conn)
+            # commit
+            conn.commit()
             print('prices inserted in ', time.time() - start, 'seconds')
         else:
             print("Error Connection to DDBB:" + database)
@@ -41,7 +45,6 @@ async def create_prices_from_api(conn):
 
 if __name__ == '__main__':
     try:
-        # schedule.every().minute.do(main)
         schedule.every(1).seconds.do(main)
         loop = asyncio.get_event_loop()
         while True:
