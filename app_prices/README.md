@@ -44,3 +44,8 @@ select *
  where variation >= 1
     or variation <= -1
  order by created asc
+-- select TOP PERFORMERS variation
+select * 
+  from variation 
+ where variation >= 1
+ order by variation DESC
