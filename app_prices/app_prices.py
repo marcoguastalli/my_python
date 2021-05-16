@@ -3,12 +3,14 @@ import os
 import sys
 import time
 from datetime import datetime
-from colorama import Fore, Style
+
 import aioschedule as schedule
+from colorama import Fore, Style
 
 from api_client.get_ticker import GetTicker
 from db_client.create_connection import create_connection
 from db_client.execute_query import execute_query
+from db_client.select_query import select_query
 from model.price import Price
 from utils.variation_utils import calculate_variation_amount
 from utils.variation_utils import print_variation_with_colorama
@@ -21,11 +23,22 @@ async def main():
     conn = create_connection(database)
     try:
         if conn is not None:
-            prices_dict = await create_prices_from_api(conn, {})
-            conn.commit()
-            prices_dict = await create_prices_from_api(conn, prices_dict)
-            conn.commit()
-            print(Style.RESET_ALL + "execution time: ", time.time() - start, "seconds")
+            prices_dict = {}
+
+            # read SQLite table 'prices' and create a dictionary with Price object
+            price_table_rows = select_query(conn, "SELECT source, instrument, price_from, price_to, variation, created, updated"
+                                                  "  FROM prices"
+                                                  " ORDER BY source, instrument, created ASC")
+            if price_table_rows is not None:
+                for row in price_table_rows:
+                    price = Price(row[0], row[1], row[2], row[3], row[4], row[5], row[6])
+                    prices_dict[price.get_key()] = price
+
+            # call CDC API and update the dictionary with Price object
+            await create_prices_from_api(conn, prices_dict)
+
+            # log time
+            print(Style.RESET_ALL + "At " + datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f") + " the execution time was: ", time.time() - start, "seconds")
         else:
             print(Fore.RED + "Error Connection to DDBB:" + database)
     finally:
@@ -51,10 +64,8 @@ async def create_prices_from_api(conn, prices_dict):
             query_insert = f"INSERT INTO prices (source, instrument, price_from, price_to, variation, created) " \
                            f"VALUES ('{source}', '{instrument}', {price_from}, {price_to}, {variation}, '{created}')"
             execute_query(conn, query_insert)
-            price = Price(source, instrument, price_to, created)
-            prices_dict[price.get_key()] = price
         else:
-            price_from = price_object_from_dict.get_amount()
+            price_from = price_object_from_dict.get_price_from()
             price_to = ticker['a']
             variation = calculate_variation_amount(price_from, price_to)
             if variation is None:
@@ -63,12 +74,11 @@ async def create_prices_from_api(conn, prices_dict):
             query_update = f"UPDATE prices SET price_from={price_from}, price_to={price_to}, variation={variation}, updated='{updated}'" \
                            f" WHERE source='{source}' AND instrument='{instrument}'"
             execute_query(conn, query_update)
-            price = Price(source, instrument, price_to, updated)
-            prices_dict[price.get_key()] = price
-
+            # log variation
             print_variation_with_colorama(updated, instrument, variation)
-
-    return prices_dict
+    # commit
+    conn.commit()
+    pass
 
 
 async def get_prices_from_api():
@@ -80,7 +90,7 @@ async def get_prices_from_api():
 
 if __name__ == '__main__':
     try:
-        schedule.every(2).seconds.do(main)
+        schedule.every(1).seconds.do(main)
         loop = asyncio.get_event_loop()
         while True:
             loop.run_until_complete(schedule.run_pending())
