@@ -17,6 +17,9 @@ class Price:
     def get_created(self):
         return self.created
 
+    def get_key(self):
+        return self.source + "_" + self.instrument
+
     def __str__(self):
         result = '{' + '"source":"' + self.source + '",' + '"instrument":"' + self.instrument + '",' + '"amount":"' + str(self.amount) + '",' + '"created":"' + str(self.created) + '",' + "}"
         return result

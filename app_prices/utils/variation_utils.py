@@ -10,6 +10,8 @@ def calculate_variation_amount(amount_from, amount_to):
 
 
 def print_variation_with_colorama(created, instrument, variation):
+    if variation is None:
+        return
     if variation >= 2:
         print(Fore.LIGHTGREEN_EX + f"WARN! the variation of price for {instrument} is more than {variation}% at {created}!")
     elif variation >= 1.5:

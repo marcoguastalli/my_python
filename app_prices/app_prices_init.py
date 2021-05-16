@@ -13,22 +13,16 @@ def main():
         if conn is not None:
             # drop tables
             execute_query(conn, "DROP TABLE IF EXISTS prices")
-            execute_query(conn, "DROP TABLE IF EXISTS variation")
             conn.commit()
             # create table
             sql_create_table = '''CREATE TABLE IF NOT EXISTS prices
-                                         (id integer PRIMARY KEY AUTOINCREMENT,
-                                         source text NOT NULL,
+                                         (source text NOT NULL,
                                          instrument text NOT NULL,
-                                         amount REAL NOT NULL DEFAULT 0,
-                                         created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)'''
-            execute_query(conn, sql_create_table)
-            sql_create_table = '''CREATE TABLE IF NOT EXISTS variation
-                                                 (id integer PRIMARY KEY AUTOINCREMENT,
-                                                 source text NOT NULL,
-                                                 instrument text NOT NULL,
-                                                 variation REAL NOT NULL DEFAULT 0,
-                                                 created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)'''
+                                         price_from REAL NOT NULL DEFAULT 0,
+                                         price_to REAL NOT NULL DEFAULT 0,
+                                         variation REAL NOT NULL DEFAULT 0,
+                                         created TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                                         updated TEXT NOT NULL DEFAULT "")'''
             execute_query(conn, sql_create_table)
             conn.commit()
         else:
