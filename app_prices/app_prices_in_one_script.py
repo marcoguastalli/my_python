@@ -123,9 +123,9 @@ async def main():
             await create_prices_from_api(conn, prices_dict)
 
             # log time
-            print("At " + datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f") + " the process end in: ", time.time() - start, "seconds")
+            print(Style.RESET_ALL + "At " + datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f") + " the process end in: ", time.time() - start, "seconds")
         else:
-            print("Error Connection to DDBB.")
+            print(Fore.RED + "Error Connection to DDBB.")
     finally:
         if conn is not None:
             conn.close()
