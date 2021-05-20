@@ -15,9 +15,10 @@ def main():
             execute_query(conn, "DROP TABLE IF EXISTS prices")
             conn.commit()
             # create table
-            sql_create_table = '''CREATE TABLE IF NOT EXISTS prices
-                                         (source text NOT NULL,
-                                         instrument text NOT NULL,
+            sql_create_table = '''CREATE TABLE IF NOT EXISTS prices(
+                                         id INTEGER PRIMARY KEY,
+                                         source TEXT NOT NULL,
+                                         instrument TEXT NOT NULL,
                                          price_from REAL NOT NULL DEFAULT 0,
                                          price_to REAL NOT NULL DEFAULT 0,
                                          variation REAL NOT NULL DEFAULT 0,
