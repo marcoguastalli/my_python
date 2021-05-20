@@ -1,5 +1,5 @@
 # CDD Account App #
-Read account information from CDC
+Python client for CDC Exchange API
 
 ### dependencies to install ###
 datetime
