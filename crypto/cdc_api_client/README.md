@@ -16,7 +16,7 @@ https://exchange-docs.crypto.com/spot/index.html#public-get-instruments
 https://exchange-docs.crypto.com/spot/index.html#private-get-account-summary
 
 ## play ##
-cd ~/dev/repository/git/my_python/cdc_api_client
+cd ~/dev/repository/git/my_python/crypto/cdc_api_client
 python3 get_account_summary.py
 python3 get_book.py
 python3 get_candlestick.py (PARSER TODO)
