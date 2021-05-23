@@ -1,4 +1,4 @@
-# CDD Account App #
+# CDC Exchange Api Client #
 Python client for CDC Exchange API
 
 ### dependencies to install ###
