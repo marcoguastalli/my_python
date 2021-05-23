@@ -7,7 +7,7 @@ from datetime import datetime
 import aioschedule as schedule
 from colorama import Fore, Style
 
-from api_client.get_ticker import GetTicker
+from cdc_api_client.get_ticker import GetTicker
 from db_client.create_connection import create_connection
 from db_client.execute_query import execute_query
 from db_client.select_query import select_query

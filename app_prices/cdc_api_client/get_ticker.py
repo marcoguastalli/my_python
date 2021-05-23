@@ -1,5 +1,5 @@
 import requests
-from api_client.api_request import ApiRequest
+from cdc_api_client.api_request import ApiRequest
 
 
 # Fetches the public tickers for an instrument (e.g. BTC_USDT).
