@@ -2,12 +2,12 @@ import requests
 from api.api_request import ApiRequest
 
 
-# Fetches the public tickers for an instrument (e.g. BTC_USDT).
-# instrument_name can be omitted to show tickers for all instruments
-# https://exchange-docs.crypto.com/spot/index.html#public-get-ticker
+# 24hr Ticker Price Change Statistics
+# 24 hour rolling window price change statistics. Careful when accessing this with no symbol.
+# https://binance-docs.github.io/apidocs/spot/en/#current-average-price
 #
-# url = https://api.crypto.com/v2/public/get-ticker
-#     = https://api.crypto.com/v2/public/get-ticker?instrument_name=BTC_USDT
+# url = https://api.binance.com/api/v3/ticker/24h
+#     = https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
 class GetTicker(ApiRequest):
     def __init__(self, url):
         super().__init__(url, None, None)
