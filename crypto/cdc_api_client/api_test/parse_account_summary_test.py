@@ -1,6 +1,6 @@
 import unittest
 
-from cdc_api_client.api.model.account import Account
+from crypto.cdc_api_client.api.model.account import Account
 
 
 class Test(unittest.TestSuite):

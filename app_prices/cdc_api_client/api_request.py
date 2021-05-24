@@ -1,6 +1,6 @@
 import time
 
-from api_client.sign_request import sign_request
+from cdc_api_client.sign_request import sign_request
 
 
 # Super class for API Requests, wrapping url and credentials
