@@ -7,7 +7,8 @@ from datetime import datetime
 import aioschedule as schedule
 from colorama import Fore, Style
 
-from cdc_api_client.get_ticker import GetTicker
+from bnc_api_client.get_ticker import GetTicker as BncGetTicker
+from cdc_api_client.get_ticker import GetTicker as CdcGetTicker
 from db_client.create_connection import create_connection
 from db_client.execute_query import execute_query
 from db_client.select_query import select_query
@@ -34,8 +35,11 @@ async def main():
                     price = Price(row[0], row[1], row[2], row[3], row[4], row[5], row[6])
                     prices_dict[price.get_key()] = price
 
+            # call BNC API and update the dictionary with Price object
+            await create_prices_from_bnc_api(conn, prices_dict)
+
             # call CDC API and update the dictionary with Price object
-            await create_prices_from_api(conn, prices_dict)
+            await create_prices_from_cdc_api(conn, prices_dict)
 
             # log time
             print(Style.RESET_ALL + "At " + datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f") + " the process end in: ", time.time() - start, "seconds")
@@ -46,10 +50,19 @@ async def main():
             conn.close()
 
 
-async def create_prices_from_api(conn, prices_dict):
+async def create_prices_from_bnc_api(conn, prices_dict):
+    source = "BNC"
+    # call BCN API
+    tickers_list = await get_prices_from_bnc_api()
+    # insert the instrument-name and the price of the latest trade
+    # TODO !!
+    pass
+
+
+async def create_prices_from_cdc_api(conn, prices_dict):
     source = "CDC"
     # call CDC API
-    tickers_list = await get_prices_from_api()
+    tickers_list = await get_prices_from_cdc_api()
     # insert the instrument-name and the price of the latest trade
     for ticker in tickers_list:
         instrument = ticker['i']
@@ -81,8 +94,14 @@ async def create_prices_from_api(conn, prices_dict):
     pass
 
 
-async def get_prices_from_api():
-    ticker = GetTicker('https://api.crypto.com/v2/public/get-ticker')
+async def get_prices_from_bnc_api():
+    ticker = BncGetTicker('https://api.binance.com/api/v3/ticker/24hr')
+    response = ticker.do_get()
+    return ticker.parse_response(response)
+
+
+async def get_prices_from_cdc_api():
+    ticker = CdcGetTicker('https://api.crypto.com/v2/public/get-ticker')
     response = ticker.do_get()
     tickers_list = response.json()['result']['data']
     return tickers_list
