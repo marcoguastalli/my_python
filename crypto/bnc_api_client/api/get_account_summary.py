@@ -8,31 +8,30 @@ from api.model.account import Account
 from .utils.sign_request import sign_request
 
 
-# Returns the account balance of a user for a particular token
-# https://exchange-docs.crypto.com/spot/index.html#private-get-account-summary
+# Get current account information.
+# https://binance-docs.github.io/apidocs/spot/en/#query-open-oco-user_data
 #
-# POST to url = https://api.crypto.com/v2/private/get-account-summary
-# adding the request-headers
+# url = https://api.binance.com/api/v3/account
+# adding the http-headers
 #
 # The response is a list of accounts
 class GetAccountSummary(ApiRequest):
     def __init__(self, url, api_key, secret_key):
         super().__init__(url, api_key, secret_key)
 
-    def do_post(self):
+    def do_get(self):
         response = None
         try:
             params_dict = {
-                "id": 1,
-                "method": "private/get-account-summary",
-                "api_key": self.api_key,
-                "params": {},
-                "nonce": int(time.time() * 1000)
+                "recvWindow": 5000,
+                "timestamp": int(time.time() * 1000)
             }
-            params_dict = sign_request(params_dict, self.api_key, self.secret_key)
-            if params_dict is not None:
-                headers = {'Content-type': 'application/json'}
-                response = requests.post(self.url, headers=headers, data=json.dumps(params_dict))
+            query_string = sign_request(params_dict, self.api_key, self.secret_key)
+            if query_string is not None:
+                url = self.url + "?" + query_string
+                print(f"Reading account from API url '{url}'")
+                headers = {'Content-Type': 'application/json;charset=utf-8', 'X-MBX-APIKEY': self.api_key}
+                response = requests.get(url, headers=headers)
             else:
                 return "Invalid Request"
 
