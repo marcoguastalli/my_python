@@ -47,7 +47,7 @@ def main():
                         # add to pair_balance_dictionary
                         pair_account_balance_dictionary[pair] = account, pair_balance
                 except KeyError:
-                    print("No ticker found for pair: '%s" % pair)
+                    print("No ticker found for pair: '%s'" % pair)
                     pass
             elif currency == 'USDT':
                 pair_account_balance_dictionary[currency] = account, balance
@@ -60,7 +60,8 @@ def main():
                 account = value[0]
                 pair_balance = value[1]
                 # print(key, ': ', value)
-                print(f"The balance for currency '{account.get_currency()}' is {account.get_balance()}, the balance for pair '{pair}' in USDT is: {pair_balance}")
+                balance_to_print = "{:f}".format(account.get_balance())
+                print(f"The balance for currency '{account.get_currency()}' is {balance_to_print}, the balance for pair '{pair}' in USDT is: {pair_balance}")
                 # add to total
                 total_balance += pair_balance
         # print total

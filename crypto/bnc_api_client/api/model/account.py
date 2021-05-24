@@ -1,11 +1,9 @@
 class Account:
 
-    def __init__(self, currency, balance, available, order, stake):
+    def __init__(self, currency, balance, locked):
         self.currency = currency
         self.balance = balance
-        self.available = available
-        self.order = order
-        self.stake = stake
+        self.locked = locked
 
     def get_currency(self):
         return self.currency
@@ -13,21 +11,13 @@ class Account:
     def get_balance(self):
         return self.balance
 
-    def get_available(self):
-        return self.available
-
-    def get_order(self):
-        return self.order
-
-    def get_stake(self):
-        return self.stake
+    def get_locked(self):
+        return self.locked
 
     def __str__(self):
         result = '{' \
                  + '"currency":"' + self.currency + '",' \
                  + '"balance" :' + str(self.balance) + ',' \
-                 + '"available": ' + str(self.available) + ',' \
-                 + '"order": ' + str(self.order) + ',' \
-                 + '"stake": ' + str(self.stake) \
+                 + '"locked": ' + str(self.locked) \
                  + "}"
         return result

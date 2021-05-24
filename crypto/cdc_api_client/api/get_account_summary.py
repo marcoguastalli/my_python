@@ -42,11 +42,8 @@ class GetAccountSummary(ApiRequest):
 
         return response
 
-    # Returns the account balance of a user for a particular token
-    # https://exchange-docs.crypto.com/spot/index.html#private-get-account-summary
-    #
     # The response is a list of accounts
-    # For each account in the list the object Account is created and added to the returned account_list
+    # For each element in the list the object Account is created and added to the returned list
     @staticmethod
     def parse_response(api_response: requests.models.Response):
         json_response = api_response.json()
