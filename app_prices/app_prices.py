@@ -55,7 +55,33 @@ async def create_prices_from_bnc_api(conn, prices_dict):
     # call BCN API
     tickers_list = await get_prices_from_bnc_api()
     # insert the instrument-name and the price of the latest trade
-    # TODO !!
+    for ticker in tickers_list:
+        instrument = ticker['symbol']
+        price_key = source + "_" + instrument
+        price_object_from_dict = prices_dict.get(price_key)
+        if price_object_from_dict is None:
+            # first loop
+            price_from = float(ticker['lastPrice'])
+            price_to = float(ticker['lastPrice'])
+            variation = 0
+            created = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
+            query_insert = f"INSERT INTO prices (source, instrument, price_from, price_to, variation, created) " \
+                           f"VALUES ('{source}', '{instrument}', {price_from}, {price_to}, {variation}, '{created}')"
+            execute_query(conn, query_insert)
+        else:
+            price_from = price_object_from_dict.get_price_from()
+            price_to = float(ticker['lastPrice'])
+            variation = calculate_variation_amount(price_from, price_to)
+            if variation is None:
+                variation = 0
+            updated = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
+            query_update = f"UPDATE prices SET price_from={price_from}, price_to={price_to}, variation={variation}, updated='{updated}'" \
+                           f" WHERE source='{source}' AND instrument='{instrument}'"
+            execute_query(conn, query_update)
+            # log variation
+            print_variation_with_colorama(updated, instrument, variation)
+    # commit
+    conn.commit()
     pass
 
 
@@ -97,7 +123,8 @@ async def create_prices_from_cdc_api(conn, prices_dict):
 async def get_prices_from_bnc_api():
     ticker = BncGetTicker('https://api.binance.com/api/v3/ticker/24hr')
     response = ticker.do_get()
-    return ticker.parse_response(response)
+    tickers_list = response.json()
+    return tickers_list
 
 
 async def get_prices_from_cdc_api():
