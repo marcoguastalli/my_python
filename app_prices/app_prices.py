@@ -16,6 +16,9 @@ from model.price import Price
 from utils.variation_utils import calculate_variation_amount
 from utils.variation_utils import print_variation_with_colorama
 
+USE_CDC = True
+USE_BNC = False
+
 
 async def main():
     start = time.time()
@@ -35,11 +38,13 @@ async def main():
                     price = Price(row[0], row[1], row[2], row[3], row[4], row[5], row[6])
                     prices_dict[price.get_key()] = price
 
-            # call BNC API and update the dictionary with Price object
-            await create_prices_from_bnc_api(conn, prices_dict)
+            if USE_BNC:
+                # call BNC API and update the dictionary with Price object
+                await create_prices_from_bnc_api(conn, prices_dict)
 
-            # call CDC API and update the dictionary with Price object
-            await create_prices_from_cdc_api(conn, prices_dict)
+            if USE_CDC:
+                # call CDC API and update the dictionary with Price object
+                await create_prices_from_cdc_api(conn, prices_dict)
 
             # log time
             print(Style.RESET_ALL + "At " + datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f") + " the process end in: ", time.time() - start, "seconds")
