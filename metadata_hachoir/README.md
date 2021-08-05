@@ -8,7 +8,7 @@ https://hachoir.readthedocs.io/en/latest/parser.html
 https://hachoir.readthedocs.io/en/latest/metadata.html
 
 ### install
-cd ~/dev/repository/git/my_python/metadata-hachoir/src
+cd ~/dev/repository/gitpy/my_python/metadata-hachoir/src
 python3 -m pip install -U hachoir
 python3 -m pip install -U urwid
 python3 -m pip install -U wxPython

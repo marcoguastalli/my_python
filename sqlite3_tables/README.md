@@ -12,7 +12,7 @@ https://likegeeks.com/es/tutorial-de-python-sqlite3/
 sqlite3
 
 # build
-cd ~/dev/repository/git/my_python/sqlite3_tables
+cd ~/dev/repository/gitpy/my_python/sqlite3_tables
 
 # run
 python3 sqlite3_prices.py

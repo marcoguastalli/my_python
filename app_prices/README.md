@@ -5,7 +5,7 @@ Connect to API and insert into 'prices.sqlite'
 colorama
 
 ### play
-cd ~/dev/repository/git/my_python/app_prices
+cd ~/dev/repository/gitpy/my_python/app_prices
 python3 app_prices.py
 
 # SQL

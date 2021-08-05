@@ -7,7 +7,7 @@ class Test(unittest.TestSuite):
     class Tests(unittest.TestCase):
 
         def test_read_json_files_from_path(self):
-            source_path = "/Users/marcoguastalli/dev/repository/git/my_python/999_test_resources"
+            source_path = "/Users/marcoguastalli/dev/repository/gitpy/my_python/999_test_resources"
             object_instance = ReadJsonFilesFromPath(source_path)
             result = object_instance.create_json_string_list_from_path()
             print(result)

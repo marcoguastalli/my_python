@@ -1,0 +1,10 @@
+datetime
+requests
+python-dotenv
+Flask
+pymongo
+requests
+hachoir
+beautifulsoup4
+aioschedule
+colorama

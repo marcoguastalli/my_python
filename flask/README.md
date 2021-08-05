@@ -5,7 +5,7 @@ https://flask.palletsprojects.com/en/1.1.x/
 Flask
 
 # build
-cd ~/dev/repository/git/my_python/flask/route
+cd ~/dev/repository/gitpy/my_python/flask/route
 
 # run
 python3

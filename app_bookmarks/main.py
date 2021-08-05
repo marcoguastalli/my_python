@@ -1,7 +1,7 @@
 from app_bookmarks.parser.bookmarks_parser import ParseBookmarksHtmlFile
 from app_bookmarks.store.store_json import StoreJson
 
-BOOKMARKS_HTML_FILE = "/Users/marcoguastalli/dev/repository/git/my_python/app_bookmarks/bookmarks_light.html"
+BOOKMARKS_HTML_FILE = "/Users/marcoguastalli/dev/repository/gitpy/my_python/app_bookmarks/bookmarks_light.html"
 BOOKMARKS_POST_ENDPOINT_URL = "http://localhost:8080/marco27-web/v1/bookmarks/create"
 
 
