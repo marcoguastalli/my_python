@@ -8,3 +8,4 @@ hachoir
 beautifulsoup4
 aioschedule
 colorama
+pika
