@@ -1,6 +1,7 @@
-from printfilesystem.read.read_folder import ReadFolder
+from printfilesystem_sqlite.read.read_folder import ReadFolder
 from create_connection import create_connection
 from execute_query import execute_query
+from printfilesystem_sqlite.create.create_json import CreateJson
 
 
 def main():
@@ -16,7 +17,7 @@ def main():
             conn.commit()
             # create table
             sql_create_table = '''CREATE TABLE IF NOT EXISTS pfs
-                                         (_id integer PRIMARY KEY AUTOINCREMENT,
+                                         (_id text PRIMARY KEY,
                                          path text NOT NULL,
                                          name text NOT NULL,
                                          namespace text NOT NULL,
@@ -33,6 +34,12 @@ def main():
             rf = ReadFolder(source_path)
             files_in_folder = rf.read_files_in_folder_using_os()
             print("The folder with path '%s' contains %s files" % (source_path, files_in_folder.__len__()))
+
+            cj = CreateJson(files_in_folder)
+            sql_list = cj.create_sql()
+            print(f"\nSuccessfully created {sql_list.__len__()} sql inserts")
+            for sql in sql_list:
+                print(sql)
 
         else:
             print("Error Connection to DDBB:" + database)
