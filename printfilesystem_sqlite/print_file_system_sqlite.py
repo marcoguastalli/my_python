@@ -39,7 +39,8 @@ def main():
             sql_list = cj.create_sql()
             print(f"\nSuccessfully created {sql_list.__len__()} sql inserts")
             for sql in sql_list:
-                print(sql)
+                execute_query(conn, sql)
+                conn.commit()
 
         else:
             print("Error Connection to DDBB:" + database)

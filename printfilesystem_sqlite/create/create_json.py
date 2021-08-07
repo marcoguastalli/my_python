@@ -75,8 +75,8 @@ class CreateJson:
                 pfs_model.set_mime('')
 
             sql = f"INSERT INTO pfs (_id, path, name, namespace, mime, width, height, duration, created, modified, size) " \
-                  f"VALUES ('{pfs_model.get_id()}', '{pfs_model.get_name()}', '{pfs_model.get_namespace()}', '{pfs_model.get_mime()}'," \
-                  f" '{pfs_model.get_width()}', '{pfs_model.get_height()}', '{pfs_model.get_duration()}', " \
+                  f"VALUES ('{pfs_model.get_id()}', '{pfs_model.get_path()}', '{pfs_model.get_name()}', '{pfs_model.get_namespace()}'," \
+                  f"'{pfs_model.get_mime()}', '{pfs_model.get_width()}', '{pfs_model.get_height()}', '{pfs_model.get_duration()}', " \
                   f"'{pfs_model.get_created()}', '{pfs_model.get_modified()}', {pfs_model.get_size()})"
 
             result.append(sql)
