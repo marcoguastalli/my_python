@@ -39,12 +39,12 @@ def main():
                 if currency == 'USDT':
                     pair_account_balance_dictionary[currency] = account, total_balance
                     pass
-                elif currency == "LDBNB":
-                    pair = "BNBUSDT"
+                elif currency[0:2] == "LD":
+                    pair = currency[2:] + 'USDT'
                     add_pair_to_account_balance_dictionary(tickers_dictionary, account, pair, total_balance, pair_account_balance_dictionary)
                     pass
-                elif currency == "LDBTC":
-                    pair = "BTCUSDT"
+                elif currency == "BETH":
+                    pair = "BETHUSDT"
                     add_pair_to_account_balance_dictionary(tickers_dictionary, account, pair, total_balance, pair_account_balance_dictionary)
                     pass
                 else:
