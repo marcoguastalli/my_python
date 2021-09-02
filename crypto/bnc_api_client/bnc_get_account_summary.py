@@ -44,7 +44,7 @@ def main():
                     add_pair_to_account_balance_dictionary(tickers_dictionary, account, pair, total_balance, pair_account_balance_dictionary)
                     pass
                 elif currency == "BETH":
-                    pair = "ETHUSDT"
+                    pair = "ETHUSDC"
                     add_pair_to_account_balance_dictionary(tickers_dictionary, account, pair, total_balance, pair_account_balance_dictionary)
                     pass
                 else:
