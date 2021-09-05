@@ -8,6 +8,8 @@ from api.get_ticker import GetTicker
 REST_API_ENDPOINT_SANDBOX = "https://uat-api.3ona.co/v2/"
 REST_API_ENDPOINT_PRODUCTION = "https://api.crypto.com/v2/"
 REST_API_ENDPOINT = REST_API_ENDPOINT_PRODUCTION
+# https://es.investing.com/currencies/usd-eur
+USD_EUR = 0.8419
 
 
 def main():
@@ -53,7 +55,8 @@ def main():
                 pair_account_balance_dictionary[currency] = account, balance
                 pass
         # calculate total_balance
-        total_balance = 0
+        total_balance_usdt = 0
+        total_balance_euro = 0
         for key, value in pair_account_balance_dictionary.items():
             if key != value:
                 pair = key
@@ -61,11 +64,13 @@ def main():
                 pair_balance = value[1]
                 # print(key, ': ', value)
                 balance_to_print = "{:f}".format(account.get_balance())
-                print(f"The balance for currency '{account.get_currency()}' is {balance_to_print}, the balance for pair '{pair}' in USDT is: {pair_balance}")
+                print(f"The balance for currency '{account.get_currency()}' is {balance_to_print}, the balance for pair '{pair}' in USDT is: {pair_balance}, in EUR is {USD_EUR * pair_balance}")
                 # add to total
-                total_balance += pair_balance
+                total_balance_usdt += pair_balance
+                total_balance_euro += (USD_EUR * pair_balance)
         # print total
-        print("The total balance for the account is %s USDT" % total_balance)
+        print("The total balance for the account is %s USDT" % total_balance_usdt)
+        print("The total balance for the account is %s EURO" % total_balance_euro)
 
 
 if __name__ == "__main__":

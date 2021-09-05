@@ -8,6 +8,8 @@ from api.get_ticker import GetTicker
 REST_API_ENDPOINT_SANDBOX = "https://testnet.binance.vision"
 REST_API_ENDPOINT_PRODUCTION = "https://api.binance.com"
 REST_API_ENDPOINT = REST_API_ENDPOINT_PRODUCTION
+# https://es.investing.com/currencies/usd-eur
+USD_EUR = 0.8419
 
 
 def main():
@@ -34,26 +36,27 @@ def main():
             currency = account.get_currency()
             balance = account.get_balance()
             locked = account.get_locked()
-            total_balance = balance + locked
-            if total_balance > 0:
+            total_balance_usdt = balance + locked
+            if total_balance_usdt > 0:
                 if currency == 'USDT':
-                    pair_account_balance_dictionary[currency] = account, total_balance
+                    pair_account_balance_dictionary[currency] = account, total_balance_usdt
                     pass
                 elif currency[0:2] == "LD":
                     pair = currency[2:] + 'USDT'
-                    add_pair_to_account_balance_dictionary(tickers_dictionary, account, pair, total_balance, pair_account_balance_dictionary)
+                    add_pair_to_account_balance_dictionary(tickers_dictionary, account, pair, total_balance_usdt, pair_account_balance_dictionary)
                     pass
                 elif currency == "BETH":
                     pair = "ETHUSDC"
-                    add_pair_to_account_balance_dictionary(tickers_dictionary, account, pair, total_balance, pair_account_balance_dictionary)
+                    add_pair_to_account_balance_dictionary(tickers_dictionary, account, pair, total_balance_usdt, pair_account_balance_dictionary)
                     pass
                 else:
                     # the account currency + "USDT" gives a pair
                     pair = currency + "USDT"
-                    add_pair_to_account_balance_dictionary(tickers_dictionary, account, pair, total_balance, pair_account_balance_dictionary)
+                    add_pair_to_account_balance_dictionary(tickers_dictionary, account, pair, total_balance_usdt, pair_account_balance_dictionary)
                     pass
         # calculate total_balance
-        total_balance = 0
+        total_balance_usdt = 0
+        total_balance_euro = 0
         for key, value in pair_account_balance_dictionary.items():
             if key != value:
                 pair = key
@@ -61,11 +64,13 @@ def main():
                 pair_balance = value[1]
                 # print(key, ': ', value)
                 balance_to_print = "{:f}".format(account.get_balance() + account.get_locked())
-                print(f"The balance for currency '{account.get_currency()}' is {balance_to_print}, the balance for pair '{pair}' in USDT is: {pair_balance}")
+                print(f"The balance for currency '{account.get_currency()}' is {balance_to_print}, the balance for pair '{pair}' in USDT is: {pair_balance}, in EUR is {USD_EUR * pair_balance}")
                 # add to total
-                total_balance += pair_balance
+                total_balance_usdt += pair_balance
+                total_balance_euro += (USD_EUR * pair_balance)
         # print total
-        print("The total balance for the account is %s USDT" % total_balance)
+        print("The total balance for the account is %s USDT" % total_balance_usdt)
+        print("The total balance for the account is %s EURO" % total_balance_euro)
 
 
 def add_pair_to_account_balance_dictionary(tickers_dictionary, account, pair, total_balance, pair_account_balance_dictionary):
