@@ -49,6 +49,10 @@ def main():
                     pair = "ETHUSDC"
                     add_pair_to_account_balance_dictionary(tickers_dictionary, account, pair, total_balance_usdt, pair_account_balance_dictionary)
                     pass
+                elif currency == "AGIX":
+                    pair = "AGIXBTC"
+                    add_pair_to_account_balance_dictionary(tickers_dictionary, account, pair, total_balance_usdt, pair_account_balance_dictionary)
+                    pass
                 else:
                     # the account currency + "USDT" gives a pair
                     pair = currency + "USDT"
@@ -64,10 +68,17 @@ def main():
                 pair_balance = value[1]
                 # print(key, ': ', value)
                 balance_to_print = "{:f}".format(account.get_balance() + account.get_locked())
-                print(f"The balance for currency '{account.get_currency()}' is {balance_to_print}, the balance for pair '{pair}' in USDT is: {pair_balance}, in EUR is {USD_EUR * pair_balance}")
-                # add to total
-                total_balance_usdt += pair_balance
-                total_balance_euro += (USD_EUR * pair_balance)
+                if account.get_currency() == "AGIX":
+                    agix_balance_in_usdt = (pair_balance * float(tickers_dictionary['BTCUSDT']['bidPrice']))
+                    print(f"The balance for currency '{account.get_currency()}' is {balance_to_print}, the balance for pair '{pair}' in BTC is: {pair_balance}, in USDT is: {agix_balance_in_usdt}")
+                    total_balance_usdt += agix_balance_in_usdt
+                    total_balance_euro += (USD_EUR * total_balance_usdt)
+                    pass
+                else:
+                    print(f"The balance for currency '{account.get_currency()}' is {balance_to_print}, the balance for pair '{pair}' in USDT is: {pair_balance}, in EUR is {USD_EUR * pair_balance}")
+                    # add to total
+                    total_balance_usdt += pair_balance
+                    total_balance_euro += (USD_EUR * pair_balance)
         # print total
         print("The total balance for the account is %s USDT" % total_balance_usdt)
         print("The total balance for the account is %s EURO" % total_balance_euro)
