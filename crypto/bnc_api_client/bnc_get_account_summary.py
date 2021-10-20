@@ -72,7 +72,7 @@ def main():
                     agix_balance_in_usdt = (pair_balance * float(tickers_dictionary['BTCUSDT']['bidPrice']))
                     print(f"The balance for currency '{account.get_currency()}' is {balance_to_print}, the balance for pair '{pair}' in BTC is: {pair_balance}, in USDT is: {agix_balance_in_usdt}")
                     total_balance_usdt += agix_balance_in_usdt
-                    total_balance_euro += (USD_EUR * total_balance_usdt)
+                    total_balance_euro += (USD_EUR * agix_balance_in_usdt)
                     pass
                 else:
                     print(f"The balance for currency '{account.get_currency()}' is {balance_to_print}, the balance for pair '{pair}' in USDT is: {pair_balance}, in EUR is {USD_EUR * pair_balance}")
