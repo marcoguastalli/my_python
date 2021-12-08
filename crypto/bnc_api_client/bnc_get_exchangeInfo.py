@@ -15,7 +15,7 @@ def main():
     symbols_dictionary = exchange_info.parse_response(response)
     for symbol in symbols_dictionary:
         symbol_item = symbols_dictionary.get(symbol)
-        print(f"{symbol} --> {symbol_item['baseAsset']}_{symbol_item['quoteAsset']}")
+        print(f"{symbol}  -->  {symbol_item['baseAsset']}_{symbol_item['quoteAsset']}  -->  status: {symbol_item['status']}")
 
 
 if __name__ == "__main__":
