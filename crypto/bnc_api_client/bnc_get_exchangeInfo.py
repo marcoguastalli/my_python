@@ -18,5 +18,12 @@ def main():
         print(f"{symbol}  -->  {symbol_item['baseAsset']}_{symbol_item['quoteAsset']}  -->  status: {symbol_item['status']}")
 
 
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        print('Interrupted')
+        try:
+            sys.exit(0)
+        except SystemExit:
+            os.error()
