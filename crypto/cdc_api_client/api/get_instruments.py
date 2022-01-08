@@ -4,6 +4,7 @@ import requests
 from api.api_request import ApiRequest
 from api.model.instrument import Instrument
 
+
 # Provides information on all supported instruments (e.g. BTC_USDT)
 # https://exchange-docs.crypto.com/spot/index.html#public-get-instruments
 #
