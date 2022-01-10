@@ -14,12 +14,16 @@ class PostNewOrder(ApiRequest):
     def __init__(self, url, api_key, secret_key):
         super().__init__(url, api_key, secret_key)
 
-    def do_post(self, symbol):
+    def do_post(self, symbol, side, type, quantity, quoteOrderQty):
         response = None
         try:
             params_dict = {
                 "recvWindow": 60000,
                 "timestamp": int(time.time() * 1000),
+                "symbol": symbol,
+                "side": side,
+                "type": type,
+                "quantity": quantity
             }
             query_string = sign_request(params_dict, self.api_key, self.secret_key)
             if query_string is not None:
