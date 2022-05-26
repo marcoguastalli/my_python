@@ -24,6 +24,27 @@ class Bookmarks:
     def set_modified(self, modified):
         self.__modified = modified
 
+    def get_title(self):
+        return self.__title
+
+    def get_uri(self):
+        return self.__uri
+
+    def get_folder(self):
+        return self.__folder
+
+    def get_icon(self):
+        return self.__icon
+
+    def get_status(self):
+        return self.__status
+
+    def get_created(self):
+        return self.__created
+
+    def get_modified(self):
+        return self.__modified
+
     def __str__(self):
         result = '{' \
                  + '"title":"' + self.__title + '",' \
