@@ -2,11 +2,14 @@ from dotenv import dotenv_values
 
 from api.get_open_orders import GetOpenOrders
 
-SYMBOL = 'AGIXBTC'
+REST_API_ENDPOINT_SANDBOX = "https://testnet.binance.vision"
+REST_API_ENDPOINT_PRODUCTION = "https://api.binance.com"
+REST_API_ENDPOINT = REST_API_ENDPOINT_PRODUCTION
+SYMBOL = 'BTCUSDT'
 
 
 def main():
-    url = "https://api.binance.com/api/v3/openOrders"
+    url = REST_API_ENDPOINT + "/api/v3/openOrders"
     config = dotenv_values(".env")
     open_orders = GetOpenOrders(url, config['API_KEY'], config['API_SECRET'])
     response = open_orders.do_get(SYMBOL)

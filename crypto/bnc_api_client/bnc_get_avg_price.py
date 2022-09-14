@@ -2,9 +2,13 @@ from api.get_avg_price import GetAveragePrice
 
 SYMBOL = 'BTCUSDT'
 
+REST_API_ENDPOINT_SANDBOX = "https://testnet.binance.vision"
+REST_API_ENDPOINT_PRODUCTION = "https://api.binance.com"
+REST_API_ENDPOINT = REST_API_ENDPOINT_PRODUCTION
+
 
 def main():
-    url = "https://api.binance.com/api/v3/avgPrice"
+    url = REST_API_ENDPOINT + "/api/v3/avgPrice"
     average_price = GetAveragePrice(url)
     response = average_price.do_get(SYMBOL)
     response_dictionary = average_price.parse_response(response)

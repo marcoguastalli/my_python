@@ -78,4 +78,4 @@ hs_err_pid*
 lombok.config
 
 # env
-.env
+env

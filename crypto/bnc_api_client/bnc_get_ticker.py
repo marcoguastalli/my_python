@@ -1,8 +1,12 @@
 from api.get_ticker import GetTicker
 
+REST_API_ENDPOINT_SANDBOX = "https://testnet.binance.vision"
+REST_API_ENDPOINT_PRODUCTION = "https://api.binance.com"
+REST_API_ENDPOINT = REST_API_ENDPOINT_PRODUCTION
+
 
 def main():
-    url = "https://api.binance.com/api/v3/ticker/24hr"
+    url = REST_API_ENDPOINT + "/api/v3/ticker/24hr"
     ticker = GetTicker(url)
     response = ticker.do_get()
     tickers_dictionary = ticker.parse_response(response)
