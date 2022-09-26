@@ -24,6 +24,7 @@ def sitemap_xml_validator(url, pattern):
     result = {}
     for u in urls:
         loc = u.find('loc').string
+        print("loc: '%s'" % loc)
         match = re.match(pattern, loc)
         if match is not None:
             result[loc] = match.group()
