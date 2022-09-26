@@ -47,6 +47,8 @@ class CreateJson:
                     pfs_model.set_mime('BUP')
                 elif extension == 'IFO':
                     pfs_model.set_mime('IFO')
+                elif extension == 'DS_Store':
+                    pfs_model.set_mime('DS_Store')
                 else:
                     print("Extract metadata from: %s" % file)
                     metadata: dict = extract_metadata(file)

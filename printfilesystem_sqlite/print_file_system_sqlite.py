@@ -5,7 +5,7 @@ from printfilesystem_sqlite.create.create_json import CreateJson
 
 
 def main():
-    source_path = "/Users/marcoguastalli/Dropbox/1/2021-08"
+    source_path = "/Users/marcoguastalli/temp"
     database = "/Users/marcoguastalli/opt/sqlite/pfs.sqlite"
 
     conn = create_connection(database)
