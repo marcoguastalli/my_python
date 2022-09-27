@@ -5,8 +5,19 @@ from printfilesystem_sqlite.create.create_json import CreateJson
 
 
 def main(extract_metadata: False):
-    source_path = "/media/marco27/M27BACKUP/m27/doodie"
-    database = "/home/marco27/opt/sqlite/pfs.sqlite"
+    source_path = "/Users/marcoguastalli/temp"
+    database = "/Users/marcoguastalli/opt/sqlite/pfs.sqlite"
+
+    extract_metadata_mime_type = [
+        'jpg',
+        'png',
+        'mp3',
+        'mp4',
+        'avi',
+        'mkv',
+        'mpg',
+        'mpeg'
+    ]
 
     conn = create_connection(database)
     try:
@@ -35,7 +46,7 @@ def main(extract_metadata: False):
             files_in_folder = rf.read_files_in_folder_using_os()
             print("The folder with path '%s' contains %s files" % (source_path, files_in_folder.__len__()))
 
-            cj = CreateJson(files_in_folder, extract_metadata)
+            cj = CreateJson(files_in_folder, extract_metadata, extract_metadata_mime_type)
             sql_list = cj.create_sql()
             print(f"\nSuccessfully created {sql_list.__len__()} sql inserts")
             for sql in sql_list:

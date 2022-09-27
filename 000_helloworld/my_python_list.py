@@ -19,6 +19,9 @@ def main():
     print(my_list)
     print(len(my_list))
 
+    print(my_list.__contains__('1st'))
+    print(my_list.__contains__('2nd'))
+
 
 if __name__ == "__main__":
     main()

@@ -16,9 +16,10 @@ date_format = '%Y-%m-%d %H:%M:%S'
 
 
 class CreateJson:
-    def __init__(self, files_in_path, extract_metadata):
+    def __init__(self, files_in_path, extract__metadata: bool, extract__metadata__mime__type: list):
         self.files_in_path = files_in_path
-        self.extract_metadata = extract_metadata
+        self.extract_metadata = extract__metadata
+        self.extract_metadata_mime_type = extract__metadata__mime__type
 
     def create_sql(self):
         result = []
@@ -45,7 +46,7 @@ class CreateJson:
             if extract_metadata:
                 if '.' in file:
                     extension = substring_after_last(file, '.')
-                    if extension == 'jpg' or extension == 'mp4':
+                    if self.extract_metadata_mime_type.__contains__(extension.lower()):
                         print("Extract metadata from: %s" % file)
                         metadata: dict = extract_metadata(file)
                         if metadata is not None and metadata.get('result') == 'ok':
