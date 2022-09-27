@@ -4,9 +4,9 @@ from execute_query import execute_query
 from printfilesystem_sqlite.create.create_json import CreateJson
 
 
-def main():
-    source_path = "/Users/marcoguastalli/temp"
-    database = "/Users/marcoguastalli/opt/sqlite/pfs.sqlite"
+def main(extract_metadata: False):
+    source_path = "/media/marco27/M27BACKUP/m27/doodie"
+    database = "/home/marco27/opt/sqlite/pfs.sqlite"
 
     conn = create_connection(database)
     try:
@@ -35,7 +35,7 @@ def main():
             files_in_folder = rf.read_files_in_folder_using_os()
             print("The folder with path '%s' contains %s files" % (source_path, files_in_folder.__len__()))
 
-            cj = CreateJson(files_in_folder)
+            cj = CreateJson(files_in_folder, extract_metadata)
             sql_list = cj.create_sql()
             print(f"\nSuccessfully created {sql_list.__len__()} sql inserts")
             for sql in sql_list:
@@ -51,7 +51,8 @@ def main():
 
 if __name__ == '__main__':
     try:
-        main()
+        extract__metadata = True
+        main(extract__metadata)
     except KeyboardInterrupt:
         print('Interrupted')
         try:
