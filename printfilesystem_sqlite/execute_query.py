@@ -11,4 +11,4 @@ def execute_query(connection, query):
         cursor = connection.cursor()
         cursor.execute(query)
     except Error as e:
-        print(e)
+        print(f"Error query '{query}' - '{e}'\n")
