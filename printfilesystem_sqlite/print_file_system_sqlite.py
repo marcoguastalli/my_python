@@ -44,17 +44,17 @@ def main(extract_metadata: False):
 
             rf = ReadFolder(source_path)
             files_in_folder = rf.read_files_in_folder_using_os()
-            print("The folder with path '%s' contains %s files" % (source_path, files_in_folder.__len__()))
 
             cj = CreateJson(files_in_folder, extract_metadata, extract_metadata_mime_type)
             sql_list = cj.create_sql()
-            print(f"\nSuccessfully created {sql_list.__len__()} sql inserts")
             for sql in sql_list:
                 execute_query(conn, sql)
                 conn.commit()
 
+            print("Total files at path '%s': %s" % (source_path, files_in_folder.__len__()))
+            print(f"Total files in the DDBB: {sql_list.__len__()}")
         else:
-            print("Error Connection to DDBB:" + database)
+            print(f"Error Connection to DDBB: '{database}'")
     finally:
         if conn is not None:
             conn.close()
