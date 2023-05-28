@@ -10,3 +10,5 @@ aioschedule
 colorama
 pika
 aiohttp
+websocket-client
+rel
