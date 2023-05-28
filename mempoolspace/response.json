@@ -1,0 +1,702 @@
+{
+  'mempoolInfo': {
+    'loaded': True,
+    'size': 304797,
+    'bytes': 231789040,
+    'usage': 1012500960,
+    'total_fee': 20.96927227,
+    'maxmempool': 300000000,
+    'mempoolminfee': 0.00010734,
+    'minrelaytxfee': 1e-05,
+    'unbroadcastcount': 0
+  },
+  'vBytesPerSecond': 1262,
+  'blocks': [
+    {
+      'id': '0000000000000000000475e5c8e29985adfd9987bf13a54555a872531e96e7e0',
+      'height': 791817,
+      'version': 543162368,
+      'timestamp': 1685296654,
+      'bits': 386248250,
+      'nonce': 2554360434,
+      'difficulty': 49549703178592.68,
+      'merkle_root': '0a02f037d24b1b381d11fad46baea9c2bf18e4c4739a10a22a3a6515bfde31d0',
+      'tx_count': 4226,
+      'size': 1671938,
+      'weight': 3993329,
+      'previousblockhash': '00000000000000000002947d18422809e165e3119b2070280d9581120bf688e9',
+      'mediantime': 1685290232,
+      'extras': {
+        'reward': 681161869,
+        'coinbaseRaw': '0309150c1b4d696e656420627920416e74506f6f6c383036dd004b00ded786e4fabe6d6d40929571ca09cede0eff48ed940177c9f2089a79af25489917a53e06ab9f49fc0200000000000000320c010055b2010000000000',
+        'orphans': [
+
+        ],
+        'medianFee': 53.04574293540663,
+        'feeRange': [
+          49,
+          49.48051948051948,
+          50.76070528967254,
+          53.04073789392775,
+          55.27918781725889,
+          63.98314606741573,
+          451.00284090909093
+        ],
+        'totalFees': 56161869,
+        'avgFee': 13292,
+        'avgFeeRate': 56,
+        'utxoSetChange': 5622,
+        'avgTxSize': 395.54,
+        'totalInputs': 6003,
+        'totalOutputs': 11625,
+        'totalOutputAmt': 140198147366,
+        'segwitTotalTxs': 4012,
+        'segwitTotalSize': 1597913,
+        'segwitTotalWeight': 3697337,
+        'feePercentiles': None,
+        'virtualSize': 998332.25,
+        'coinbaseAddress': '38XnPvu9PmonFU9WouPXUjYbW91wa5MerL',
+        'coinbaseSignature': 'OP_HASH160 OP_PUSHBYTES_20 4b09d828dfc8baaba5d04ee77397e04b1050cc73 OP_EQUAL',
+        'coinbaseSignatureAscii': '\x03\t\x15\x0c\x1bMined by AntPool806Ý\x00K\x00Þ×\x86äú¾mm@\x92\x95qÊ\tÎÞ\x0eÿHí\x94\x01wÉò\x08\x9ay¯%H\x99\x17¥>\x06«\x9fIü\x02\x00\x00\x00\x00\x00\x00\x002\x0c\x01\x00U²\x01\x00\x00\x00\x00\x00',
+        'header': '00006020e988f60b1281950d2870209b11e365e1092842187d9402000000000000000000d031debf15653a2aa2109a73c4e418bfc2a9ae6bd4fa111d381b4bd237f0020a0e9673643aae051772724098',
+        'utxoSetSize': 100790363,
+        'totalInputAmt': 140254309235,
+        'pool': {
+          'id': 44,
+          'name': 'AntPool',
+          'slug': 'antpool'
+        },
+        'matchRate': 99.78,
+        'similarity': 0.9666586524208235
+      }
+    },
+    {
+      'id': '000000000000000000023c2a5853f323672eb9022e2a8d9fbfb4d830ffd85434',
+      'height': 791818,
+      'version': 875536384,
+      'timestamp': 1685296678,
+      'bits': 386248250,
+      'nonce': 2105208069,
+      'difficulty': 49549703178592.68,
+      'merkle_root': '61eaaf19a7e1c39e242cda014d5590091116df44382adf9e4cc3dec7f84b4d3e',
+      'tx_count': 3828,
+      'size': 1763606,
+      'weight': 3992906,
+      'previousblockhash': '0000000000000000000475e5c8e29985adfd9987bf13a54555a872531e96e7e0',
+      'mediantime': 1685291922,
+      'extras': {
+        'reward': 672075476,
+        'coinbaseRaw': '030a150c04279673642f466f756e6472792055534120506f6f6c202364726f70676f6c642f26d88ead1000000000000000',
+        'orphans': [
+
+        ],
+        'medianFee': 46.8623949855352,
+        'feeRange': [
+          44.36492890995261,
+          44.97682709447415,
+          45.29220779220779,
+          46.25414364640884,
+          48.052509652509656,
+          48.47290640394089,
+          131.80327868852459
+        ],
+        'totalFees': 47075476,
+        'avgFee': 12300,
+        'avgFeeRate': 47,
+        'utxoSetChange': 2438,
+        'avgTxSize': 460.63,
+        'totalInputs': 5857,
+        'totalOutputs': 8295,
+        'totalOutputAmt': 94963142154,
+        'segwitTotalTxs': 3504,
+        'segwitTotalSize': 1558325,
+        'segwitTotalWeight': 3171890,
+        'feePercentiles': None,
+        'virtualSize': 998226.5,
+        'coinbaseAddress': 'bc1qxhmdufsvnuaaaer4ynz88fspdsxq2h9e9cetdj',
+        'coinbaseSignature': 'OP_0 OP_PUSHBYTES_20 35f6de260c9f3bdee47524c473a6016c0c055cb9',
+        'coinbaseSignatureAscii': "\x03\n\x15\x0c\x04'\x96sd/Foundry USA Pool #dropgold/&Ø\x8e\xad\x10\x00\x00\x00\x00\x00\x00\x00",
+        'header': '00a02f34e0e7961e5372a85545a513bf8799fdad8599e2c8e575040000000000000000003e4d4bf8c7dec34c9edf2a3844df16110990554d01da2c249ec3e1a719afea61269673643aae051705ed7a7d',
+        'utxoSetSize': None,
+        'totalInputAmt': None,
+        'pool': {
+          'id': 111,
+          'name': 'Foundry USA',
+          'slug': 'foundryusa'
+        },
+        'matchRate': 97.9,
+        'similarity': 0.888005564841412
+      }
+    },
+    {
+      'id': '000000000000000000037adccaf455f89f6482cf517a13cdf570c83933265864',
+      'height': 791819,
+      'version': 684769280,
+      'timestamp': 1685296712,
+      'bits': 386248250,
+      'nonce': 3848649782,
+      'difficulty': 49549703178592.68,
+      'merkle_root': '358ca926e00b477a973f4e8ff8308f8cf444aa9601e2ca6f49d14630f8721110',
+      'tx_count': 3532,
+      'size': 1814310,
+      'weight': 3997986,
+      'previousblockhash': '000000000000000000023c2a5853f323672eb9022e2a8d9fbfb4d830ffd85434',
+      'mediantime': 1685292745,
+      'extras': {
+        'reward': 669355801,
+        'coinbaseRaw': '030b150c2cfabe6d6dd22f47710c2fcdf8d5f01b18ee5e99a762a3f49eaa7d4706fe41e8b8afa4637b10000000f09f909f092f4632506f6f6c2f660000000000000000000000000000000000000000000000000000000000000000000000050025000000',
+        'orphans': [
+
+        ],
+        'medianFee': 43.19629295852457,
+        'feeRange': [
+          41,
+          41.57746478873239,
+          42.17771509167842,
+          43.21461187214612,
+          44.188720973092515,
+          51.22666666666667,
+          202.64650283553874
+        ],
+        'totalFees': 44355801,
+        'avgFee': 12561,
+        'avgFeeRate': 44,
+        'utxoSetChange': 1582,
+        'avgTxSize': 513.52,
+        'totalInputs': 6207,
+        'totalOutputs': 7789,
+        'totalOutputAmt': 182377997179,
+        'segwitTotalTxs': 3382,
+        'segwitTotalSize': 1623651,
+        'segwitTotalWeight': 3235458,
+        'feePercentiles': [
+          0,
+          5870,
+          6300,
+          7050,
+          8514,
+          14920,
+          889068
+        ],
+        'medianFeeAmt': 7050,
+        'virtualSize': 999496.5,
+        'coinbaseAddress': '1K6KoYC69NnafWJ7YgtrpwJxBLiijWqwa6',
+        'coinbaseSignature': 'OP_DUP OP_HASH160 OP_PUSHBYTES_20 c6740a12d0a7d556f89782bf5faf0e12cf25a639 OP_EQUALVERIFY OP_CHECKSIG',
+        'coinbaseSignatureAscii': '\x03\x0b\x15\x0c,ú¾mmÒ/Gq\x0c/ÍøÕð\x1b\x18î^\x99§b£ô\x9eª}G\x06þAè¸¯¤c{\x10\x00\x00\x00ð\x9f\x90\x9f\t/F2Pool/f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x00%\x00\x00\x00',
+        'header': '00c0d0283454d8ff30d8b4bf9f8d2a2e02b92e6723f353582a3c02000000000000000000101172f83046d1496fcae20196aa44f48c8f30f88f4e3f977a470be026a98c35489673643aae051736bc65e5',
+        'utxoSetSize': None,
+        'totalInputAmt': None,
+        'pool': {
+          'id': 0,
+          'name': 'Unknown',
+          'slug': 'unknown'
+        },
+        'matchRate': 99.96,
+        'similarity': 0.7752534670916154
+      }
+    },
+    {
+      'id': '000000000000000000048809d486e4cd65ba16dccf7be2f2184e86011746b68b',
+      'height': 791820,
+      'version': 939515904,
+      'timestamp': 1685296858,
+      'bits': 386248250,
+      'nonce': 1753494951,
+      'difficulty': 49549703178592.68,
+      'merkle_root': '404a848868d5c300ef870209d16e30a7c872bc5f4c33cd683f89e65cd6907764',
+      'tx_count': 4233,
+      'size': 2011490,
+      'weight': 3993230,
+      'previousblockhash': '000000000000000000037adccaf455f89f6482cf517a13cdf570c83933265864',
+      'mediantime': 1685295206,
+      'extras': {
+        'reward': 669615932,
+        'coinbaseRaw': '030c150c6b002f42696e616e63652f313037fabe6d6dc90af9955d823208b0655ef1bf58f2e9a4435f2671fd3a5875c342757b981633010000000000000005f6f34704ae7732a5b48809106f95176b00c33e439f0c0000000000',
+        'orphans': [
+
+        ],
+        'medianFee': 40.16342715790059,
+        'feeRange': [
+          38.15625,
+          38.91346153846154,
+          39.647840531561464,
+          40.424519074013695,
+          42.13770491803279,
+          55.01777825665338,
+          503.43304843304844
+        ],
+        'totalFees': 44615932,
+        'avgFee': 10542,
+        'avgFeeRate': 44,
+        'utxoSetChange': 2279,
+        'avgTxSize': 475.11,
+        'totalInputs': 6189,
+        'totalOutputs': 8468,
+        'totalOutputAmt': 201138377574,
+        'segwitTotalTxs': 4046,
+        'segwitTotalSize': 1944118,
+        'segwitTotalWeight': 3723850,
+        'feePercentiles': None,
+        'virtualSize': 998307.5,
+        'coinbaseAddress': '1Q8QR5k32hexiMQnRgkJ6fmmjn5fMWhdv9',
+        'coinbaseSignature': 'OP_DUP OP_HASH160 OP_PUSHBYTES_20 fdb159cd21d2f3411b941ecca0cd70c51b3acc6f OP_EQUALVERIFY OP_CHECKSIG',
+        'coinbaseSignatureAscii': '\x03\x0c\x15\x0ck\x00/Binance/107ú¾mmÉ\nù\x95]\x822\x08°e^ñ¿Xòé¤C_&qý:XuÃBu{\x98\x163\x01\x00\x00\x00\x00\x00\x00\x00\x05öóG\x04®w2¥´\x88\t\x10o\x95\x17k\x00Ã>C\x9f\x0c\x00\x00\x00\x00\x00',
+        'header': '00e0ff376458263339c870f5cd137a51cf82649ff855f4cadc7a03000000000000000000647790d65ce6893f68cd334c5fbc72c8a7306ed1090287ef00c3d56888844a40da9673643aae0517a7358468',
+        'utxoSetSize': None,
+        'totalInputAmt': None,
+        'pool': {
+          'id': 105,
+          'name': 'Binance Pool',
+          'slug': 'binancepool'
+        },
+        'matchRate': 99.86,
+        'similarity': 0.6519809592529414
+      }
+    },
+    {
+      'id': '000000000000000000045fe6f5a4206d52ddef409e5e058d414b492d23057ea9',
+      'height': 791821,
+      'version': 536879104,
+      'timestamp': 1685298886,
+      'bits': 386248250,
+      'nonce': 680613798,
+      'difficulty': 49549703178592.68,
+      'merkle_root': 'ff4f12a6e80228d2683aeeb8a3a96dd55d48c1af82f8572696c8ae6532b66054',
+      'tx_count': 3557,
+      'size': 1570257,
+      'weight': 3992877,
+      'previousblockhash': '000000000000000000048809d486e4cd65ba16dccf7be2f2184e86011746b68b',
+      'mediantime': 1685296393,
+      'extras': {
+        'reward': 710826701,
+        'coinbaseRaw': '030d150c04c69e73642f466f756e6472792055534120506f6f6c202364726f70676f6c642f2590530431d1580100000000',
+        'orphans': [
+
+        ],
+        'medianFee': 83.20773824649883,
+        'feeRange': [
+          65.1360095865788,
+          67.70689655172414,
+          71.05786471067644,
+          83.41047503045067,
+          90.3202846975089,
+          103.24157303370787,
+          451.00284090909093
+        ],
+        'totalFees': 85826701,
+        'avgFee': 24135,
+        'avgFeeRate': 86,
+        'utxoSetChange': 6612,
+        'avgTxSize': 441.37,
+        'totalInputs': 6009,
+        'totalOutputs': 12621,
+        'totalOutputAmt': 674559102856,
+        'segwitTotalTxs': 3342,
+        'segwitTotalSize': 1487945,
+        'segwitTotalWeight': 3663737,
+        'feePercentiles': None,
+        'virtualSize': 998219.25,
+        'coinbaseAddress': 'bc1qxhmdufsvnuaaaer4ynz88fspdsxq2h9e9cetdj',
+        'coinbaseSignature': 'OP_0 OP_PUSHBYTES_20 35f6de260c9f3bdee47524c473a6016c0c055cb9',
+        'coinbaseSignatureAscii': '\x03\r\x15\x0c\x04Æ\x9esd/Foundry USA Pool #dropgold/%\x90S\x041ÑX\x01\x00\x00\x00\x00',
+        'header': '002000208bb6461701864e18f2e27bcfdc16ba65cde486d40988040000000000000000005460b63265aec8962657f882afc1485dd56da9a3b8ee3a68d22802e8a6124fffc69e73643aae0517a6579128',
+        'utxoSetSize': None,
+        'totalInputAmt': None,
+        'pool': {
+          'id': 111,
+          'name': 'Foundry USA',
+          'slug': 'foundryusa'
+        },
+        'matchRate': 99.77,
+        'similarity': 0.975659315487368
+      }
+    },
+    {
+      'id': '00000000000000000003d288db338920ac70cdc18b22680f3433415d8820bcd7',
+      'height': 791822,
+      'version': 1073733632,
+      'timestamp': 1685299124,
+      'bits': 386248250,
+      'nonce': 1496173928,
+      'difficulty': 49549703178592.68,
+      'merkle_root': '66588f77efb45f07bfb054764af0413f6a3788ef525a69c5fbaf7d44432fbb19',
+      'tx_count': 3942,
+      'size': 1575384,
+      'weight': 3992790,
+      'previousblockhash': '000000000000000000045fe6f5a4206d52ddef409e5e058d414b492d23057ea9',
+      'mediantime': 1685296654,
+      'extras': {
+        'reward': 686887145,
+        'coinbaseRaw': '030e150c04ac9f73642f466f756e6472792055534120506f6f6c202364726f70676f6c642f0b17b2c82c1f000000000000',
+        'orphans': [
+
+        ],
+        'medianFee': 57.53892214687967,
+        'feeRange': [
+          52,
+          53.63295880149813,
+          56.197879858657245,
+          59.085383502170764,
+          63.115207373271886,
+          75.26690391459074,
+          451.00284090909093
+        ],
+        'totalFees': 61887145,
+        'avgFee': 15703,
+        'avgFeeRate': 62,
+        'utxoSetChange': 3363,
+        'avgTxSize': 399.57,
+        'totalInputs': 6403,
+        'totalOutputs': 9766,
+        'totalOutputAmt': 278383814524,
+        'segwitTotalTxs': 3742,
+        'segwitTotalSize': 1369177,
+        'segwitTotalWeight': 3168070,
+        'feePercentiles': None,
+        'virtualSize': 998197.5,
+        'coinbaseAddress': 'bc1qxhmdufsvnuaaaer4ynz88fspdsxq2h9e9cetdj',
+        'coinbaseSignature': 'OP_0 OP_PUSHBYTES_20 35f6de260c9f3bdee47524c473a6016c0c055cb9',
+        'coinbaseSignatureAscii': '\x03\x0e\x15\x0c\x04¬\x9fsd/Foundry USA Pool #dropgold/\x0b\x17²È,\x1f\x00\x00\x00\x00\x00\x00',
+        'header': '00e0ff3fa97e05232d494b418d055e9e40efdd526d20a4f5e65f0400000000000000000019bb2f43447daffbc5695a52ef88376a3f41f04a7654b0bf075fb4ef778f5866b49f73643aae051768cd2d59',
+        'utxoSetSize': None,
+        'totalInputAmt': None,
+        'pool': {
+          'id': 111,
+          'name': 'Foundry USA',
+          'slug': 'foundryusa'
+        },
+        'matchRate': 99.89,
+        'similarity': 0.9669528272852607
+      }
+    },
+    {
+      'id': '0000000000000000000549fd5d7c318b4f5a0ce11288a469e67dd476ea3aca91',
+      'height': 791823,
+      'version': 536870912,
+      'timestamp': 1685300038,
+      'bits': 386248250,
+      'nonce': 2149473674,
+      'difficulty': 49549703178592.68,
+      'merkle_root': '8b79c35ae7b55b081c452f485794d5e411811509b0a74b79335d9848bf5605c0',
+      'tx_count': 3364,
+      'size': 1533781,
+      'weight': 3997798,
+      'previousblockhash': '00000000000000000003d288db338920ac70cdc18b22680f3433415d8820bcd7',
+      'mediantime': 1685296678,
+      'extras': {
+        'reward': 688990019,
+        'coinbaseRaw': '030f150c2cfabe6d6d4e31378a81348924915875d8a20e5ae88a0b467baacfd6fa7745ac474e2a94e910000000f09f909f092f4632506f6f6c2f6700000000000000000000000000000000000000000000000000000000000000000000000500b6a80100',
+        'orphans': [
+
+        ],
+        'medianFee': 56.20568177278864,
+        'feeRange': [
+          48.72,
+          51.1672131147541,
+          53.51948051948052,
+          60.19672131147541,
+          75.87279151943463,
+          88.96991150442477,
+          318.72768878718534
+        ],
+        'totalFees': 63990019,
+        'avgFee': 19027,
+        'avgFeeRate': 64,
+        'utxoSetChange': 3874,
+        'avgTxSize': 455.8,
+        'totalInputs': 6291,
+        'totalOutputs': 10165,
+        'totalOutputAmt': 1347721351848,
+        'segwitTotalTxs': 3146,
+        'segwitTotalSize': 1309155,
+        'segwitTotalWeight': 3099402,
+        'feePercentiles': None,
+        'virtualSize': 999449.5,
+        'coinbaseAddress': '1K6KoYC69NnafWJ7YgtrpwJxBLiijWqwa6',
+        'coinbaseSignature': 'OP_DUP OP_HASH160 OP_PUSHBYTES_20 c6740a12d0a7d556f89782bf5faf0e12cf25a639 OP_EQUALVERIFY OP_CHECKSIG',
+        'coinbaseSignatureAscii': '\x03\x0f\x15\x0c,ú¾mmN17\x8a\x814\x89$\x91XuØ¢\x0eZè\x8a\x0bF{ªÏÖúwE¬GN*\x94é\x10\x00\x00\x00ð\x9f\x90\x9f\t/F2Pool/g\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x00¶¨\x01\x00',
+        'header': '00000020d7bc20885d4133340f68228bc1cd70ac208933db88d203000000000000000000c00556bf48985d33794ba7b009158111e4d59457482f451c085bb5e75ac3798b46a373643aae05178a5d1e80',
+        'utxoSetSize': None,
+        'totalInputAmt': None,
+        'pool': {
+          'id': 0,
+          'name': 'Unknown',
+          'slug': 'unknown'
+        },
+        'matchRate': 98.56,
+        'similarity': 0.9788802726765998
+      }
+    },
+    {
+      'id': '00000000000000000000dd9eb559403a1716fc343fb02f1edcfbe37955fc12dc',
+      'height': 791824,
+      'version': 678305792,
+      'timestamp': 1685300902,
+      'bits': 386248250,
+      'nonce': 2471202101,
+      'difficulty': 49549703178592.68,
+      'merkle_root': '1a14ec3490eb9db3e53de0c245d7e084afaf8e2b236fa3dc2021c7e575a4d270',
+      'tx_count': 3294,
+      'size': 1550103,
+      'weight': 3997791,
+      'previousblockhash': '0000000000000000000549fd5d7c318b4f5a0ce11288a469e67dd476ea3aca91',
+      'mediantime': 1685296712,
+      'extras': {
+        'reward': 687996234,
+        'coinbaseRaw': '0310150c2cfabe6d6d71a9c146e20fcd0c8b79471c3d08985ad22cbc35483d724ce85f27dd51562a8110000000f09f909f092f4632506f6f6c2f7300000000000000000000000000000000000000000000000000000000000000000000000500561f1363',
+        'orphans': [
+
+        ],
+        'medianFee': 52.37171830307378,
+        'feeRange': [
+          49.28340675477239,
+          50.0377358490566,
+          50.1779359430605,
+          58.20640569395018,
+          70,
+          84.56124721603564,
+          1019.367991845056
+        ],
+        'totalFees': 62996234,
+        'avgFee': 19130,
+        'avgFeeRate': 63,
+        'utxoSetChange': 3117,
+        'avgTxSize': 470.44,
+        'totalInputs': 6196,
+        'totalOutputs': 9313,
+        'totalOutputAmt': 1303112779190,
+        'segwitTotalTxs': 3084,
+        'segwitTotalSize': 1271439,
+        'segwitTotalWeight': 2883243,
+        'feePercentiles': None,
+        'virtualSize': 999447.75,
+        'coinbaseAddress': '1K6KoYC69NnafWJ7YgtrpwJxBLiijWqwa6',
+        'coinbaseSignature': 'OP_DUP OP_HASH160 OP_PUSHBYTES_20 c6740a12d0a7d556f89782bf5faf0e12cf25a639 OP_EQUALVERIFY OP_CHECKSIG',
+        'coinbaseSignatureAscii': "\x03\x10\x15\x0c,ú¾mmq©ÁFâ\x0fÍ\x0c\x8byG\x1c=\x08\x98ZÒ,¼5H=rLè_'ÝQV*\x81\x10\x00\x00\x00ð\x9f\x90\x9f\t/F2Pool/s\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x00V\x1f\x13c",
+        'header': '00206e2891ca3aea76d47de669a48812e10c5a4f8b317c5dfd490500000000000000000070d2a475e5c72120dca36f232b8eafaf84e0d745c2e03de5b39deb9034ec141aa6a673643aae0517358d4b93',
+        'utxoSetSize': None,
+        'totalInputAmt': None,
+        'pool': {
+          'id': 0,
+          'name': 'Unknown',
+          'slug': 'unknown'
+        },
+        'matchRate': 99.56,
+        'similarity': 0.9709087242804737
+      }
+    }
+  ],
+  'conversions': {
+    'time': 1683907200,
+    'USD': 27593,
+    'EUR': 25711,
+    'GBP': 22347,
+    'CAD': 37356,
+    'CHF': 25001,
+    'AUD': 42257,
+    'JPY': 3879581
+  },
+  'mempool-blocks': [
+    {
+      'blockSize': 1460086,
+      'blockVSize': 998987.5,
+      'nTx': 3667,
+      'totalFees': 61718033,
+      'medianFee': 50.25055976124319,
+      'feeRange': [
+        48.14645308924485,
+        48.49689440993789,
+        49.16065573770492,
+        53.68884971353019,
+        70.7394366197183,
+        84.57142857142857,
+        656.8689458689458
+      ]
+    },
+    {
+      'blockSize': 1705515,
+      'blockVSize': 998978.25,
+      'nTx': 3194,
+      'totalFees': 45639367,
+      'medianFee': 45.73238635455065,
+      'feeRange': [
+        42.24713958810069,
+        43.10204081632653,
+        44.144262295081965,
+        45.63739376770538,
+        47.13623188405797,
+        48.06530612244898,
+        48.23645320197044
+      ]
+    },
+    {
+      'blockSize': 1670892,
+      'blockVSize': 998955.75,
+      'nTx': 2949,
+      'totalFees': 39848705,
+      'medianFee': 40.012928118798996,
+      'feeRange': [
+        37.394366197183096,
+        37.84670231729055,
+        38.13491124260355,
+        39.80216802168022,
+        41.13442622950819,
+        41.94109396914446,
+        42.248520710059175
+      ]
+    },
+    {
+      'blockSize': 1749310,
+      'blockVSize': 998998.75,
+      'nTx': 2563,
+      'totalFees': 36573784,
+      'medianFee': 36.95328039311264,
+      'feeRange': [
+        35.06172839506173,
+        35.32860847018151,
+        35.99645213149287,
+        36.645161290322584,
+        37.13000702740689,
+        37.224489795918366,
+        37.57765788077127
+      ]
+    },
+    {
+      'blockSize': 1583862,
+      'blockVSize': 998928,
+      'nTx': 2530,
+      'totalFees': 33687803,
+      'medianFee': 33.5956678700361,
+      'feeRange': [
+        32.727777777777774,
+        32.87810259238831,
+        33.088948787061994,
+        33.75539568345324,
+        34.34247714048213,
+        34.84802099278373,
+        35.94762684124386
+      ]
+    },
+    {
+      'blockSize': 1655713,
+      'blockVSize': 998967.25,
+      'nTx': 2295,
+      'totalFees': 31099582,
+      'medianFee': 31.55464494399743,
+      'feeRange': [
+        27.616438356164384,
+        28.666938000271333,
+        30,
+        31.054989816700612,
+        32.133148404993065,
+        32.56512577373897,
+        38
+      ]
+    },
+    {
+      'blockSize': 1380960,
+      'blockVSize': 998998.5,
+      'nTx': 1701,
+      'totalFees': 25212991,
+      'medianFee': 25.000014889150275,
+      'feeRange': [
+        22.364089775561098,
+        23.558406482106683,
+        24.297109539759337,
+        25.18283362727807,
+        26.17801047120419,
+        27.025875190258752,
+        27.80269058295964
+      ]
+    },
+    {
+      'blockSize': 394696687,
+      'blockVSize': 221220211,
+      'nTx': 285898,
+      'totalFees': 1823146962,
+      'medianFee': 7.954119398716606,
+      'feeRange': [
+        1.000010482386385,
+        1.300003857925403,
+        2.1933198890105317,
+        7.954119398716606,
+        13.523564811684361,
+        15.135162940349632,
+        20.940573881716727
+      ]
+    }
+  ],
+  'transactions': [
+    {
+      'txid': '64452168e6fdc5ed94716014f9c1634c88dc70a1d37da203dbe01db6d9de78c4',
+      'fee': 53423,
+      'vsize': 468.75,
+      'value': 17473430,
+      'rate': 113.96906666666666
+    },
+    {
+      'txid': 'a50eec2233d772d752abaae40bd7162db65acf3b6e8438c6341a467d1a69baa3',
+      'fee': 7175,
+      'vsize': 142,
+      'value': 41347349,
+      'rate': 50.528169014084504
+    },
+    {
+      'txid': 'eae80113bfe04bd91fc847cd1c4df721694457fc7e7851108b64c8c731f9680c',
+      'fee': 5940,
+      'vsize': 109.5,
+      'value': 1208099,
+      'rate': 54.24657534246575
+    },
+    {
+      'txid': '0beb3fb0813a8365c6dce11525a59e1e2131d6832d4904d42be870cf58314067',
+      'fee': 8736,
+      'vsize': 181.25,
+      'value': 3264,
+      'rate': 48.19862068965517
+    },
+    {
+      'txid': '96d8251bb1fdd7d39c5b61925826fb65075bb64b73653f753c0d009d05a66c47',
+      'fee': 7150,
+      'vsize': 142,
+      'value': 489213,
+      'rate': 50.352112676056336
+    },
+    {
+      'txid': 'd02c1d02b53379bee9f96c13f855bffc7e13381a7f8c24aabf360686b79d56e9',
+      'fee': 12176,
+      'vsize': 177,
+      'value': 144840,
+      'rate': 68.7909604519774
+    }
+  ],
+  'backendInfo': {
+    'hostname': 'node206.fra.mempool.space',
+    'version': '2.6.0-dev',
+    'gitCommit': '97c8ace8',
+    'lightning': False
+  },
+  'loadingIndicators': {
+
+  },
+  'fees': {
+    'fastestFee': 51,
+    'halfHourFee': 49,
+    'hourFee': 45,
+    'economyFee': 22,
+    'minimumFee': 11
+  },
+  'da': {
+    'progressPercent': 76.98412698412699,
+    'difficultyChange': 1.805134614838333,
+    'estimatedRetargetDate': 1685575379360,
+    'remainingBlocks': 464,
+    'remainingTime': 273639360,
+    'previousRetarget': 3.216647595102627,
+    'previousTime': 1684386462,
+    'nextRetargetHeight': 792288,
+    'timeAvg': 589740,
+    'timeOffset': 0,
+    'expectedBlocks': 1525.4633333333334
+  }
+}

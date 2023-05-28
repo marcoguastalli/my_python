@@ -9,3 +9,5 @@ beautifulsoup4
 aioschedule
 colorama
 pika
+websocket-client
+rel
