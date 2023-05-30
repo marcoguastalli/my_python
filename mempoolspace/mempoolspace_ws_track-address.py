@@ -31,6 +31,8 @@ def on_close(ws, close_status_code, close_msg):
 def on_open(ws):
     message = {"action": "init"}
     ws.send(json.dumps(message))
+    # I get this address from the block 792125:
+    # http://mempoolhqx4isw62xs7abwphsq7ldayuidyx2v2oethdhhj6mlo2r6ad.onion/block/00000000000000000002684c1a10a7328003aaac1e5e1c6d79a0dfb58aa8756e
     message = { 'track-address': 'bc1qp7s43q92tg7d8s84ch938ywyxc848a6l6xj30n' }
     ws.send(json.dumps(message))
 
