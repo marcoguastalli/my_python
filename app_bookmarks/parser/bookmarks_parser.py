@@ -7,8 +7,8 @@ from utils.py_utils_date import convert_timestamp_to_str_with_format
 
 
 class ParseBookmarksHtmlFile:
-    def __init__(self, bookmarks_html_file):
-        self.bookmarks_html_file = bookmarks_html_file
+    def __init__(self, bookmarks_html_file_name):
+        self.bookmarks_html_file_name = bookmarks_html_file_name
 
     def parse_bookmarks_html_file(self):
         result = []
@@ -28,7 +28,7 @@ class ParseBookmarksHtmlFile:
         return result
 
     def get_list_of_tag(self, tag: str):
-        with open(self.bookmarks_html_file) as file_to_parse:
+        with open(self.bookmarks_html_file_name) as file_to_parse:
             soup = get_soup_from_html(file_to_parse)
             result = get_tags_from_soup(soup, tag)
         return result
