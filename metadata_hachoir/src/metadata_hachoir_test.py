@@ -6,8 +6,8 @@ import metadata_hachoir
 class Test(unittest.TestSuite):
     class Tests(unittest.TestCase):
 
-        def test_extract_metadata_from_video(self):
-            source_path = '/home/marco27/Downloads/IMG_7561.JPG'
+        def test_extract_metadata(self):
+            source_path = '/Users/marcoguastalli/Downloads/Fundamentals-of-Software-Architecture_Oreilly_Cover.png'
             result = metadata_hachoir.extract_metadata(source_path)
             print("\n")
             print(result)

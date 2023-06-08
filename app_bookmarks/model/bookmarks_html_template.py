@@ -1,0 +1,20 @@
+class BookmarksHtmlTemplate:
+
+    def __init__(self):
+        self.template = """<!DOCTYPE NETSCAPE-Bookmark-file-1>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; img-src data: *; object-src 'none'"></meta>
+<TITLE>Bookmarks</TITLE>
+<H1>Bookmarks Menu</H1>
+<DL><p>
+    <DT><H3>FOLDER 1</H3>
+    <DL><p>
+        <DT><A HREF="http://127.0.0.1/">LINK 1</A>
+    </DL><p>
+    <DT><H3>FOLDER 2</H3>
+    <DL><p>
+        <DT><A HREF="http://127.0.0.2/">LINK 2</A>
+    </DL><p>
+    <DT><A HREF="http://127.0.0.3/">LINK 3</A>
+</DL>
+"""
