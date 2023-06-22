@@ -1,8 +1,8 @@
-APOSTROPHE = "'";
-BRACE_CLOSE = "}";
-BRACE_OPEN = "{";
-COMMA = ",";
-DOUBLE_QUOTE = "\"";
+APOSTROPHE = "'"
+BRACE_CLOSE = "}"
+BRACE_OPEN = "{"
+COMMA = ","
+DOUBLE_QUOTE = "\""
 DOT = "."
 EQUAL = "="
 LESS = "<"
@@ -10,7 +10,7 @@ MORE = ">"
 ROUND_PARENTHESIS_CLOSE = ")"
 ROUND_PARENTHESIS_OPEN = "("
 SQUARE_BRACKET_CLOSE = "]"
-SQUARE_BRACKET_OPEN = "[";
+SQUARE_BRACKET_OPEN = "["
 UTF_8 = "utf-8"
 
 
