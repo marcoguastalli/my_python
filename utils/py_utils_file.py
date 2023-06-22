@@ -41,6 +41,14 @@ def write_strings_to_file(strings: list, target_path: str, target_file_name: str
             file.write(line.__str__() + "\n")
     pass
 
+def write_strings_to_path_file_name(strings: list, target_path_file_name: str):
+    if strings.__len__() == 0:
+        return
+    with open(target_path_file_name, 'w') as file:
+        for line in strings:
+            file.write(line.__str__() + "\n")
+    pass
+
 
 def read_file_to_list_of_string(file_path: Path):
     with open(file_path, 'r', encoding='UTF-8') as file:

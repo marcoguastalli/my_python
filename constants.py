@@ -1,3 +1,5 @@
+APOSTROPHE = "'";
+DOUBLE_QUOTE = "\"";
 DOT = "."
 LESS = "<"
 MORE = ">"
