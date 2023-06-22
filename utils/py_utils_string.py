@@ -18,6 +18,10 @@ def substring_before_last(s: str, separator: str):
     return s.rsplit(separator, 1)[0]
 
 
+def substring_before_first(s: str, separator: str):
+    return s[:s.index(separator)]
+
+
 def substring_after_last(s: str, separator: str):
     return s.rsplit(separator, 1)[1]
 

@@ -1,4 +1,5 @@
-import json
+from constants import EQUAL
+from utils.py_utils_string import substring_before_first
 
 
 class OsgiXmlToJsonConverter:
@@ -10,6 +11,9 @@ class OsgiXmlToJsonConverter:
         self.xml_lines.append(line)
 
     def get_json_object(self):
-        data = {}
-        data['key'] = 'value'
-        return json.dumps(data)
+        result = {}
+        for line in self.xml_lines:
+            key = substring_before_first(line, EQUAL)
+            value = "value"
+            result[key] = value
+        return result

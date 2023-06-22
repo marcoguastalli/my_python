@@ -5,9 +5,7 @@ from dotenv import dotenv_values
 
 from aem_utils.aem_constants import DIR_CONFIG_OSGICONFIG_CONFIG, OSGI_CONFIG_EXTENSION
 from aem_utils.aem_constants import JCR
-from constants import DOT
-from constants import LESS
-from constants import XML_EXTENSION
+from constants import DOT, LESS, UTF_8, XML_EXTENSION
 from osgi_xml_to_json_converter import OsgiXmlToJsonConverter
 from utils.py_utils_file import read_files_in_folder_filter_by_extension, read_file_to_list_of_string
 from utils.py_utils_string import substring_before_last
@@ -37,7 +35,7 @@ def main():
         # write json file
         json_file_name = substring_before_last(xml_file_name, DOT) + DOT + OSGI_CONFIG_EXTENSION
         print(f"Writing new file: {json_file_name}")
-        with open(json_file_name, 'w', encoding='utf-8') as f:
+        with open(json_file_name, 'w', encoding=UTF_8) as f:
             json.dump(converter.get_json_object(), f, ensure_ascii=False, indent=4)
 
     exit(0)
