@@ -1,7 +1,9 @@
 from dotenv import dotenv_values
 from pathlib import Path
 from constants import DOT
+from constants import LESS
 from constants import XML_EXTENSION
+from aem_utils.aem_constants import JCR_PRIMARY_TYPE
 from aem_utils.aem_constants import DIR_CONFIG_OSGICONFIG_CONFIG, OSGI_CONFIG_EXTENSION
 from utils.py_utils_file import read_files_in_folder_filter_by_extension, read_file_to_list_of_string
 from osgi_xml_to_json_converter import OsgiXmlToJsonConverter
@@ -21,11 +23,14 @@ def main():
     read_files_in_folder_filter_by_extension(xml_files_in_osgiconfig_folder, path_to_osgiconfigs, XML_EXTENSION)
     for xml_file_name in xml_files_in_osgiconfig_folder:
         print(f"Converting file: {xml_file_name}")
-        file_content = read_file_to_list_of_string(xml_file_name)
-        print(f" - {file_content}")
-
         json_file_name = substring_before_last(xml_file_name, DOT) + DOT + OSGI_CONFIG_EXTENSION
         print(f"Writing new file: {json_file_name}")
+
+        # processing file content
+        file_content = read_file_to_list_of_string(xml_file_name)
+        for line in file_content:
+            if not line.startswith((LESS, JCR_PRIMARY_TYPE)):
+                print(line)
 
     exit(0)
 
