@@ -1,9 +1,15 @@
-from utils.py_utils_file import read_file_to_list_of_string
 import json
+
 
 class OsgiXmlToJsonConverter:
 
-    def createJsonObject(self):
+    def __init__(self):
+        self.xml_lines = []
+
+    def add_line(self, line: str):
+        self.xml_lines.append(line)
+
+    def get_json_object(self):
         data = {}
         data['key'] = 'value'
         return json.dumps(data)
