@@ -12,3 +12,4 @@ pika
 aiohttp
 websocket-client
 rel
+cryptography
