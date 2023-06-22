@@ -16,7 +16,7 @@ def delete_folder_if_exists(path):
         os.rmdir(path)
 
 
-def recursive_read_folder(result, source_folder):
+def recursive_read_folder(result, source_folder: Path):
     files_in_folder = sorted(source_folder.iterdir())
     for file_in_folder in files_in_folder:
         element = file_in_folder
@@ -24,6 +24,13 @@ def recursive_read_folder(result, source_folder):
             # element = "[" + element.__str__() + "]"
             recursive_read_folder(result, file_in_folder)
         result.append(element)
+
+def read_files_in_folder_filter_by_extension(result: [], source_folder: Path, extension: str):
+    for subdir, dirs, files in os.walk(source_folder):
+        for filename in files:
+            if filename.endswith(extension):
+                result.append(subdir + os.sep + filename)
+    return sorted(result)
 
 
 def write_strings_to_file(strings: list, target_path: str, target_file_name: str):
