@@ -38,6 +38,13 @@ class Test(unittest.TestSuite):
             result = py_utils_string.substring_after_last(s, separator)
             self.assertEqual(expected, result)
 
+        def test_substring_after_first(self):
+            s = "/media/marco27/MyBook/wd8/anime/Avventura/One Piece/001 - Inizia l'avventura.mkv"
+            separator = ' - '
+            expected = "Inizia l'avventura.mkv"
+            result = py_utils_string.substring_after_first(s, separator)
+            self.assertEqual(expected, result)
+
         def test_is_blank(self):
             self.assertTrue(py_utils_string.is_blank(None))
             self.assertTrue(py_utils_string.is_blank(''))

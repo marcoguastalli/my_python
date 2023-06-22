@@ -1,5 +1,7 @@
-from constants import EQUAL
-from utils.py_utils_string import substring_before_first
+from constants import DOUBLE_QUOTE, EQUAL
+from utils.py_utils_string import substring_before_first, substring_after_first, substring_before_last
+
+MULTI_VALUE_PROPERTY_IDENTIFIER = "=\"["
 
 
 class OsgiXmlToJsonConverter:
@@ -14,6 +16,10 @@ class OsgiXmlToJsonConverter:
         result = {}
         for line in self.xml_lines:
             key = substring_before_first(line, EQUAL)
-            value = "value"
+            if line.__contains__(MULTI_VALUE_PROPERTY_IDENTIFIER):
+                value = []
+            else:
+                value = substring_after_first(line, DOUBLE_QUOTE)
+                value = substring_before_last(value, DOUBLE_QUOTE)
             result[key] = value
         return result
