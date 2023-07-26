@@ -8,6 +8,16 @@ colorama
 cd ~/dev/repository/gitpy/my_python/app_prices
 python3 app_prices.py
 
+##### pm2
+pm2 start app_prices.py  --interpreter python3
+pm2 start app_prices_in_one_script.py  --interpreter python3
+pm2 restart app_prices.py  --interpreter python3
+pm2 stop app_prices  --interpreter python3
+pm2 logs app_prices  --interpreter python3
+pm2 monit
+pm2 flush
+pm2 delete all
+
 # SQL
 -- return all the records ordered
  select id,

@@ -1,11 +1,14 @@
-#my_python
+# my_python
+My Python
 
 ### dependencies to install
-BeautifulSoup
-Flask
-pymongo
-requests
-hachoir
+requirements.txt
+
+### just a simple http server
+`python3 -m http.server 81`
+
+Test it with:
+`curl http://localhost:81`
 
 ##### mac
 ```sh
