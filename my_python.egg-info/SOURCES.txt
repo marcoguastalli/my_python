@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+aem_utils/__init__.py
+aem_utils/aem_constants.py
+aem_utils/osgi_xml_to_json/__init__.py
+aem_utils/osgi_xml_to_json/main.py
+aem_utils/osgi_xml_to_json/osgi_xml_to_json_converter.py
+my_python.egg-info/PKG-INFO
+my_python.egg-info/SOURCES.txt
+my_python.egg-info/dependency_links.txt
+my_python.egg-info/top_level.txt
