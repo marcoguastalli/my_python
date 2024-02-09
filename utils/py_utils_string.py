@@ -48,3 +48,7 @@ def default_if_empty(s: str, default_s: str):
     if is_blank(s):
         return default_s
     return s
+
+
+def string_not_blank(s: str):
+    return bool(s and s.strip())

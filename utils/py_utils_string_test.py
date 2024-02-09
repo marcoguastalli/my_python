@@ -61,6 +61,15 @@ class Test(unittest.TestSuite):
             self.assertEqual('s', py_utils_string.default_if_empty('s', 'd'))
             self.assertEqual('d', py_utils_string.default_if_empty('', 'd'))
 
+        def test_string_not_blank(self):
+            self.assertFalse(py_utils_string.string_not_blank(''))
+            self.assertFalse(py_utils_string.string_not_blank(""))
+            self.assertFalse(py_utils_string.string_not_blank(" "))
+            self.assertTrue(py_utils_string.string_not_blank("s"))
+            self.assertTrue(py_utils_string.string_not_blank(" s"))
+            self.assertTrue(py_utils_string.string_not_blank("s "))
+            self.assertTrue(py_utils_string.string_not_blank(" s "))
+
 
 if __name__ == "__main__":
     unittest.main(Test)

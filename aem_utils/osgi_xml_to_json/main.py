@@ -8,7 +8,7 @@ from aem_utils.aem_constants import JCR
 from constants import DOT, LESS, SLASH, UTF_8, XML_EXTENSION
 from osgi_xml_to_json_converter import OsgiXmlToJsonConverter
 from utils.py_utils_file import read_files_in_folder_filter_by_extension, read_file_to_list_of_string
-from utils.py_utils_string import substring_before_last
+from utils.py_utils_string import substring_before_last, string_not_blank
 
 
 def main():
@@ -29,7 +29,7 @@ def main():
         # processing file content
         file_content = read_file_to_list_of_string(xml_file_name)
         for line in file_content:
-            if not line.lstrip().rstrip().startswith((LESS, SLASH, JCR)):
+            if string_not_blank(line) and not line.lstrip().rstrip().startswith((LESS, SLASH, JCR)):
                 converter.add_line(line.lstrip().rstrip())
 
         # write json file
