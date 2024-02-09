@@ -3,7 +3,7 @@ from pathlib import Path
 
 from dotenv import dotenv_values
 
-from aem_utils.aem_constants import DIR_SRC_MAIN_JCR_ROOT_APPS_TENANT_OSGICONFIG, OSGI_CONFIG_EXTENSION
+from aem_utils.aem_constants import OSGI_CONFIG_EXTENSION
 from aem_utils.aem_constants import JCR
 from constants import DOT, LESS, SLASH, UTF_8, XML_EXTENSION
 from osgi_xml_to_json_converter import OsgiXmlToJsonConverter
@@ -13,9 +13,9 @@ from utils.py_utils_string import substring_before_last
 
 def main():
     config = dotenv_values(".env")
-    aem_source_code_base_path = config["aem_source_code_base_path"]
+    aem_osgiconfig_absolute_path = config["aem_osgiconfig_absolute_path"]
 
-    path_to_osgiconfigs = Path(aem_source_code_base_path + DIR_SRC_MAIN_JCR_ROOT_APPS_TENANT_OSGICONFIG)
+    path_to_osgiconfigs = Path(aem_osgiconfig_absolute_path)
     print(f"\nRead XML files from: {path_to_osgiconfigs}\n")
 
     xml_files_in_osgiconfig_folder = []
