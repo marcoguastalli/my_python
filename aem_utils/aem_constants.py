@@ -1,8 +1,4 @@
-DIR_APPS = "ui.apps"
-DIR_CORE = "core"
-DIR_CONFIG = "ui.config"
-
-DIR_CONFIG_OSGICONFIG_CONFIG = DIR_CONFIG + "/src/main/jcr_root/apps/pfch/osgiconfig"
+DIR_SRC_MAIN_JCR_ROOT_APPS_TENANT_OSGICONFIG = "/src/main/jcr_root/apps/nnsites/osgiconfig"
 
 OSGI_CONFIG_EXTENSION = "cfg.json"
 JCR = "jcr"
