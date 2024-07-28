@@ -11,6 +11,10 @@ class Test(unittest.TestSuite):
             result = number_to_binary(number)
             self.assertIsNotNone(result)
             self.assertEqual(result, "00000001")
+            number = 2
+            result = number_to_binary(number)
+            self.assertIsNotNone(result)
+            self.assertEqual(result, "00000010")
 
 
 if __name__ == "__main__":
