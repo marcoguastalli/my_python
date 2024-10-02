@@ -46,7 +46,7 @@ def write_strings_to_path_file_name(strings: list, target_path_file_name: str):
         return
     with open(target_path_file_name, 'w') as file:
         for line in strings:
-            file.write(line.__str__() + "\n")
+            file.write(line.__str__())
     pass
 
 
