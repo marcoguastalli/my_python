@@ -70,6 +70,15 @@ class Test(unittest.TestSuite):
             self.assertTrue(py_utils_string.string_not_blank("s "))
             self.assertTrue(py_utils_string.string_not_blank(" s "))
 
+        def test_string_strip(self):
+            self.assertFalse(py_utils_string.string_strip(''))
+            self.assertFalse(py_utils_string.string_strip(""))
+            self.assertFalse(py_utils_string.string_strip(" "))
+            self.assertTrue(py_utils_string.string_strip("s"))
+            self.assertTrue(py_utils_string.string_strip(" s"))
+            self.assertTrue(py_utils_string.string_strip("s "))
+            self.assertTrue(py_utils_string.string_strip(" s "))
+
 
 if __name__ == "__main__":
     unittest.main(Test)

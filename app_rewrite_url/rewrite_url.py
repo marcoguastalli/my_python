@@ -1,15 +1,16 @@
 import os
 import re
+from pathlib import Path
 
-from app_rewrite_url.rewrite_url_constants import REWRITE_RULE
-from app_rewrite_url.rewrite_url_constants import REWRITE_RULE_FLAGS
 from app_rewrite_url.rewrite_url_constants import INPUT_FILE_NAME_WITH_PATTERNS
 from app_rewrite_url.rewrite_url_constants import INPUT_FILE_NAME_WITH_SUBSTITUTIONS
 from app_rewrite_url.rewrite_url_constants import OUTPUT_FILE_NAME_WITH_REWRITE_RULES
-from utils.py_utils_string import is_blank
-from pathlib import Path
-from utils.py_utils_file import write_strings_to_path_file_name
+from app_rewrite_url.rewrite_url_constants import REWRITE_RULE
+from app_rewrite_url.rewrite_url_constants import REWRITE_RULE_FLAGS
 from utils.py_utils_file import read_file_to_list_of_string
+from utils.py_utils_file import write_strings_to_path_file_name
+from utils.py_utils_string import is_blank
+from utils.py_utils_string import string_strip
 
 
 def validate_rewrite_rule(rule):
@@ -23,7 +24,7 @@ def validate_rewrite_rule(rule):
 def generate_rewrite_rules(patterns, substitutions):
     output_array = []
     for i in range(len(patterns)):
-        rule = f"{REWRITE_RULE} ^{patterns[i].strip()}$ {substitutions[i].strip()} {REWRITE_RULE_FLAGS}\n"
+        rule = f"{REWRITE_RULE} ^{string_strip(patterns[i])}$ {string_strip(substitutions[i])} {REWRITE_RULE_FLAGS}\n"
         output_array.append(rule)
 
     return output_array
