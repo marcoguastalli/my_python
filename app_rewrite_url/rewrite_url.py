@@ -24,7 +24,7 @@ def validate_rewrite_rule(rule):
 def generate_rewrite_rules(patterns, substitutions):
     output_array = []
     for i in range(len(patterns)):
-        rule = f"{REWRITE_RULE} ^{string_strip(patterns[i])}$ {string_strip(substitutions[i])} {REWRITE_RULE_FLAGS}\n"
+        rule = f"{REWRITE_RULE}{string_strip(patterns[i])}$ {string_strip(substitutions[i])} {REWRITE_RULE_FLAGS}\n"
         output_array.append(rule)
 
     return output_array
