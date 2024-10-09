@@ -1,6 +1,6 @@
 DOLLAR_SYMBOL = "$"
 REWRITE_RULE = "RewriteRule ^"
-REWRITE_RULE_FLAGS = "[R=301,NC]"
+REWRITE_RULE_FLAGS = "[R=301,L,NC]"
 
 INPUT_FILE_NAME_WITH_PATTERNS = "/Downloads/url_patterns.txt"
 INPUT_FILE_NAME_WITH_SUBSTITUTIONS = "/Downloads/url_substitution.txt"
